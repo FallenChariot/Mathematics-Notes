@@ -1,0 +1,74 @@
+\documentclass[12pt,openany]{book}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[letterpaper, margin=1 in]{geometry}
+\usepackage{parskip}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{ulem}
+\usepackage{hyperref}
+\usepackage{subfiles}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{theorem}{Theorem}
+
+\newtheoremstyle{mydefinitionstyle}{\topsep}{\topsep}{\itshape}{}{\itshape}{:}{\newline}{}
+\theoremstyle{mydefinitionstyle}
+\newtheorem*{definition}{Definition:}
+
+\newtheoremstyle{myexamplestyle}{\topsep}{\topsep}{}{}{\itshape}{:}{\newline}{}
+\theoremstyle{myexamplestyle}
+\newtheorem*{example}{Example:}
+
+\theoremstyle{remark}
+\newtheorem*{note}{Note}
+\newtheorem*{aside}{Aside}
+
+\renewcommand\qedsymbol{$\square$}
+\newcommand{\msout}[1]{	ext{\sout{\ensuremath{#1}}}}
+
+% Other Settings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Linear Algebra\thanks{Partially based on courses taught by Dr. Eric Brussel and Dr. Morgan Sherman at California Polytechnic State University San Luis Obispo}}
+\author{Christopher K. Walsh}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+\section*{Preface}
+\addcontentsline{toc}{section}{Preface}
+This document compiles all my notes on linear algebra including any self-study (e.g. advanced applications in modern physics).
+This also serves as a foundation for the other analysis topics covered in my notes series.
+
+For most engineers, linear algebra is simply the study of matrices and vectors in \( \mathbb{R}^n \).
+For a mathematician, linear algebra is the study of vector spaces and linear transformations.
+This definition means linear algebra is more abstract than vectors describing physical quantities or systems of linear equations.
+They can be functions for example, and thinking of functions in a vector space is surprisingly useful for advanced differential equations.
+In modern or quantum physics, all the behaviors of particles can be modeled using complex vector spaces (see sections on Hilbert spaces and complex vector spaces).
+Thus, there is a strong motivation in science to understand linear algebra hollistically.
+
+If you need this for school and industry, I hope that you are able to do whatever you are trying to accomplish.
+If you are here because this interests you, I hope you find this as entertaining as I did.
+
+- Christopher
+
+\chapter{Matricies}
+\subfile{sections/matricies.tex}
+
+\end{document}

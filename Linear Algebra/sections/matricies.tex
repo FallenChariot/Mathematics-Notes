@@ -1,0 +1,42 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\section{What is a matrix?}
+
+(So many definitions in this section.)
+
+\begin{definition}[Matrix]
+    Let \( n,\, m \) be two integers \( \geq 1 \).
+    A matrix is an array of numbers with \( m \) rows and \( n \) columns (called a \( m \times n \) matrix).
+\end{definition}
+
+We call \textbf{\( a_{ij} \)} the \textbf{ij-entry} which is the entry in the \textit{i}th row and the \textit{j}th column.
+We write a matrix often as \( A=(a_{ij}) \) and define \( a_{ij} \).
+
+\begin{definition}[Identity Matrix]
+    The Kronecker delta is defined as follows:
+    \[
+        \delta_{ij} =
+        \begin{cases}
+            1,& i = j \\
+            2,& i \neq j
+        \end{cases}
+    \]
+
+    Then we define the identity matrix as:
+    \[ \mathbf{I_{n \times n}} = (\delta_{ij}) =
+        \begin{bmatrix}
+            1 & 0 &  \dots  & 0 \\
+            0 & 1 & \dots & 0 \\
+            \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & \dots  & 1
+        \end{bmatrix}
+    \]
+\end{definition}
+
+\begin{definition}[Column Vector]
+    Each column of an \( m \times n \) matrix is a 
+\end{definition}
+
+\end{document}

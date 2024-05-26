@@ -1,0 +1,61 @@
+\documentclass[12pt,openany]{book}
+\usepackage[letterpaper, margin=1 in]{geometry}
+\usepackage{parskip}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{ulem}
+\usepackage{hyperref}
+\usepackage{subfiles}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\newtheorem{theorem}{Theorem}
+
+\newtheoremstyle{mydefinitionstyle}{\topsep}{\topsep}{\itshape}{}{\bfseries}{:}{\newline}{}
+\theoremstyle{mydefinitionstyle}
+\newtheorem*{definition}{Definition}
+
+\newtheoremstyle{myexamplestyle}{\topsep}{\topsep}{}{}{\itshape}{:}{\newline}{}
+\theoremstyle{myexamplestyle}
+\newtheorem*{example}{Example}
+
+\theoremstyle{remark}
+\newtheorem*{note}{Note}
+\newtheorem*{aside}{Aside}
+
+\renewcommand\qedsymbol{$\square$}
+\newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
+
+\title{Differential Equations Notes\thanks{Partially based on courses taught by Dr. Eric Brussel and Dr. Morgan Sherman at California Polytechnic State University San Luis Obispo}}
+\author{Christopher K. Walsh}
+\date{ }
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+\section*{Preface}
+\addcontentsline{toc}{section}{Preface}
+This document compiles all my notes on differential equations including any self-study.
+Some sections require content from other math subjects to be completed understood (such as linear algebra or other analysis topics).
+The corresponding topic and section will be referred to in-text.
+
+If you need this for school and industry, I hope that you are able to do whatever you are trying to accomplish.
+If you are here because this interests you, I hope you find this as entertaining as I did.
+
+- Christopher
+
+\chapter{Linear Ordinary Differential Equations}
+\subfile{sections/intro_to_lodes.tex}
+
+\end{document}

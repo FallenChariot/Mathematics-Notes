@@ -1,0 +1,341 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction to LODEs}
+
+\begin{definition}[Linear Ordinary Differential Equation (LODE) of Order n]
+    A LODE of order n is an equation:
+    \[ y^{(n)}+a_{n-1}(x)y^{(n-1)}+\dots+a_{1}(x)y'+a_{0}(x)y=b(x)  \]
+    where $y^{(i)}$ is the ith derivative.
+\end{definition}
+
+\begin{example}[Hooke's Law]
+    Hooke's Law states the force exerted by a spring is proportional to its displacement from equilibrium:
+    \[ F = -ky \]
+    This applies when displacement is small compared to the total range of the spring.
+    (Fun Fact: Hooke stated this as an anagram riddle before officially publishing his discovery.)
+
+    From Newton,
+    \begin{gather*}
+        F = m\frac{d^2y}{dt^2} \\
+        \therefore \, \text{By substitution, } y^{(2)}+\omega^2y=0 \\
+        \text{where } \omega =\sqrt{ \frac{k}{m} }
+    \end{gather*}
+
+    This describes the system. The solution is some \(y(t)\): what actually happens. Finding \(y(t)\) is our goal.
+
+    \textit{Check:} \(y=c_{0}\cos \omega t+c_{1}\sin \omega t\) is a solution where \(c_{0},c_{1}\) are constants.
+    \begin{align*}
+        y^{(1)} & = -c_{0}\omega \sin \omega t+c_{1}\omega \cos \omega t \\
+        y^{(2)} & = -c_{0}\omega^2\cos \omega t-c_{1}\omega^2\sin \omega t \\
+        & = -\omega y
+    \end{align*}
+    Simple harmonic motion!
+\end{example}
+
+\begin{definition}[General Solution of a LODE]
+    A general solution of a LODE is a solution of the form:
+    \[ y = c_{1}y_{1}+c_{2}y_{2}+\dots+c_{n}y_{n} \]
+    where the \(y_{i}\) are independent solutions and \(c_{j}\) are unknowns.
+\end{definition}
+
+\begin{note}
+    Any solution is some specialization of the \(c_{j}\)'s
+\end{note}
+
+\begin{example}[Newton's Law of Cooling]
+    Newton's Law of Cooling is as follows: \[ \frac{dT}{dt}=-k(T-T_{m})\]
+    where T = temperature at time t, t = time, k = constant, and \(T_{m}\) = ambient temp
+
+    \textit{Check:} \(T=T_{m}+ce^{-kt}\) is a solution. Witness:
+    \begin{align*}
+        \frac{dT}{dt} &= -kce^{-kt} \\
+        &= -k(T-T_{m})
+    \end{align*}
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Other Examples of Differential Equations}
+
+Here are additional examples of differential equations explored more throughly.
+
+\subsection{Orthogonal Trajectory Problem}
+
+Given a function \( f(x,y) \), there is a family of level curves  \(f(x,y)= f(p),\, p=(a,b)\). We write the gradient of $f(x,y)$ as $<f_{x},f_{y}>$.
+
+\begin{note}
+    The gradient has the following important properties:
+    \begin{itemize}
+        \item The direction is in the greatest rate of change of \( f \)
+        \item \( \overrightarrow{\nabla}f \perp {f(x,y)=f(p)} \)
+    \end{itemize}
+\end{note} 
+
+The problem is thus to find a curve that follows the gradient i.e. an \textbf{orthogonal trajectory curve}.
+    
+\textbf{Potential Applications:}
+\begin{itemize}
+    \item Heat seaking missiles, \( f =\) temperature
+    \item Charged particle, \( f =\) electric potential
+    \item Bear at scout jamboree, \( f =\) peanut butter scent intensity
+\end{itemize}
+
+\textbf{Theory:}
+Let \( g(x,y)=g(p) \) be an orthogonal trajectory curve (in xy-plane).
+
+\textit{Goal:} Find g.
+
+\textit{Require:} \( \overrightarrow{\nabla}f(p)\perp\overrightarrow{\nabla}g(p) \)
+
+Then, it follows that \( f_{x}g_{x}+f_{y}g_{y}=0 \)
+
+\( \therefore \) The slope of D at p is the slope of the vector \( <-g_{y},g_{x}> =-\frac{g_{x}}{g_{y}}=\frac{f_{y}}{f_{x}} \). \\
+\(\therefore \frac{dy}{dx}=\frac{f_{y}}{f_{x}} \) is a 1st order LODE for g.
+
+To find g, use the relation \( dy=\frac{f_{y}}{f_{x}}dx \) then integrate.
+
+\begin{example}[]
+    \[ f(x,y)=x^2+y^2 \]
+    Level curves are circles
+    \begin{gather*}
+        \frac{f_{y}}{f_{x}}=\frac{y}{x} \\
+        \therefore dy=\frac{y}{x}dx \\
+        \int \frac{1}{y} \, dy = \int \frac{1}{x} \, dx \\
+        \therefore \ln y=\ln x + C \\
+        y=kx
+    \end{gather*}
+    These are all lines through (0,0).
+    Compute these through $p=(a,b),k=\frac{b}{a}$.
+\end{example}
+
+\subsection{Initial Value Problems}
+
+Most general LODE of order n is:
+\[ y^{(n)}+a_{1}(x)y^{(n-1)}+\dots+a_{n}(x)y=F(x) \]
+where \( F(x) \) is the driving term.
+
+An \textbf{initial value problem (IVP)} is an equation, \( (*) \) together with initial conditions, \( (* *) \):
+
+\begin{gather*}
+    y(x_{0})=y_{0} \\
+    y^{(1)}(x_{0})=y_{1} \\
+    y^{(n-1)}(x_{0})=y_{n-1}
+\end{gather*}
+
+\begin{example}[]
+    Solve the IVP \( y''+\omega^2y=0, \space y(0)=1,\space y'(0)=0 \)
+    \begin{gather*}
+        \text{The general solution is: } y=c_{0}\cos(\omega t)+c_{1}\sin(\omega t) \\
+        \text{Initial conditions impose:} \\
+        c_{0}\cos0+\overset{0}{\msout{c_{1}\sin0}}=1 \implies c_0 = 1 \\
+        \overset{0}{\msout{-c_0\omega\sin0}}+c_1\omega\cos0=0 \implies c_1 = 0 \\
+        \therefore \boxed{y=\cos \omega t}
+    \end{gather*}
+    In general, \( c_0 = y(0),\,c_1 = \frac{y'(0)}{\omega} \).
+\end{example}
+
+\begin{theorem}[]
+    Assume in \( (*) \) that the \(a_{i}(x) \) and \( F(x) \) are continuous on some interval \( I
+     \).
+    Then \( \exists ! \) solution to IVP \( (*) \) + \( (**) \) on \( I \).
+
+    \begin{note}
+        This establishes existence and uniqueness. (The symbol \( \exists ! \) means "there exists a unique-".)
+    \end{note}
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{First Order DE's}
+
+The form of a first order differential equation is: \( y' = f(x,y) \). Does it have a solution? If so, is it unique?
+
+\begin{theorem}[]
+    Given \( y'=f(x,y) \). Assume \( f(x,y) \) is continuous on \( [a,b] \times [c,d] \) and \( f_{y} \) is continuous in \( (a,b) \times (c,d) \).
+    Then for each \( (x_0,y_0) \in (a,b) \times (c,d),\, \exists ! \) solution to y=y(x) running through \( (x_0,y_0) \) and this solution holds for some interval \( I \) around \( x_0 \)
+    
+    \begin{note}
+        The notation \( [a,b] \times [c,d] \) describes the domain and range using the Cartesian product of the two sets. In other words, \(a \leq x \geq b \) and all \( c \leq y \geq d \).
+    \end{note}
+\end{theorem}
+
+\begin{example}[]
+    Is there a unique solution to: \( y'=xy^{\frac{1}{2}},\,y(0)=0 \)?
+
+    \textit{Sol'n.}
+    \( f(x,y)=xy^{\frac{1}{2}} \) is continuous on \( (-\infty,\infty)\times[0,\infty] \)
+    \( f_y = \frac{1}{2}xy^{-\frac{1}{2}} \) is not continuous at y = 0.
+    
+    \( \therefore \) Thm is useless
+
+    There are solutions for the IVP where y(0) = 0. Check it out:
+    \begin{itemize}[mode=unboxed]
+        \item \( y=0 \) is a solution. \( y(0) = 0 \)
+        \item \( y=\frac{1}{16}x^4 \) is also a solution.
+            \begin{gather*}
+                y(0) = 0 \\
+                y'=\frac{1}{4}x^3=xy^{\frac{1}{2}} \checkmark
+            \end{gather*}
+    \end{itemize}
+    Thus the solutions are not unique as expected from the theorem.
+\end{example}
+
+\begin{note}
+    Slope fields can be used to visualize solutions to a differential equation.
+\end{note}
+
+\begin{definition}[Equilibrium Solutions]
+    Equilibrium solutions are solutions to a differential equation that have a derivative of zero everywhere i.e. equal to a constant value.
+\end{definition}
+
+In terms of a first order linear differential equation, the equilibrium solutions is \( \{ y = y_0 \mid f(x,y_0)=0 \} \)
+On slope field diagrams, they are where a horizontal line fits as a solution.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Analytical Techniques for First Order ODEs}
+
+\begin{enumerate}[mode=unboxed]
+    \item \textbf{Seperable:} If the first order ODE is one of the form \( p(y)y'=q(x) \) (or \( y'=r(y)q(x) \), ...)
+        Then since \( dy=y'dx \), we get \( p(y)dy=q(x)dx \) and can integrate (in principle).
+        \begin{definition}[Autonomous ODE]
+            An autonoumous ODE is one with no independent variable. It is usually seperable.
+        \end{definition}
+    \item \textbf{Integrating Factor:} For LODE's in the form, \( y'+p(x)y=q(x) \), let \( I(x)= e^{\int p(x) \,dx} \) be the integrating factor.
+
+        \textit{Claim.} \( y(x)= \frac{1}{I(x)}\int q(x) I(x) \,dx \) is the general solution.
+        Let's test this claim using the chain rule.
+        \begin{align*}
+            I(x)y(x)&=\int q(x) I(x) \,dx \\
+            \frac{d}{dx}I(x)y(x)&=I'(x)y(x)+I(x)y'(x) \\
+            &= p(x)I(x)y(x)+I(x)y'(x) \\
+            &= I(x)(p(x)y(x)+y'(x))) \\
+            &= I(x)q(x) \text{by original LODE}
+        \end{align*}
+        \( \therefore I(x)y(x)=\int I(x)q(x) \,dx \implies\) claim is true 
+
+        \begin{note}
+            The indefinite integral and the lack of a integration constant is not formally correct.
+            However, the constant is removed upon the simplification.
+            We can always divide both sides of the equation by \( e^{C}.\, :) \)
+        \end{note}
+\end{enumerate}
+
+\begin{example}[]
+    Find the general solution for \( y'+ ( \tan x ) y=\cos^{2}x \)  on \( -\pi/2,\, \pi/2 \).
+
+    \textit{Sol'n.} Recognize this is the form for the integrating factor with \( p(x)=\tan x \) and \( q(x) = \cos^{2}x \).
+    \begin{align*}
+        I(x)= e^{\int \tan x \,dx} = e^{\ln(\sec x)} = \sec x \\
+        \therefore (\sec x) y = \int \cos (x) \,dx = \sin x + C \\
+        \therefore y = \sin x \cdot \cos x + C \cdot \cos x
+    \end{align*}
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Application: Revisiting Newton's Law of Cooling}
+
+Newton defined his Law of Cooling as: \[ T' = -k(T-T_m) \].
+In its LODE form, \( dT = -k(T-T_m)dt \). (Now, \( T_m \) could be time-dependent.)
+
+\begin{example}[]
+    Suppose \( k=\frac{1}{40},\, T_m(t)=80e^{-\frac{t}{20}},\,T(0)=0 \)
+    \begin{enumerate}[label=\alph*)]
+        \item Solve this IVP.
+        \item Determine the asymptotic behavior of the solution.
+        \item Find the maximum temperature.
+    \end{enumerate}
+
+    a) Write it out as an ODE: \[ T'=-\frac{1}{40}(T-80e^{-\frac{t}{20}}) \]
+    Not seperable, 1st order ODE. This is an integrating factor problem.
+    In standard form:
+    \begin{gather*}
+        T' + \underbrace{\frac{1}{40}}_{p(t)} T = \underbrace{2e^{-\frac{t}{20}}}_{q(t)} \\
+        \implies p(t) = \frac{1}{40} \text{ and } q(t) = 2e^{-\frac{t}{20}} \\
+        \\
+        I(t) = e^{\int p(t) \,dt} \\
+        I(t) = e^{\int \frac{1}{40} \,dx} = e^{t/40} \\
+        \\
+        \text{Multiplying the original LODE by } I(t) \text{:}\\
+        \underbrace{I(t)T' + I(t)\frac{1}{40}T}_{(IT)'} = \underbrace{I(t)2e^{-\frac{t}{20}}}_{2e^{-\frac{t}{40}}} \\
+        IT=\int 2e^{-\frac{t}{40}} \,dt = -80e^{-\frac{t}{40}}+C \\
+        \therefore T = e^{-t/40} \left[-80e^{-\frac{t}{40}}+C \right] \\
+        \\
+        \text{Using IV: } T(0)=0 \implies 1[-80+C]=0 \\
+        C=80 \\
+        \therefore T = e^{-t/40} \left[ -80e^{-\frac{t}{40}}+80 \right] \\
+        \boxed{T=80\left(-e^{-\frac{t}{20}}+e^{-\frac{t}{40}}\right)}
+    \end{gather*}
+
+    \begin{enumerate}[mode=unboxed,label=\alph*),start=2]
+        \item \( \boxed{ \lim_{t\to\infty}T(t)= 0 } \)
+        \item Maximum temperature? Occurs when \( \frac{dT}{dt} =0\) or \( T(t)=T_{m}(t) \)
+            \begin{align*}
+                T(t) &= T_m(t) \\
+                80(e^{-\frac{t}{40}}-e^{-\frac{t}{20}}) &= 80e^{-\frac{t}{20}} \\
+                e^{-\frac{t}{40}}-e^{-\frac{t}{20}} &= e^{-\frac{t}{20}} \\
+                e^{-\frac{t}{40}} &= 2e^{-\frac{t}{20}} \\
+                -\frac{t}{40} &= \ln 2 - \frac{t}{20} \\
+                \frac{t}{40} &= \ln 2 \\
+                t &= 40\ln 2
+            \end{align*}
+            So \( T_{max} = 80\left( \frac{1}{2}-\frac{1}{4} \right) = \boxed{20} \)
+    \end{enumerate}
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Application: RLC Circuits}
+
+\textbf{The Physics:}
+\begin{itemize}[mode=unboxed]
+    \item Voltage is the difference \( \Delta V \) in electric potential \( V \)
+    \item Voltage along a wire (usually caused by a battery or EMF) causes charge \( q \) to move,
+        causing a current \( i = \frac{dq}{dt} \)
+    \item \textbf{Kirchoff's Second Law:}
+        \[ \sum_{\text{closed loop}} \Delta V = 0 \]
+        In a circuit, we have components with opposing voltages.
+        \begin{enumerate}
+            \item Resistance \( R \) causes \( \overset{\text{(Ohm's Law)}}{\Delta V = iR} \). Units are ohms \( \Omega \).
+            \item Capacitance \( C \) causes \( \Delta V = \frac{1}{C}q \). Units are farads \( F \).
+            \item Inductance \( C \) causes \( \Delta V = L\frac{di}{dt} \). Units are henrys \( H \).
+            \item Driver EMF \( E(t)=\sum_{\text{circuit components}} \Delta V \).
+        \end{enumerate}
+\end{itemize}
+
+\begin{aside}
+    The work done to move a unit charge from A to B can be found using multivariable calculus!
+    \begin{align*}
+        int_C \overrightarrow{E} \cdot \overrightarrow{T} \,ds & = \int_C \overrightarrow{\Delta V} \cdot \overrightarrow{T} \,ds \\
+        & \overset{FTC}{=} V(b)-V(a)
+    \end{align*}
+\end{aside}
+
+By Kirchoff's Law, we have an LODE:
+\[ L\frac{di}{dt} + Ri + \frac{1}{C}q = \frac{1}{L} E(t) \]
+Since \( i=\frac{dq}{dt} \),
+\[ \boxed{ \frac{d^{2}q}{{dt}^2} + \frac{R}{L}\frac{dq}{dt} + \frac{1}{LC}q = \frac{1}{L}E(t) } \]
+
+Generally, either \( E(t) = E_0 \) (constant as DC) or \( E(t)= E_0 \cos \omega t \) (AC, often 60 Hz).
+To solve this equation, we must restrict it to either an RL case (first order LODE in i) or RC case (first order LODE in q).
+
+\begin{example}[RL Circuit]
+    Given \( E(t)=E_0 \cos \omega t \). Find \(i(t), \text{ given } i(0) = 0 \).
+
+    \textit{Sol'n.} LODE is \( \frac{di}{dt} + \overset{p(t)}{\overbrace{\frac{R}{L}}}i = \overset{q(t)}{\overbrace{\frac{E_0}{L} \cos \omega t}} \).
+    Not seperable, use integrating factor.
+
+    \[ I(t) =e^{\int \frac{R}{L} \,dt}=e^{at} \, \left( a = \frac{R}{L} \right) \]
+    \[ e^{at}i(t) = \int e^{at}E_0 \cos \omega t \,dt \]
+    Requires integration by parts
+
+    \[ \boxed{i(t) = \underset{\text{steady state}}{\underbrace{\frac{E_0a}{L(a^2+\omega^2)}\left( a \cos \omega t + \omega \sin \omega t\right)}} +
+        \underset{\text{transient}}{\underbrace{\frac{E_0a}{L(a^2+\omega^2)}\left( -ae^{-at} \right)}}} \]
+\end{example}
+
+\end{document}
