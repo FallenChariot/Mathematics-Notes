@@ -7,7 +7,7 @@
 \section{Introduction to LODEs}
 
 \begin{definition}[Linear Ordinary Differential Equation (LODE) of Order n]
-    A LODE of order n is an equation:
+    A \text{linear ordinary differential equation} of order n is an equation:
     \[ y^{(n)}+a_{n-1}(x)y^{(n-1)}+\dots+a_{1}(x)y'+a_{0}(x)y=b(x)  \]
     where $y^{(i)}$ is the ith derivative.
 \end{definition}
@@ -31,7 +31,7 @@
     \begin{align*}
         y^{(1)} & = -c_{0}\omega \sin \omega t+c_{1}\omega \cos \omega t \\
         y^{(2)} & = -c_{0}\omega^2\cos \omega t-c_{1}\omega^2\sin \omega t \\
-        & = -\omega y
+        & = -\omega^2 y
     \end{align*}
     Simple harmonic motion!
 \end{example}
@@ -71,7 +71,7 @@ Given a function \( f(x,y) \), there is a family of level curves  \(f(x,y)= f(p)
     The gradient has the following important properties:
     \begin{itemize}
         \item The direction is in the greatest rate of change of \( f \)
-        \item \( \overrightarrow{\nabla}f \perp {f(x,y)=f(p)} \)
+        \item \( \vec{\nabla}f \perp {f(x,y)=f(p)} \)
     \end{itemize}
 \end{note} 
 
@@ -85,16 +85,16 @@ The problem is thus to find a curve that follows the gradient i.e. an \textbf{or
 \end{itemize}
 
 \textbf{Theory:}
-Let \( g(x,y)=g(p) \) be an orthogonal trajectory curve (in xy-plane).
+Let \( g(x,y)=g(p) \) be an \textbf{orthogonal trajectory curve} (in xy-plane).
 
 \textit{Goal:} Find g.
 
-\textit{Require:} \( \overrightarrow{\nabla}f(p)\perp\overrightarrow{\nabla}g(p) \)
+\textit{Require:} \( \vec{\nabla}f(p)\perp\vec{\nabla}g(p) \)
 
 Then, it follows that \( f_{x}g_{x}+f_{y}g_{y}=0 \)
 
 \( \therefore \) The slope of D at p is the slope of the vector \( <-g_{y},g_{x}> =-\frac{g_{x}}{g_{y}}=\frac{f_{y}}{f_{x}} \). \\
-\(\therefore \frac{dy}{dx}=\frac{f_{y}}{f_{x}} \) is a 1st order LODE for g.
+\( \therefore \frac{dy}{dx}=\frac{f_{y}}{f_{x}} \) is a 1st order LODE for g.
 
 To find g, use the relation \( dy=\frac{f_{y}}{f_{x}}dx \) then integrate.
 
@@ -152,14 +152,14 @@ An \textbf{initial value problem (IVP)} is an equation, \( (*) \) together with 
 
 \section{First Order DE's}
 
-The form of a first order differential equation is: \( y' = f(x,y) \). Does it have a solution? If so, is it unique?
+The form of a \textbf{first order differential equation} is: \( y' = f(x,y) \). Does it have a solution? If so, is it unique?
 
 \begin{theorem}[]
     Given \( y'=f(x,y) \). Assume \( f(x,y) \) is continuous on \( [a,b] \times [c,d] \) and \( f_{y} \) is continuous in \( (a,b) \times (c,d) \).
     Then for each \( (x_0,y_0) \in (a,b) \times (c,d),\, \exists ! \) solution to y=y(x) running through \( (x_0,y_0) \) and this solution holds for some interval \( I \) around \( x_0 \)
     
     \begin{note}
-        The notation \( [a,b] \times [c,d] \) describes the domain and range using the Cartesian product of the two sets. In other words, \(a \leq x \geq b \) and all \( c \leq y \geq d \).
+        The notation \( [a,b] \times [c,d] \) describes the domain and range using the Cartesian product of the two sets. In other words, \(a \leq x \geq b \) and \( c \leq y \geq d \).
     \end{note}
 \end{theorem}
 
@@ -189,7 +189,7 @@ The form of a first order differential equation is: \( y' = f(x,y) \). Does it h
 \end{note}
 
 \begin{definition}[Equilibrium Solutions]
-    Equilibrium solutions are solutions to a differential equation that have a derivative of zero everywhere i.e. equal to a constant value.
+    \textbf{Equilibrium solutions} are solutions to a differential equation that have a derivative of zero everywhere i.e. equal to a constant value.
 \end{definition}
 
 In terms of a first order linear differential equation, the equilibrium solutions is \( \{ y = y_0 \mid f(x,y_0)=0 \} \)
@@ -311,7 +311,7 @@ In its LODE form, \( dT = -k(T-T_m)dt \). (Now, \( T_m \) could be time-dependen
 \begin{aside}
     The work done to move a unit charge from A to B can be found using multivariable calculus!
     \begin{align*}
-        int_C \overrightarrow{E} \cdot \overrightarrow{T} \,ds & = \int_C \overrightarrow{\Delta V} \cdot \overrightarrow{T} \,ds \\
+        int_C \vec{E} \cdot \vec{T} \,ds & = \int_C \vec{\Delta V} \cdot \vec{T} \,ds \\
         & \overset{FTC}{=} V(b)-V(a)
     \end{align*}
 \end{aside}

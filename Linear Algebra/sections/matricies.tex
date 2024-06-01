@@ -2,19 +2,19 @@
 
 \begin{document}
 
-\section{What is a matrix?}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-(So many definitions in this section.)
-
-\begin{definition}[Matrix]
+\begin{definition}[Matrices]
     Let \( n,\, m \) be two integers \( \geq 1 \).
-    A matrix is an array of numbers with \( m \) rows and \( n \) columns (called a \( m \times n \) matrix).
+    A \textbf{matrix} is an array of numbers with \( m \) rows and \( n \) columns (called a \( m \times n \) matrix).
 \end{definition}
 
-We call \textbf{\( a_{ij} \)} the \textbf{ij-entry} which is the entry in the \textit{i}th row and the \textit{j}th column.
-We write a matrix often as \( A=(a_{ij}) \) and define \( a_{ij} \).
+\begin{definition}[ij-entry]
+    We call \textbf{\( a_{ij} \)} the \textbf{ij-entry} which is the entry in the \textit{i}th row and the \textit{j}th column.
+    We write a matrix often as \( A=(a_{ij}) \) and define \( a_{ij} \).
+\end{definition}
 
-\begin{definition}[Identity Matrix]
+\begin{example}[Identity Matrix]
     The Kronecker delta is defined as follows:
     \[
         \delta_{ij} =
@@ -24,7 +24,7 @@ We write a matrix often as \( A=(a_{ij}) \) and define \( a_{ij} \).
         \end{cases}
     \]
 
-    Then we define the identity matrix as:
+    Then we define the \textbf{identity matrix} as:
     \[ \mathbf{I_{n \times n}} = (\delta_{ij}) =
         \begin{bmatrix}
             1 & 0 &  \dots  & 0 \\
@@ -33,10 +33,121 @@ We write a matrix often as \( A=(a_{ij}) \) and define \( a_{ij} \).
             0 & 0 & \dots  & 1
         \end{bmatrix}
     \]
+\end{example}
+
+\begin{definition}[Column and Row Vectors]
+    Each column of an \( m \times n \) matrix is a \textbf{column vector}.
 \end{definition}
 
-\begin{definition}[Column Vector]
-    Each column of an \( m \times n \) matrix is a 
+\begin{definition}[Row Vector]
+    Each row of an \( m \times n \) matrix is a \textbf{row vector}.
 \end{definition}
+
+\begin{example}[]
+    If we have a matrix, \( A = \begin{bmatrix}
+        3 & 4 \\
+        1 & -1 \\
+        2 & 2 
+    \end{bmatrix}, \)
+    the second column vector of \( A \) is \( \begin{bmatrix}
+        4 \\
+        1 \\
+        2
+    \end{bmatrix} \)
+    and the second row vector of \( A \) is \( \begin{bmatrix}
+        1 & -1
+    \end{bmatrix} \).
+
+    We can describe matrices using their column or row vectors. For example:
+    \[ A = \begin{bmatrix}
+        \vec{r} \\
+        \vec{s} \\
+        \vec{t}
+    \end{bmatrix} \]
+    where \[ \vec{r} = \begin{bmatrix}
+        3 & 4
+    \end{bmatrix}, \, \vec{s} = \begin{bmatrix}
+        1 & -1
+    \end{bmatrix}, \, \vec{t} = \begin{bmatrix}
+        2 & 2
+    \end{bmatrix} \]
+
+    Or: \[ A = \begin{bmatrix}
+        \vec{a} & \vec{b}
+    \end{bmatrix} \]
+    where \[ \vec{a} = \begin{bmatrix}
+        3 \\
+        1 \\
+        2
+    \end{bmatrix}, \, \vec{b} = \begin{bmatrix}
+        4 \\
+        -1 \\
+        2
+    \end{bmatrix} \]
+\end{example}
+
+\begin{definition}[Square Matrix]
+    Suppose we have a matrix, \( A = [aij], i = 1, \dots ,m \, \text{and} \, j = 1, \dots ,n \).
+    If \( m=n \), then A is a \textbf{square matrix}.
+\end{definition}
+
+Symmetric
+
+skew-Symmetric
+square matrix
+diagonal
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Matrix Algebra and Other Operations}
+
+We treat matricies the same way as numbers.
+
+Let \( A \) be an \( m \times n \) matrix and \( B\) be an \( p \times q \) matrix.
+\begin{itemize}[mode=unboxed]
+    \item We can add \( A \) and \( B \). If \( m=p \) and \( n=q \), then
+
+    \item We can 
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Applications of Matricies}
+
+The following section covers different applications of matricies. Some topics are explored in later sections more throughly.
+
+\subsection{Linear Transformations}
+Matricies can be used to model transformations of vectors from \( \mathbf{R}^n \) to \( \mathbf{R}^m \).
+This is accomplished by having an \( m \times n \) matrix, \( A \), written as: \[ A: \mathbf{R}^n \leftarrow \mathbf{R}^m \]
+
+\begin{example}[\( \mathbf{R}^n \) to \( \mathbf{R}^m \)]
+    Let \( A = \begin{bmatrix}
+        3 & 4 \\
+        1 & -1 \\
+        2 & 2 
+    \end{bmatrix}, \) and \( \vec{v} = \begin{bmatrix}
+        2 \\
+        1
+    \end{bmatrix}, \).
+    Thus, \( A: \mathbf{R}^2 \) to \( \mathbf{R}^3 \) and:
+    \[ A\vec{v} = \begin{bmatrix}
+        3 & 4 \\
+        1 & -1 \\
+        2 & 2 
+    \end{bmatrix} \begin{bmatrix}
+        2 \\
+        1
+    \end{bmatrix} = \begin{bmatrix}
+        10 \\
+        1 \\
+        6
+    \end{bmatrix} \]
+
+    \begin{note}
+        We are getting a linear combination of the column vectors of A.
+        In other words, \( A \vec{v} = x \vec{a}+ y \vec{b} \).
+    \end{note}
+\end{example}
 
 \end{document}

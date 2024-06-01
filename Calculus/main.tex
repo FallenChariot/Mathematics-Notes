@@ -1,5 +1,9 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Document Class %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[12pt,openany]{book}
-\usepackage[letterpaper, margin=1 in]{geometry}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
 \usepackage{parskip}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -17,9 +21,13 @@
     urlcolor=black
 }
 
+\graphicspath{{images/}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \newtheorem{theorem}{Theorem}
 
-\newtheoremstyle{mydefinitionstyle}{\topsep}{\topsep}{\itshape}{}{\bfseries}{:}{\newline}{}
+\newtheoremstyle{mydefinitionstyle}{\topsep}{\topsep}{\itshape}{}{\itshape}{:}{\newline}{}
 \theoremstyle{mydefinitionstyle}
 \newtheorem*{definition}{Definition}
 
@@ -32,13 +40,14 @@
 \newtheorem*{aside}{Aside}
 
 \renewcommand\qedsymbol{$\square$}
-\newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
+\newcommand{\msout}[1]{	ext{\sout{\ensuremath{#1}}}}
 
-\title{Differential Equations Notes\thanks{Partially based on courses taught by Dr. Eric Brussel and Dr. Morgan Sherman at California Polytechnic State University San Luis Obispo}}
+% Other Settings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Title}
 \author{Christopher K. Walsh}
-\date{ }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
@@ -57,7 +66,7 @@ If you are here because this interests you, I hope you find this as entertaining
 
 - Christopher
 
-\chapter{Linear Ordinary Differential Equations}
-\subfile{sections/intro_to_lodes.tex}
+\chapter{Sequences and Series}
+\subfile{sections/infinite_series.tex}
 
 \end{document}
