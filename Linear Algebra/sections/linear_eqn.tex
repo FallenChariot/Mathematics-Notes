@@ -1,0 +1,370 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Systems of Linear Equations}
+
+Another application of matricies of great interest is representing systems of linear equations.
+
+\begin{definition}
+    An equation is \textbf{linear} in \( n \) variables \( x_1, \, x_2, \,  \dots \, ,\,  x_n \)
+    if each term contains at most one \( x_i \) and that \( x_i \) appears to the first power.
+\end{definition}
+
+\( \therefore \) A ``system of \( m \) linear equations in \( n \) unknowns."
+
+\begin{example}[Cutting \( n \) by \( n-1 \) dimensional objects]
+    Suppose we have two planes which will separate regions in a three dimensional space.
+    \[ \begin{aligned}
+        3x + 2y - z &= 1 \\
+        2x + 2y + z & = 0
+    \end{aligned} \]
+    \textit{Sol'n.} \( \left\{ (x,y,z) : \text{satisfy all equations} \right\} \)
+    
+    The solution would be the intersection of these planes.
+    Since they extend out infinitely, we would expect them to meet long a line contained in both planes.
+\end{example}
+
+\begin{note}
+    Multiplying by a constant, adding a multiple of one to another, and permuting the rows all do not change the solution.
+\end{note}
+
+\emph{Possible Outcomes:} A system of \( m \) linear equations in \( n \) unknowns has either \( 0, 1, \text{or} \inf \) solutions.
+
+The technique to solving systems of linear equations is to develop a faster, simple method using matrices.
+We represent the system as a matrix, preform a series of operations to obtain a simpler matrix, and get our solution from the simpler solution.
+
+\begin{example}[]
+    \begin{align*}
+        3x + 2y - z &= 1 \\
+        2x + 2y + z & = 0
+    \end{align*}
+    We take the coefficients and constants and put them into a matrix:
+    \begin{gather*}
+        \begin{bmatrix}
+            3 & 2 & -1 & 1 \\
+            2 & 2 & 1 & 0
+        \end{bmatrix} \\
+        %
+        \Bigg\downarrow {\vec{r_1} \rightarrow \vec{r_1}-\vec{r_2}} \\
+        %
+        \begin{bmatrix}
+            1 & 0 & -2 & 1 \\
+            2 & 2 & 1 & 0
+        \end{bmatrix} \\
+        %
+        \Bigg\downarrow {\vec{r_2} \rightarrow \vec{r_2}-2\vec{r_1}} \\
+        %
+        \begin{bmatrix}
+            1 & 0 & -2 & 1 \\
+            0 & 2 & 5 & 2
+        \end{bmatrix} \\
+        %
+        \Bigg\downarrow {\vec{r_2} \rightarrow \frac{1}{2}\vec{r_2}} \\
+        %
+        \begin{bmatrix}
+            1 & 0 & -2 & 1 \\
+            0 & 1 & \frac{5}{2} & 1
+        \end{bmatrix}
+    \end{gather*}
+
+    Thus, we find:
+    \begin{align*}
+        x - 2z &= 1 \\
+        y + \frac{5}{2}z &= -1
+    \end{align*}
+
+    \textit{Sol'n.} \( z = t \) as a free variable
+    \begin{align*}
+        x &= 1 + 2t \\
+        y &= -1 - \frac{5}{2}t
+    \end{align*}
+    It's a line as expected!
+    \[ L(t) = \left( 1+2t, -1-\frac{5}{2}t, t \right) \]
+\end{example}
+
+\section{Vector Form}
+
+Given:
+\begin{align*}
+    a_{11}&x_1 + a_{12}x_2 + \dots + a_{1n}x_n = b_1 \\
+    a_{21}&x_1 + a_{22}x_2 + \dots + a_{2n}x_n = b_2 \\
+    & \vdots \\
+    a_{m1}&x_1 + a_{m2}x_2 + \dots + a_{mn}x_n = b_m
+\end{align*}
+The \textbf{vector form} of the system is: \( A \vec{x} = b \)
+The \textbf{coefficient matrix} is \( A = \left( a_{ij} \right) \),
+\( \vec{x} = \begin{bmatrix}
+    x_1 \\
+    \vdots \\
+    x_n
+\end{bmatrix} \)
+and 
+\( \vec{b} = \begin{bmatrix}
+    b_1 \\
+    \vdots \\
+    b_m
+\end{bmatrix} \).
+
+The \textbf{augmented matrix} is \( A^\# = \left[ A \; \vec{b}\right]\).
+
+\begin{definition}[Elementary Row Operations]
+    \textbf{Elementary row operations} (EROs) are defined as follows:
+    \begin{itemize}
+        \item \( P_{ij}: \vec{r_i} \leftrightarrow \vec{r_j} \)
+        \item \( M_i(c): \vec{r_i} \leftarrow c \vec{r_i} \)
+        \item \( A_{ij}(c): \vec{r_j} \leftarrow \vec{r_j} + c\vec{r_i} \)
+    \end{itemize}
+\end{definition}
+
+These elementary row operations let us solve systems of linear equations in the same way we learned in early math classes.
+Adding equations together is the same as the row sum operation etc.
+Using EROs, the process to solve these systems is to write the augmented matrix of the system,
+perform EROs to get a reduced matrix and obtain the simpler linear system.
+
+\begin{example}[]
+    Solve if possible.
+    \begin{align*}
+        x + y + z &= 3 \\
+        2x + 3y + z &= 5 \\
+        x - y -2z &= -5
+    \end{align*}
+
+    We write the augmented matrix of the system and preform EROs:
+    \begin{gather*}
+        A^\# =
+        \begin{bmatrix}
+            1 & 1 & 1 & 3 \\
+            2 & 3 & 1 & 5 \\
+            1 & -1 & -2 & -5
+        \end{bmatrix}
+        %
+        \xrightarrow[2. \; A_{13}(-1)]{1. \; A_{12}(-2)}
+        %
+        \begin{bmatrix}
+            1 & 1 & 1 & 3 \\
+            0 & 1 & -1 & -1 \\
+            0 & -2 & -3 & -8
+        \end{bmatrix} \\
+        %
+        \xrightarrow{3. \; A_{23}(2)}
+        %
+        \begin{bmatrix}
+            1 & 1 & 1 & 3 \\
+            0 & 1 & -1 & -1 \\
+            0 & 0 & 1 & 2
+        \end{bmatrix}
+        = \text{ref} \, A^\# \\
+        %
+        \xrightarrow[6. \; A_{31}(-1)]{5. \; A_{32}(1)}
+        %
+        \begin{bmatrix}
+            1 & 1 & 0 & 1 \\
+            0 & 1 & 0 & 1 \\
+            0 & 0 & 1 & 2
+        \end{bmatrix} \\
+        %
+        \xrightarrow{7. \; A_{21}(-1)}
+        %
+        \begin{bmatrix}
+            1 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 1 \\
+            0 & 0 & 1 & 2
+        \end{bmatrix}
+        = \text{rref} \, A^\#
+    \end{gather*}
+
+    We obtain two matrices, the row echelon form and the reduced row echlon form.
+    From \( \text{ref} \; A^\# \), we find:
+    \begin{align*}
+        x + y + z &= 3 \\
+        y - z &= -1 \\
+        z &= 2
+    \end{align*}
+    From \( \text{rref} \; A^\# \), we find:
+    \begin{gather*}
+        x = 0 \\
+        y = 1 \\
+        z = 2 \\
+        \boxed{(0, \, 1, \, 2)}
+    \end{gather*}
+
+    Thus, \( (0, \, 1, \, 2) \) solves the system of equations.
+    \[
+        \begin{bmatrix}
+            1 & 1 & 1 \\
+            2 & 3 & 1 \\
+            1 & -1 & -2 \\
+        \end{bmatrix}
+        \begin{bmatrix}
+            0 \\
+            1 \\
+            2
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            3 \\
+            5 \\
+            -5
+        \end{bmatrix}
+    \]
+
+    \begin{note}
+        If the number of leading 1's equals the number of unknowns, we obtain one solution.
+    \end{note}
+\end{example}
+
+\begin{definition}[Echelon Forms]
+    The \textbf{row echelon form} (ref) of any matrix is one such that:
+    \begin{enumerate}[label=(\alph*)]
+        \item The first nonzero entry of each nonzero row is 1. ("Leading one")
+        \item If a row has a leading one, each row above it has a leading 1 further to the left.
+    \end{enumerate}
+
+    The \textbf{reduced row echlon form} (rref) of any matrix also has the conditon:
+    \begin{enumerate}[label=(\alph*)]
+        \setcounter{enumi}{2}
+        \item Each entry above a leading 1 is 0.
+    \end{enumerate}
+\end{definition}
+
+To put a matrix into its ref or rref form:
+\begin{enumerate}
+    \item Use \( P_{ij} \) so row \( i \) has the left most nonzero entry among rows \( \geq i \).
+    \item Use \( M_i(k) \) to create a leading 1 in \( \vec{r_i} \).
+    \item Use \( A_{ij}(k) \) to zero out column below leading 1 in \( \vec{r_i} \).
+    For rref, zero out columns above as well.
+    \item If there is no nonzero row below \( i \), stop. 
+
+    Else:
+    \item Replace \( i=i+1 \), repeat on submatrix with rows \( \geq i+1 \).
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Theorem of Rank}
+
+\begin{definition}[Rank]
+    The number of leading 1's in ref(\( A \)) is the rank of \( A \), usually written as "rk(\( A \))."
+\end{definition}
+
+\begin{theorem}[]
+    Let \( A, \; A^\# \) be the coefficient and augmented matrix for a system of linear equations
+    with \( m \) equations and \( n \) unknowns.
+
+    Then, \( \exists \)
+    \begin{enumerate}
+        \item No solutions if \( \text{rk} \, A < \text{rk} \, A^\# \).
+        \item Unique solutions if \( \text{rk} \, A = \text{rk}\, A^\# = n \).
+        \item \( \infty \) solutions if \( \text{rk} \, A = \text{rk}\, A^\# < n \).
+    \end{enumerate}
+\end{theorem}
+\begin{note}
+    There are unique solutions if exactly all variables are bound and
+    infinitely many if there are \( n - \text{rk} A \) free variables.
+\end{note}
+
+\begin{example}[]
+    Here is an illustration of this. Suppose we have:
+    \[
+        \text{rref}A^\# =
+        \begin{bNiceMatrix}[first-row]
+            x_1 & x_2 & x_3 & x_4 & x_5 & b \\
+            1 & * & 0 & * & 0 & a \\
+            0 & 0 & 1 & * & 0 & b \\
+            0 & 0 & 0 & 0 & 1 & c \\
+            0 & 0 & 0 & 0 & 0 & d \\
+        \end{bNiceMatrix}
+    \]
+    If \( d \neq 0\), there are no solutions. If \( d = 0 \), there are \( \infty \) solutions.
+    There are no unique solutions possible since there are two free variables: \( x_2 = s \) and \( x_4 = t \).
+    The bound variables are \( x_1 \), \( x_2 \), and \( x_5 \).
+\end{example}
+
+From this illustration, we can see two important cases:
+\begin{enumerate}
+    \item If we have a homogenous system, \( A \vec{x}=0 \), then we always have the trivial solution \( \vec{x}=0 \).
+        \( \exists \) nontrivial solutions \(\iff \text{rk}(A)<n \).
+    \item If \( A \) is \( m \times n \) and \( m < n \), then since \( \text{rk}(A) \leq m, \; \text{rk}(A) < n \)
+
+        \( \therefore \) have either 0 or \( \infty \) solns
+\end{enumerate}
+
+\begin{example}[]
+    Fix \( \vec{v} =
+    \begin{bmatrix}
+        1 \\
+        1 \\
+        1
+    \end{bmatrix} \).
+    Find \( \vec{w} \) (all) such that
+    \( \vec{v} \times \vec{w} = \vec{b} =
+    \begin{bmatrix}
+        b_1 \\
+        b_2 \\
+        b_3
+    \end{bmatrix} \).
+
+    \[ \vec{v} \times \vec{w} = \begin{bmatrix}
+        w_3 - w_2 \\
+        w_1 - w_3 \\
+        w_2 - w_1
+    \end{bmatrix} \]
+
+    Now we have a system of linear equations with \( \vec{w} \) as the unknown.
+    \[ A =
+        \begin{bmatrix}
+            0 & -1 & 1 \\
+            1 & 0 & -1 \\
+            -1 & 1 & 0
+        \end{bmatrix}
+    \]
+
+    \begin{gather*}
+        A^\# = 
+        \begin{bmatrix}
+            0 & -1 & 1 & b_1 \\
+            1 & 0 & -1 & b_2 \\
+            -1 & 1 & 0 & b_3
+        \end{bmatrix}
+        %
+        \xrightarrow{1. \; P_{12}}
+        %
+        \begin{bmatrix}
+            1 & 0 & -1 & b_2 \\
+            0 & -1 & 1 & b_1 \\
+            -1 & 1 & 0 & b_3
+        \end{bmatrix}
+        %
+        \xrightarrow[3. \; M_2(-1)]{2. \; A_{13}(1)}
+        %
+        \begin{bmatrix}
+            1 & 0 & -1 & b_2 \\
+            0 & 1 & -1 & -b_1 \\
+            0 & 1 & -1 & b_2+b_3
+        \end{bmatrix} \\
+        %
+        \xrightarrow{4. \; A_{23}(-1)}
+        %
+        \begin{bmatrix}
+            1 & 0 & -1 & b_2 \\
+            0 & 1 & -1 & -b_1 \\
+            0 & 0 & 0 & b_1 + b_2 + b_3
+        \end{bmatrix}
+    \end{gather*}
+    
+    We have solutions \( \iff b_1 + b_2 + b_3 = 0 = \vec{v} \cdot \vec{b} \).
+    Then we have one free variable
+    \[ \left.
+        \begin{aligned}
+            w_3 &= t \\
+            w_2 & = -b_1 + t \\
+            w_1 &= b_2 + t
+        \end{aligned} \;
+        \right\} = \boxed{\left( b_2 + t, \, -b_1+t, \, t \right)}
+    \]
+\end{example}
+
+\end{document}

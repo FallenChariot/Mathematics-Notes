@@ -5,6 +5,7 @@
 \usepackage{parskip}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{nicematrix}
 \usepackage{amsthm}
 \usepackage{enumitem}
 \usepackage{ulem}
@@ -23,7 +24,7 @@
 
 \newtheorem{theorem}{Theorem}
 
-\newtheoremstyle{mydefinitionstyle}{\topsep}{\topsep}{\itshape}{}{\itshape}{:}{\newline}{}
+\newtheoremstyle{mydefinitionstyle}{\topsep}{\topsep}{}{}{\itshape}{:}{\newline}{}
 \theoremstyle{mydefinitionstyle}
 \newtheorem*{definition}{Definition}
 
@@ -70,7 +71,14 @@ If you are here because this interests you, I hope you find this as entertaining
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\chapter{Vectors and Vector Spaces}
+\subfile{sections/vectors.tex}
+\subfile{sections/vector_spaces.tex}
+
 \chapter{Matricies}
 \subfile{sections/matricies.tex}
+
+\chapter{Systems of Linear Equations}
+\subfile{sections/linear_eqn.tex}
 
 \end{document}
