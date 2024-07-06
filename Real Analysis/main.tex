@@ -1,0 +1,92 @@
+\documentclass[12pt,openany]{book}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[letterpaper, margin=1 in]{geometry}
+\usepackage{
+    parskip,
+    amsmath,
+    amssymb,
+    amsthm,
+    enumitem,
+    ulem,
+    hyperref,
+    tikz,
+    subfiles
+}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{theorem}{Theorem}
+
+\newtheoremstyle{mydefinitionstyle}{\topsep}{\topsep}{}{}{\itshape}{:}{\newline}{}
+\theoremstyle{mydefinitionstyle}
+\newtheorem*{definition}{Definition}
+
+\newtheoremstyle{myexamplestyle}{\topsep}{\topsep}{}{}{\itshape}{:}{\newline}{}
+\theoremstyle{myexamplestyle}
+\newtheorem*{example}{Example}
+
+\theoremstyle{remark}
+\newtheorem*{note}{Note}
+\newtheorem*{aside}{Aside}
+
+\renewcommand\qedsymbol{$\square$}
+\newcommand{\msout}[1]{	ext{\sout{\ensuremath{#1}}}}
+
+\providecommand{\varitem}{} % to keep LaTeX quiet
+\makeatletter
+\newenvironment{axioms}[1]
+ {\renewcommand\varitem[1]{\item[\textbf{#1\arabic{enumi}\rlap{$##1$}.}]%
+    \edef\@currentlabel{#1\arabic{enumi}{$##1$}}}%
+  \enumerate[label=\textbf{#1\arabic*.}, ref=#1\arabic*]}
+ {\endenumerate}
+\makeatother
+
+% Other Settings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Real Analysis}
+\author{Christopher K. Walsh}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+
+I was originally going to spending the summer of 2024 typing up my old math notes.
+Then I realized that I was going to need Real Analysis for Complex Analysis.
+Makes sense based on the name.
+I just assumed that I would be fine since Real Analysis wasn't a prerequisite for the course I was taking.
+Whoops.
+
+- Christopher
+
+\vspace{10mm}
+\begin{center}
+    \textit{"God made the integers; all else is the work of man."}
+    \textit{- Leopold Kronecker}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Rational and Real Numbers}
+\subfile{sections/set_theory.tex}
+\subfile{sections/rels_funcs.tex}
+\subfile{sections/rational_nums.tex}
+
+
+\end{document}

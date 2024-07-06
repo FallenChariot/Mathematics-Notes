@@ -1,0 +1,45 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\section{Set Theory Foundation}
+
+This is a review of some introductory proof concepts that are important for laying the foundations of both
+rational numbers and real analysis.
+
+\begin{definition}[]
+    A \textbf{set} is a collection of objects called elements of the set.
+\end{definition}
+
+\textit{Example:}
+\begin{enumerate}
+    \item \( S = \{ 1, 2, 3 \} \; (= \{ 1,2,3,3 \}) \)
+    \item \( E = \{ \text{Even integers } \} \)
+    \item \( \{ \text{College students} \} \)
+\end{enumerate}
+
+\textit{Notation:}
+\begin{itemize}
+    \item \( x \in S \) means \( x \) is in \( S \).
+    \item \( x \notin S \) means \( x \) is not in \( S \).
+    \item The empty set \( \emptyset \) is the set with no elements.
+    \item \( A \subseteq B \) means \( A \) is a subset of B (i.e. if \( x \in A \), then \( x \in B \)).
+    \item If \( A \subseteq B \) but \( B \subsetneq A \) A is a proper subset.
+\end{itemize}
+
+If \( A \subseteq B \) and \( B \subseteq A \) then \( A = B \). Otherwise \( A \neq B \).
+
+We can define more sets in terms of other sets.
+\textit{Set Operations:}
+Let \( A \text{ and } B \) be sets.
+\begin{itemize}
+    \item Union: \( A \cup B  = \{ x \, | \, x \in A \text{ or } x \in B \}\)
+    \item Intersection: \( A \cap B  = \{ x \, | \, x \in A \text{ and } x \in B \}\)
+    \item Compliment: \( B - A = \{ x \, | \, x \in B \text{ and } x \notin A \} \)
+    \item Product: \( A \times B = \{ (a, b) \, | \, a \in A \text{ and } b \in B \} \)
+\end{itemize}
+
+If \( U \) is a universal set (set of everything in context), we write
+\( \bar{A} = U - A \\ = \{ x \, | \, x \in U \text{ and } x \notin A \} \).
+
+\end{document}

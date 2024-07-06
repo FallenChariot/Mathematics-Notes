@@ -1,0 +1,41 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{Constructing the Real Numbers}
+
+\subsubsection{Dedekind Cuts}
+
+Now, we seen in the previous section that \( \mathbb{Q} \) has ``gaps".
+\( x^2 = 2 \) has no solution in \( \mathbb{Q} \).
+\vspace{5mm}
+\begin{center}
+    \begin{tikzpicture}[]
+        \draw[thick,densely dotted, <->, xscale=2] (-3.5,0) -- (3.5,0) node[anchor=north west] {};
+        \foreach \x in {-3, -2, -1, 0, 1, 2, 3}
+            \draw[xscale=2] (\x cm,2pt) -- (\x cm,-2pt) node[anchor=north] {\( \x \)};
+        \draw[fill=white] (2.8,0)  circle [radius=1.5pt]  node[below] {\( x \)};
+    \end{tikzpicture}
+\end{center}
+
+We need to fill in these gaps somehow while not knowing where the gaps and holes are.
+
+\begin{definition}[Upper Bound]
+    Let \( E \subset S \) ordered.
+    If there exists \( \beta \in S \) such that for all \( x \in E \), \( x \leq \beta \),
+    then \( \beta \) is an \textbf{upper bound (u.b.)} for \( E \).
+    We say \( E \) is bounded above.
+\end{definition}
+
+A lower bound can be defined similarly with ``greater than or equal to."
+
+\begin{example}[]
+    Consider the set \( A = \left\{ x \mid x^2 < 2 \right\} \). \( 2 \) is an u.b. for A.
+    \( \displaystyle \frac{2}{3} \) is also an u.b. for \( A \).
+\end{example}
+
+\begin{definition}[]
+    If there exists an 
+\end{definition}
+
+\end{document}

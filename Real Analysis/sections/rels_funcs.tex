@@ -1,0 +1,40 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\section{Functions and Relations}
+
+It is also important to define some types of relations and functions.
+
+\begin{definition}[Relation]
+    A (binary) \textbf{relation} \( R \) on a set S is a subset of \( S \times S \). If \( (a,b) \in R \), we write \( aRb \).
+\end{definition}
+
+\begin{example}[of relations]
+
+    \begin{enumerate}
+        \item \( L \) "loves" is a relation on \( P \times P \) (where \( P \) is a set of all people).
+        \item The set \( R = \left\{ (0,0), \, (0,1), \, (2,2), \, (7,18) \right\} \) is a relation on \( \mathbb{Z}^+ \). We would write \( 0R0 \), \( 0R1 \), \( 2R2 \), and \( 7R18 \).
+    \end{enumerate}
+\end{example}
+
+\begin{definition}[Equivalence Relation]
+    An equivalence relation on a set \( S \) is a relation s.t.:
+    \begin{enumerate}
+        \item Reflexive: For each \( a \in S \), \( a \sim a \).
+        \item Symmetric: For \( a,b \in S \), if \( a \sim b \), then \( b \sim a \).
+        \item Transitive: For \( a,b,c \in S \), if \( a \sim b \) and \( b \sim a \)
+    \end{enumerate}
+\end{definition}
+
+Functions in the general sense are also a type of relation.
+\begin{definition}[Function]
+    A \textbf{function}, F from a set \( A \) to a set \( B \) is a relation s.t.:
+    if \( aFb \) and \( aFb' \) then \( b = b' \). \\
+    This is a rule that assigns a unique \( a \in A \) to a unique \( b \in B \).
+    Write \( F(a) = b \).
+\end{definition}
+
+
+
+\end{document}

@@ -26,7 +26,7 @@ Each row of an \( m \times n \) matrix is a \textbf{row vector}.
     \]
 
     Then we define the \textbf{identity matrix} as:
-    \[ \mathbf{I_{n \times n}} = (\delta_{ij}) =
+    \[ I_n = (\delta_{ij}) =
         \begin{bmatrix}
             1 & 0 &  \dots  & 0 \\
             0 & 1 & \dots & 0 \\
@@ -79,6 +79,9 @@ Each row of an \( m \times n \) matrix is a \textbf{row vector}.
     \end{bmatrix} \]
 \end{example}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Matrix Operations}
 
 We treat matricies the same way as numbers.
 Let \( A \) be an \( m \times n \) matrix and \( B \) be an \( p \times q \) matrix.
@@ -99,6 +102,218 @@ Suppose we have a matrix, \( A = (a_{ij}), i = 1, \dots ,m \, \text{and} \, j = 
     \item If \( A^t = -A \), then A is said to be \textbf{skew-symmetric}.
     \item If for all \( i,j \) such that \( i \neq j \), \( a_{ij} = 0 \), then A is called \textbf{diagonal}.
 \end{itemize}
+
+\subsubsection{Determinants}
+
+The determinant is a property of a square matrix, \( A \).
+
+\underline{Geomtric Def'n.}
+
+Let \( A = \begin{bmatrix}
+    \vec{c_1}, & \vec{c_2}, & \dots, & \vec{c_n}
+\end{bmatrix} \)
+(vectors in \( \mathbb{R}^n \)).
+Let \( \Pi = \) parallelotope defined by basing them all at the same point.
+Then \( V^\sigma(\Pi) = \text{det} \begin{bmatrix}
+    \vec{c_1}, & \vec{c_2}, & \dots, & \vec{c_n}
+\end{bmatrix} \) (signed \( n \) volume).
+
+\begin{example}[]
+    \[ A = \begin{bmatrix}
+        \vec{c_1} & \vec{c_2}
+    \end{bmatrix} = \begin{bmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{bmatrix} \]
+    \[ \text{det}A = -1 \]
+
+    % ADD DIAGRAM
+\end{example}
+
+\underline{Algebraic Def'n.}
+
+Let \( A = \left( a_{ij} \right), \, n \times n\).
+Let \( A_{ij} = \) submatrix obtained from A by eliminating row \( i \) and column \( j, \, (n-1) \times (n-1) \) matrix.
+
+The minor of \( A \) is \( M_{ij} = \text{det}A_{ij}\).
+The cofactor of \( A \) is \( C_{ij} = (-1)^{i+j}\text{det}A_{ij}\).
+
+Then \( \text{det}A = \sum_{j=1}^{n}a_{ij}C_{ij} \) (for any \( i, \, 1 \leq i \leq n \)).
+We call this the cofactor expansion along the \( i \)th row.
+
+\begin{example}[]
+    \[ A = \begin{bmatrix}
+        7 & 3 & 12 \\
+        2 & 5 & 8 \\
+        1 & 5 & 2
+    \end{bmatrix} \]
+    Find the determinant.
+
+    Use row 3.
+    \[ \text{det}A = \sum_{j=1}^{3} a_{3j} C_{3j} = a_{31}C_{31} + a_{32}C_{32} + a_{33}C_{33} \]
+
+    
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Inverse Matricies}
+
+An \( n \times n \) matrix \( A \) may or may not have an \textbf{inverse}: A matrix \( B \) such that
+\[ AB=BA = \mathbf{I}_n = \begin{bmatrix}
+    1 & 0 &  \dots  & 0 \\
+    0 & 1 & \dots & 0 \\
+    \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & \dots  & 1
+\end{bmatrix}
+\]
+
+We write \( B = A^{-1} \).
+
+For a linear system, \( A \vec{x} = \vec{b} \) with \( A, \; n \times n, \) if \( A \) is invertible:
+\begin{gather*}
+    \underbrace{A^{-1}A}_{I_n} \vec{x} = A^{-1} \vec{b} \\
+    \therefore \, \text{Sol'n. is } \vec{x} = A^{-1} \vec{b}
+\end{gather*}
+
+We can vary \( \vec{b} \) and the solutions are immediate.
+
+For the \( 2 \times 2 \) case,
+\( A = \begin{bmatrix}
+    a & b \\
+    c & d
+\end{bmatrix} \)
+
+\( A \) has an inverse \( \iff |A| = ad - bc \neq 0 \).
+
+Then \[ A^-1 = \frac{1}{ad-bc}
+    \begin{bmatrix}
+        d & -b \\
+        -c & a
+    \end{bmatrix} 
+\]
+
+\begin{example}[]
+    \[ A = \begin{bmatrix}
+        2 & 5 \\
+        7 & 9
+    \end{bmatrix} \]
+    Invertible?
+
+    \( 18 - 35 = -17 \neq 0 \) \checkmark
+    \[ A^{-1} = \frac{-1}{17} \begin{bmatrix}
+        9 & -5 \\
+        -7 & 2
+    \end{bmatrix} \]
+
+    \underline{Check}
+    \begin{gather*}
+        \frac{-1}{17}
+        \begin{bmatrix}
+            9 & -5 \\
+            -7 & 2
+        \end{bmatrix}
+        \begin{bmatrix}
+            2 & 5 \\
+            7 & 9
+        \end{bmatrix}
+        = \frac{-1}{17}
+        \begin{bmatrix}
+            -17 & 0 \\
+            0 & -17
+        \end{bmatrix}
+        = \begin{bmatrix}
+            1 & 0 \\
+            0 & 1
+        \end{bmatrix}
+    \end{gather*}
+\end{example}
+
+\begin{theorem}[]
+    A \( n \times n \) matrix \( A \) has an inverse \( \iff \text{rk}A = n \).
+    If \( A \) has an inverse, then \( A^{-1} \) is given by \( \text{rref}\left[ A \, I_n \right] = \left[ I_n \, A^-1 \right] \)
+\end{theorem}
+
+\begin{example}[]
+    \[ A = \begin{bmatrix}
+        1 & 2 & -1 \\
+        2 & 5 & -1 \\
+        1 & 2 & 0
+    \end{bmatrix} \]
+    Is it invertible?
+    \begin{align*}
+        &\begin{bmatrix}
+            1 & 2 & -1 & 1 & 0 & 0 \\
+            2 & 5 & -1 & 0 & 1 & 0 \\
+            1 & 2 & 0 & 0 & 0 & 1
+        \end{bmatrix} \\[2mm]
+        %
+        \xrightarrow[2. \, A_{13}(-1)]{1. \, A_{12}(-2)}
+        &\begin{bmatrix}
+            1 & 2 & -1 & 1 & 0 & 0 \\
+            0 & 1 & 1 & -2 & 1 & 0 \\
+            0 & 0 & 1 & -1 & 0 & 1
+        \end{bmatrix} \\[2mm]
+        %
+        \xrightarrow[4. \, A_{31}(1)]{3. \, A_{32}(-1)}
+        &\begin{bmatrix}
+            1 & 2 & 0 & 0 & 0 & 1 \\
+            0 & 1 & 0 & -1 & 1 & -1 \\
+            0 & 0 & 1 & -1 & 0 & 1
+        \end{bmatrix} \\[2mm]
+        %
+        \xrightarrow{5. \, A_{21}(-2)}
+        &\begin{bmatrix}
+            1 & 0 & 0 & 2 & -2 & 3 \\
+            0 & 1 & 0 & -1 & 1 & -1 \\
+            0 & 0 & 1 & -1 & 0 & 1
+        \end{bmatrix}
+    \end{align*}
+    \[ A^{-1} = \begin{bmatrix}
+        2 & -2 & 3 \\
+        -1 & 1 & -1 \\
+        -1 & 0 & 1
+    \end{bmatrix} \]
+
+    \[ AA^{-1} =
+        \begin{bmatrix}
+            1 & 2 & -1 \\
+            2 & 5 & -1 \\
+            1 & 2 & 0
+        \end{bmatrix}
+        \begin{bmatrix}
+            2 & -2 & 3 \\
+            -1 & 1 & -1 \\
+            -1 & 0 & 1
+        \end{bmatrix}
+        = \begin{bmatrix}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1
+        \end{bmatrix}
+    \]
+\end{example}
+
+\underline{Properties of \( A^{-1} \)}
+\begin{enumerate}
+    \item If \( A \) is invertible, so is \( A^{-1}, \, \left( A^{-1} \right)^{-1} = A \).
+    \item If \( A, \, B \) are invertible, \( n \times n \), then so is \( A \cdot B \) and \( (BA)^{-1} = B^{-1}A^{-1} \).
+
+        Witness \( A \left( B \cdot B^-1 \right)A^{-1} = A I_n A^-1 = I_n \).
+    \item If \( A \) is invertible, so is \( A^t, \, \left( A^t \right)^{-1} = \left( A^{-1} \right)^t \).
+\end{enumerate}
+
+\begin{theorem}[]
+    Suppose \( A \) is \( n \times n \).
+    Then the following are equivalent
+    \begin{enumerate}
+        \item \( A \) is invertible
+        \item \( A \vec{x} = \vec{b} \) has a unique sol'n, \( \forall \vec{b} \)
+        \item \( \text{rk}(A) = n \)
+        \item \( \text{rref}(A) = I_n \)
+        \item \( \text{det}(A) \neq 0 \)
+    \end{enumerate}
+\end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

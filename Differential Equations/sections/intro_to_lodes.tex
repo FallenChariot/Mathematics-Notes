@@ -7,7 +7,7 @@
 \section{Introduction to LODEs}
 
 \begin{definition}[Linear Ordinary Differential Equation (LODE) of Order n]
-    A \text{linear ordinary differential equation} of order n is an equation:
+    A \textbf{linear ordinary differential equation} of order n is an equation:
     \[ y^{(n)}+a_{n-1}(x)y^{(n-1)}+\dots+a_{1}(x)y'+a_{0}(x)y=b(x)  \]
     where $y^{(i)}$ is the ith derivative.
 \end{definition}
@@ -50,7 +50,7 @@
     Newton's Law of Cooling is as follows: \[ \frac{dT}{dt}=-k(T-T_{m})\]
     where T = temperature at time t, t = time, k = constant, and \(T_{m}\) = ambient temp
 
-    \textit{Check:} \(T=T_{m}+ce^{-kt}\) is a solution. Witness:
+    \textit{Check:} \( T=T_{m}+ce^{-kt} \) is a solution. Witness:
     \begin{align*}
         \frac{dT}{dt} &= -kce^{-kt} \\
         &= -k(T-T_{m})
@@ -93,10 +93,10 @@ Let \( g(x,y)=g(p) \) be an \textbf{orthogonal trajectory curve} (in xy-plane).
 
 Then, it follows that \( f_{x}g_{x}+f_{y}g_{y}=0 \)
 
-\( \therefore \) The slope of D at p is the slope of the vector \( <-g_{y},g_{x}> =-\frac{g_{x}}{g_{y}}=\frac{f_{y}}{f_{x}} \). \\
-\( \therefore \frac{dy}{dx}=\frac{f_{y}}{f_{x}} \) is a 1st order LODE for g.
+Therefore the slope of D at p is the slope of the vector \( \displaystyle \left< -g_{y},g_{x} \right> =-\frac{g_{x}}{g_{y}}=\frac{f_{y}}{f_{x}} \). \\
+Therefore \( \displaystyle \frac{dy}{dx}=\frac{f_{y}}{f_{x}} \) is a 1st order LODE for g.
 
-To find g, use the relation \( dy=\frac{f_{y}}{f_{x}}dx \) then integrate.
+To find g, use the relation \( \displaystyle dy=\frac{f_{y}}{f_{x}}dx \) then integrate.
 
 \begin{example}[]
     \[ f(x,y)=x^2+y^2 \]
@@ -109,7 +109,7 @@ To find g, use the relation \( dy=\frac{f_{y}}{f_{x}}dx \) then integrate.
         y=kx
     \end{gather*}
     These are all lines through (0,0).
-    Compute these through $p=(a,b),k=\frac{b}{a}$.
+    Compute these through \( \displaystyle p=(a,b),k=\frac{b}{a} \).
 \end{example}
 
 \subsection{Initial Value Problems}
@@ -141,11 +141,7 @@ An \textbf{initial value problem (IVP)} is an equation, \( (*) \) together with 
 \begin{theorem}[]
     Assume in \( (*) \) that the \(a_{i}(x) \) and \( F(x) \) are continuous on some interval \( I
      \).
-    Then \( \exists ! \) solution to IVP \( (*) \) + \( (**) \) on \( I \).
-
-    \begin{note}
-        This establishes existence and uniqueness. (The symbol \( \exists ! \) means "there exists a unique-".)
-    \end{note}
+    Then there exists a unique solution to IVP \( (*) \) + \( (**) \) on \( I \).
 \end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -156,12 +152,12 @@ The form of a \textbf{first order differential equation} is: \( y' = f(x,y) \). 
 
 \begin{theorem}[]
     Given \( y'=f(x,y) \). Assume \( f(x,y) \) is continuous on \( [a,b] \times [c,d] \) and \( f_{y} \) is continuous in \( (a,b) \times (c,d) \).
-    Then for each \( (x_0,y_0) \in (a,b) \times (c,d),\, \exists ! \) solution to y=y(x) running through \( (x_0,y_0) \) and this solution holds for some interval \( I \) around \( x_0 \)
-    
-    \begin{note}
-        The notation \( [a,b] \times [c,d] \) describes the domain and range using the Cartesian product of the two sets. In other words, \(a \leq x \geq b \) and \( c \leq y \geq d \).
-    \end{note}
+    Then for each \( (x_0,y_0) \in (a,b) \times (c,d),\, \) there exists a unique solution to \( y=y(x) \) running through \( (x_0,y_0) \) and this solution holds for some interval \( I \) around \( x_0 \).
 \end{theorem}
+
+\begin{note}
+    The notation \( [a,b] \times [c,d] \) describes the domain and range using the Cartesian product of the two sets. In other words, \(a \leq x \geq b \) and \( c \leq y \geq d \).
+\end{note}
 
 \begin{example}[]
     Is there a unique solution to: \( y'=xy^{\frac{1}{2}},\,y(0)=0 \)?
@@ -170,7 +166,7 @@ The form of a \textbf{first order differential equation} is: \( y' = f(x,y) \). 
     \( f(x,y)=xy^{\frac{1}{2}} \) is continuous on \( (-\infty,\infty)\times[0,\infty] \)
     \( f_y = \frac{1}{2}xy^{-\frac{1}{2}} \) is not continuous at y = 0.
     
-    \( \therefore \) Thm is useless
+    Therefore the theorem is useless.
 
     There are solutions for the IVP where y(0) = 0. Check it out:
     \begin{itemize}[mode=unboxed]
@@ -192,7 +188,7 @@ The form of a \textbf{first order differential equation} is: \( y' = f(x,y) \). 
     \textbf{Equilibrium solutions} are solutions to a differential equation that have a derivative of zero everywhere i.e. equal to a constant value.
 \end{definition}
 
-In terms of a first order linear differential equation, the equilibrium solutions is \( \{ y = y_0 \mid f(x,y_0)=0 \} \)
+In terms of a first order linear differential equation, the equilibrium solutions are the set \( \{ y = y_0 \mid f(x,y_0)=0 \} \)
 On slope field diagrams, they are where a horizontal line fits as a solution.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -201,10 +197,7 @@ On slope field diagrams, they are where a horizontal line fits as a solution.
 
 \begin{enumerate}[mode=unboxed]
     \item \textbf{Seperable:} If the first order ODE is one of the form \( p(y)y'=q(x) \) (or \( y'=r(y)q(x) \), ...)
-        Then since \( dy=y'dx \), we get \( p(y)dy=q(x)dx \) and can integrate (in principle).
-        \begin{definition}[Autonomous ODE]
-            An autonoumous ODE is one with no independent variable. It is usually seperable.
-        \end{definition}
+        then since \( dy=y'dx \), we get \( p(y)dy=q(x)dx \) and can integrate (in principle).
     \item \textbf{Integrating Factor:} For LODE's in the form, \( y'+p(x)y=q(x) \), let \( I(x)= e^{\int p(x) \,dx} \) be the integrating factor.
 
         \textit{Claim.} \( y(x)= \frac{1}{I(x)}\int q(x) I(x) \,dx \) is the general solution.
@@ -221,9 +214,13 @@ On slope field diagrams, they are where a horizontal line fits as a solution.
         \begin{note}
             The indefinite integral and the lack of a integration constant is not formally correct.
             However, the constant is removed upon the simplification.
-            We can always divide both sides of the equation by \( e^{C}.\, :) \)
+            We can always divide both sides of the equation by \( e^{C} \).
         \end{note}
 \end{enumerate}
+
+\begin{definition}[Autonomous ODE]
+    An \textbf{autonoumous ODE} is one with no independent variable. It is usually seperable.
+\end{definition}
 
 \begin{example}[]
     Find the general solution for \( y'+ ( \tan x ) y=\cos^{2}x \)  on \( -\pi/2,\, \pi/2 \).
@@ -240,17 +237,17 @@ On slope field diagrams, they are where a horizontal line fits as a solution.
 
 \subsection{Application: Revisiting Newton's Law of Cooling}
 
-Newton defined his Law of Cooling as: \[ T' = -k(T-T_m) \].
+Newton defined his Law of Cooling as:
+\[ T' = -k(T-T_m) \]
 In its LODE form, \( dT = -k(T-T_m)dt \). (Now, \( T_m \) could be time-dependent.)
 
 \begin{example}[]
-    Suppose \( k=\frac{1}{40},\, T_m(t)=80e^{-\frac{t}{20}},\,T(0)=0 \)
-    \begin{enumerate}[label=\alph*)]
+    Suppose \( k=\frac{1}{40},\, T_m(t)=80e^{-\frac{t}{20}},\,T(0)=0 \).
+    \begin{enumerate}[label=\alph*), nolistsep]
         \item Solve this IVP.
         \item Determine the asymptotic behavior of the solution.
         \item Find the maximum temperature.
     \end{enumerate}
-
     a) Write it out as an ODE: \[ T'=-\frac{1}{40}(T-80e^{-\frac{t}{20}}) \]
     Not seperable, 1st order ODE. This is an integrating factor problem.
     In standard form:
@@ -296,14 +293,14 @@ In its LODE form, \( dT = -k(T-T_m)dt \). (Now, \( T_m \) could be time-dependen
 \begin{itemize}[mode=unboxed]
     \item Voltage is the difference \( \Delta V \) in electric potential \( V \)
     \item Voltage along a wire (usually caused by a battery or EMF) causes charge \( q \) to move,
-        causing a current \( i = \frac{dq}{dt} \)
+        causing a current \( \displaystyle i = \frac{dq}{dt} \)
     \item \textbf{Kirchoff's Second Law:}
         \[ \sum_{\text{closed loop}} \Delta V = 0 \]
         In a circuit, we have components with opposing voltages.
         \begin{enumerate}
             \item Resistance \( R \) causes \( \overset{\text{(Ohm's Law)}}{\Delta V = iR} \). Units are ohms \( \Omega \).
-            \item Capacitance \( C \) causes \( \Delta V = \frac{1}{C}q \). Units are farads \( F \).
-            \item Inductance \( C \) causes \( \Delta V = L\frac{di}{dt} \). Units are henrys \( H \).
+            \item Capacitance \( C \) causes \( \displaystyle \Delta V = \frac{1}{C}q \). Units are farads \( F \).
+            \item Inductance \( C \) causes \( \displaystyle \Delta V = L\frac{di}{dt} \). Units are henrys \( H \).
             \item Driver EMF \( E(t)=\sum_{\text{circuit components}} \Delta V \).
         \end{enumerate}
 \end{itemize}
@@ -327,7 +324,7 @@ To solve this equation, we must restrict it to either an RL case (first order LO
 \begin{example}[RL Circuit]
     Given \( E(t)=E_0 \cos \omega t \). Find \(i(t), \text{ given } i(0) = 0 \).
 
-    \textit{Sol'n.} LODE is \( \frac{di}{dt} + \overset{p(t)}{\overbrace{\frac{R}{L}}}i = \overset{q(t)}{\overbrace{\frac{E_0}{L} \cos \omega t}} \).
+    \textit{Sol'n.} LODE is \( \displaystyle \frac{di}{dt} + \overset{p(t)}{\overbrace{\frac{R}{L}}}i = \overset{q(t)}{\overbrace{\frac{E_0}{L} \cos \omega t}} \).
     Not seperable, use integrating factor.
 
     \[ I(t) =e^{\int \frac{R}{L} \,dt}=e^{at} \, \left( a = \frac{R}{L} \right) \]

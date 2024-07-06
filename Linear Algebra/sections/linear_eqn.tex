@@ -13,7 +13,7 @@ Another application of matricies of great interest is representing systems of li
     if each term contains at most one \( x_i \) and that \( x_i \) appears to the first power.
 \end{definition}
 
-\( \therefore \) A ``system of \( m \) linear equations in \( n \) unknowns."
+A ``system of \( m \) linear equations in \( n \) unknowns."
 
 \begin{example}[Cutting \( n \) by \( n-1 \) dimensional objects]
     Suppose we have two planes which will separate regions in a three dimensional space.
@@ -254,11 +254,11 @@ To put a matrix into its ref or rref form:
     Let \( A, \; A^\# \) be the coefficient and augmented matrix for a system of linear equations
     with \( m \) equations and \( n \) unknowns.
 
-    Then, \( \exists \)
+    Then, there are three cases:
     \begin{enumerate}
         \item No solutions if \( \text{rk} \, A < \text{rk} \, A^\# \).
         \item Unique solutions if \( \text{rk} \, A = \text{rk}\, A^\# = n \).
-        \item \( \infty \) solutions if \( \text{rk} \, A = \text{rk}\, A^\# < n \).
+        \item Infinitely many solutions if \( \text{rk} \, A = \text{rk}\, A^\# < n \).
     \end{enumerate}
 \end{theorem}
 \begin{note}
@@ -278,7 +278,7 @@ To put a matrix into its ref or rref form:
             0 & 0 & 0 & 0 & 0 & d \\
         \end{bNiceMatrix}
     \]
-    If \( d \neq 0\), there are no solutions. If \( d = 0 \), there are \( \infty \) solutions.
+    If \( d \neq 0\), there are no solutions. If \( d = 0 \), there are infinitely many solutions.
     There are no unique solutions possible since there are two free variables: \( x_2 = s \) and \( x_4 = t \).
     The bound variables are \( x_1 \), \( x_2 \), and \( x_5 \).
 \end{example}
@@ -286,10 +286,9 @@ To put a matrix into its ref or rref form:
 From this illustration, we can see two important cases:
 \begin{enumerate}
     \item If we have a homogenous system, \( A \vec{x}=0 \), then we always have the trivial solution \( \vec{x}=0 \).
-        \( \exists \) nontrivial solutions \(\iff \text{rk}(A)<n \).
-    \item If \( A \) is \( m \times n \) and \( m < n \), then since \( \text{rk}(A) \leq m, \; \text{rk}(A) < n \)
-
-        \( \therefore \) have either 0 or \( \infty \) solns
+        There exists nontrivial solutions if and only if \( \text{rk}(A)<n \).
+    \item If \( A \) is \( m \times n \) and \( m < n \), then since \( \text{rk}(A) \leq m, \; \text{rk}(A) < n \). \\
+        Therefore, there are either 0 or infinitely many solutions.
 \end{enumerate}
 
 \begin{example}[]
