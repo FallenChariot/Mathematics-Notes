@@ -2,9 +2,11 @@
 
 \begin{document}
 
-\subsection{Constructing the Real Numbers}
+\section{Constructing the Real Numbers}
 
-\subsubsection{Dedekind Cuts}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Upper Bounds}
 
 Now, we seen in the previous section that \( \mathbb{Q} \) has ``gaps".
 \( x^2 = 2 \) has no solution in \( \mathbb{Q} \).
@@ -34,8 +36,158 @@ A lower bound can be defined similarly with ``greater than or equal to."
     \( \displaystyle \frac{2}{3} \) is also an u.b. for \( A \).
 \end{example}
 
-\begin{definition}[]
-    If there exists an 
+\begin{definition}[Least Upper Bound]
+    If there exists an \( \alpha \in S \) such that:
+    \begin{enumerate}
+        \item \( \alpha \) is an upper bound of \( E \)
+        \item If \( \gamma < \alpha \), then \( \gamma \) is not an upper bound of E.
+    \end{enumerate}
+    Then \( \alpha \) is called a \textbf{least upper bound (lub)} of \( E \) or the \textbf{suprenum} of \( E \).
+    Write \( \alpha = \text{sup} E \).
 \end{definition}
+
+\begin{example}[]
+    Let \( S = \mathbb{Q} \).
+    \begin{enumerate}
+        \item \( E = \left\{ \displaystyle \frac{1}{2},\, 1,\, 2 \right\} \; \boxed{ \text{sup}E= 2 } \)
+        \item \( E = \{x \in \mathbb{Q} \mid x < 0 \} \; \boxed{\text{sup}E = 0}\)
+        \item \( E = \mathbb{Q} \; \boxed{\text{sup}E \text{ does not exist}} \)
+        \item \( E = A \; (\text{as defined above}) \; \boxed{\text{sup}E \text{ does not exist}} \)
+    \end{enumerate}
+\end{example}
+
+\begin{definition}[Least Upper Bound Property]
+    A set \( S \) has the \textbf{least upper bound property} if every nonempty subset of \( S \) that has an upper bound has a least upper bound.
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Dedekind Cuts}
+
+\begin{definition}[Dedekind Cut]
+    A \textbf{Dedekind cut} \( \alpha \) is a subset of \( \mathbb{Q} \) such that:
+    \begin{enumerate}
+        \item \( \alpha  \neq \emptyset, \, \mathbb{Q} \)
+        \item If \( p \in \alpha \), \( q \in \mathbb{Q} \) and \( q < p \), then \( q \in \alpha \). (Closed downward)
+        \item If \( p \in \alpha \), then \( p < r \) for some \( r \in \alpha \). (No largest number)
+    \end{enumerate}
+\end{definition}
+
+\begin{example}[]
+    \( \alpha = \left\{ x \in \mathbb{Q} \mid x < 0 \right\} \) is a cut.
+    \begin{proof}[Proof.]
+        \textit{Step 1:} \( \alpha \neq 0, \mathbb{Q} \) \checkmark \\
+        \textit{Step 2:} Let \( p \in \alpha \), \( q \in \mathbb{Q} \). Assume \( q < p \).
+        By the transitivity property of order, \( q < 0 \).
+        Thus, \( p \in \alpha \). \checkmark \\
+        \textit{Step 3:} Let \( p \in \alpha \) and \( r \in \alpha \) such that \( r = \displaystyle \frac{q}{2} \).
+        Since \( q < 0 \), \( q < \displaystyle \frac{q}{2} \). Thus \( q < r \). \checkmark
+    \end{proof}
+\end{example}
+
+\begin{example}[]
+    \( \gamma = \left\{ r \mid r \leq 2 \right\} \) is not a cut.
+    This set does have a largest element, 2.
+\end{example}
+
+\begin{definition}[Rational Numbers]
+    Let \( \mathbb{R} = \left\{ \alpha \mid \alpha \text{ is a cut } \right\}\).
+\end{definition}
+
+We also define the following:
+\begin{itemize}
+    \item \( \alpha < \beta \) to mean \( \alpha \subsetneqq \beta \). This is an order.
+    \item \( \alpha + \beta = \left\{ r + s \mid r \in \alpha \text{ and } s \in \beta \right\} \). (This means \( \mathbb{R} \) is a field.)
+    \item \( \alpha \cdot \beta \)
+    \begin{enumerate}
+        \item For positive cuts \( \left\{ \alpha \mid \alpha > 0^* \right\} = \mathbb{R}_+ \): \\
+            If \( \alpha, \beta \in \mathbb{R}_+ \), let \( \alpha \cdot \beta = \left\{ p \mid p < rs \, \text{for some} r \in \alpha, s \in \beta, \, r,s>0\right\} \).
+        \item For cases with negative cuts, \( \alpha \cdot \beta =
+        \begin{cases}
+            (-\alpha)(-\beta) & \text{if } \alpha < 0^*, \, \beta < 0^* \\
+            -[(-\alpha)\beta] & \text{if } \alpha < 0^*, \, \beta > 0^* \\
+            -[\alpha(-\beta)] & \text{if } \alpha > 0^*, \, \beta < 0^*
+        \end{cases} \) \\
+        where the products are the same as defined for postive cuts.
+    \end{enumerate}
+\end{itemize}
+
+\begin{theorem}[]
+    \( \mathbb{R} \) is an ordered field with the least upper bound property.
+    \( \mathbb{R} \) contains \( \mathbb{Q} \) as a subfield.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Proofs of the Properties of \( \mathbb{R} \)}
+
+\begin{proof}[Proof]
+    (Show there is order on \( \mathbb{R} \).)
+    Let \( \alpha,\beta,\gamma \) be cuts.
+
+    \emph{Step 1:} (Trichotomy) \\
+    It is clear that at most one of the following can be true: \( \alpha < \beta, \, \alpha = \beta , \, \beta < \alpha \).
+    For example, if \( \alpha < \beta \), then \( \alpha \subsetneqq \beta \)
+    and by the definition of a proper subset, \( \alpha \neq \beta \) and \( \beta \) is not a proper subset of \( \alpha \). \\
+    Suppose the first two statements are false. Then \( \alpha \) is not a subset of \( \beta \).
+    By definition of a (proper) subset, there exists \( a \in \alpha \) such that \( a \notin \beta \).
+    If \( q \in \beta \), then \( q < p \) since \( p \notin \beta \).
+    Since cuts are closed downward, \( q \in \alpha \) so \( \beta \subsetneqq \alpha \). Thus \( \beta < \alpha \).
+
+    \emph{Step 2:} (Transitivity) \\
+    Assume \( \alpha < \beta \) and \( \beta < \gamma \).
+    By definition of \( < \), \( \alpha \subsetneqq \beta \) and \( \beta \subsetneqq \gamma \).
+    By definition of a proper subset, \( \alpha \subsetneq \gamma \) and we conclude \( \alpha < \gamma \). \checkmark
+
+    We have shown the cuts demonstrate order.
+\end{proof}
+
+\begin{proof}[Proof]
+    (\textbf{A1:} Show addition is closed)
+    Let \( \alpha, \beta \) be cuts and \( \gamma = \alpha + \beta \).
+
+    \emph{Step 1:} (Show that \( \gamma \neq \emptyset, \mathbb{Q} \).) \\
+    It should be clear that \( \gamma \) cannot be the empty set.
+    Since \( \alpha, \beta \neq \mathbb{Q} \), there exists \( a' \notin \alpha, b' \notin \beta \).
+    Consider \( a \in \alpha \) and \( b \in \beta \). Now \( a < a' \) and \( b < b' \). Thus \( a + b < a' + b' \).
+    Therefore \( a' + b' \notin \gamma \). We conclude \( \gamma \neq \emptyset, \mathbb{Q} \). \checkmark
+
+    \emph{Step 2:} (Show \( \gamma \) is closed downward.) \\
+    Let \( p \in \gamma, q \in \mathbb{Q} \). Assume \( q < p \).
+    Since \( p \in  \gamma \), there exists \( r \in \alpha \) and \( s \in \beta \) such that \( p = r+s \) so \( q < r+s \).
+    This means \( q-s < r \). Since \( \alpha \) is closed downward, \( q-s \in \alpha \).
+    Then \( q = q-s +s \) where \( q-s \in \alpha \) and \( s \in \beta \) as desired.
+
+    \emph{Step 3:} (Show \( \gamma \) has no largest number.) \\
+    Let \( t \in \gamma \). Then there exists \( u \in \alpha \) and \( v \in \beta \) such that \( t = u + v \).
+    Since both cuts \( \alpha, \beta \) have no largest number, there exists \( x \in \alpha \) where \( u < x \) and \( y \in \beta \) where \( v < y \).
+    Thus \( x + y \in \gamma \) and \( t < x + y \). \checkmark
+
+    We have shown \( \gamma \) meets the definition of a cut.
+\end{proof}
+
+\textbf{A2} and \textbf{A3} follows since addition in \( \mathbb{Q} \) is commutative and associative.
+    
+\begin{proof}[Proof]
+    (\textbf{A4:} Show \( 0^* =\left\{ q \in \mathbb{Q} \mid q < 0 \right\}\) is the additive identity for \( \mathbb{R} \). 
+    In other words, show \( \alpha + 0^* = \alpha \).) 
+
+    \emph{Step 1:} (Show \( \alpha + 0^* \subset \alpha \).) \\
+    Let \( a \in \alpha \) and \( b \in 0^* \).
+    Since \( b < 0 \), \( a + b < a \).
+    Thus \( a + b \in \alpha \) (since \( \alpha \) is closed downward).
+    We conclude \( \alpha + 0^* \subset \alpha \).
+
+    \emph{Step 2:} (Show \( \alpha \subset \alpha + 0^* \).) \\
+    Let \( x,y \in \alpha \) and \( z \in 0^* \). We can pick \( x,y \) such that \( y > x \). Then \( x - y \in 0^* \)
+    and similar to before \( x = y + (x - y) \in \alpha + 0^* \).
+    We conclude \( \alpha \subset \alpha + 0^* \). \checkmark
+
+    We conclude \( \alpha + 0^* = \alpha \).
+\end{proof}
+
+\begin{proof}[Proof]
+    (\textbf{A5:} Show )
+\end{proof}
 
 \end{document}

@@ -1,0 +1,83 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+To define the real numbers and their properties, we need some different ideas.
+
+\section{Set Theory}
+
+\begin{definition}[]
+    A \textbf{set} is a collection of objects called elements of the set.
+\end{definition}
+
+\textit{Example:}
+\begin{enumerate}
+    \item \( S = \{ 1, 2, 3 \} \; (= \{ 1,2,3,3 \}) \)
+    \item \( E = \{ \text{Even integers } \} \)
+    \item \( \{ \text{College students} \} \)
+\end{enumerate}
+
+\textit{Notation:}
+\begin{itemize}
+    \item \( x \in S \) means \( x \) is in \( S \).
+    \item \( x \notin S \) means \( x \) is not in \( S \).
+    \item The empty set \( \emptyset \) is the set with no elements.
+    \item \( A \subseteq B \) means \( A \) is a subset of B (i.e. if \( x \in A \), then \( x \in B \)).
+    \item If \( A \subseteq B \) but \( B \subsetneq A \) A is a proper subset.
+\end{itemize}
+
+If \( A \subseteq B \) and \( B \subseteq A \) then \( A = B \). Otherwise \( A \neq B \).
+
+We can define more sets in terms of other sets.
+\textit{Set Operations:}
+Let \( A \text{ and } B \) be sets.
+\begin{itemize}
+    \item Union: \( A \cup B  = \{ x \, | \, x \in A \text{ or } x \in B \}\)
+    \item Intersection: \( A \cap B  = \{ x \, | \, x \in A \text{ and } x \in B \}\)
+    \item Compliment: \( B - A = \{ x \, | \, x \in B \text{ and } x \notin A \} \)
+    \item Product: \( A \times B = \{ (a, b) \, | \, a \in A \text{ and } b \in B \} \)
+\end{itemize}
+
+If \( U \) is a universal set (set of everything in context), we write
+\( \bar{A} = U - A \\ = \{ x \, | \, x \in U \text{ and } x \notin A \} \).
+
+\section{Functions and Relations}
+
+It is also important to define some types of relations and functions.
+
+\subsection{Relations}
+
+\begin{definition}[Relation]
+    A (binary) \textbf{relation} \( R \) on a set S is a subset of \( S \times S \). If \( (a,b) \in R \), we write \( aRb \).
+\end{definition}
+
+\begin{example}[of relations]
+
+    \begin{enumerate}
+        \item \( L \) "loves" is a relation on \( P \times P \) (where \( P \) is a set of all people).
+        \item The set \( R = \left\{ (0,0), \, (0,1), \, (2,2), \, (7,18) \right\} \) is a relation on \( \mathbb{Z}^+ \). We would write \( 0R0 \), \( 0R1 \), \( 2R2 \), and \( 7R18 \).
+    \end{enumerate}
+\end{example}
+
+\begin{definition}[Equivalence Relation]
+    An equivalence relation on a set \( S \) is a relation s.t.:
+    \begin{enumerate}
+        \item Reflexive: For each \( a \in S \), \( a \sim a \).
+        \item Symmetric: For \( a,b \in S \), if \( a \sim b \), then \( b \sim a \).
+        \item Transitive: For \( a,b,c \in S \), if \( a \sim b \) and \( b \sim a \)
+    \end{enumerate}
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Functions}
+
+Functions in the general sense are also a type of relation.
+\begin{definition}[Function]
+    A \textbf{function}, \( F \) from a set \( A \) to a set \( B \) is a relation s.t.:
+    if \( aFb \) and \( aFb' \) then \( b = b' \). \\
+    This is a rule that assigns a unique \( a \in A \) to a unique \( b \in B \).
+    Write \( f: A \rightarrow B \) and \( f(a) = b \).
+\end{definition}
+
+\end{document}

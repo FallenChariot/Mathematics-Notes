@@ -37,7 +37,7 @@
 \end{example}
 
 \begin{definition}[General Solution of a LODE]
-    A general solution of a LODE is a solution of the form:
+    A \textbf{general solution of a LODE} is a solution of the form:
     \[ y = c_{1}y_{1}+c_{2}y_{2}+\dots+c_{n}y_{n} \]
     where the \(y_{i}\) are independent solutions and \(c_{j}\) are unknowns.
 \end{definition}
@@ -76,13 +76,16 @@ Given a function \( f(x,y) \), there is a family of level curves  \(f(x,y)= f(p)
 \end{note} 
 
 The problem is thus to find a curve that follows the gradient i.e. an \textbf{orthogonal trajectory curve}.
-    
-\textbf{Potential Applications:}
-\begin{itemize}
-    \item Heat seaking missiles, \( f =\) temperature
-    \item Charged particle, \( f =\) electric potential
-    \item Bear at scout jamboree, \( f =\) peanut butter scent intensity
-\end{itemize}
+
+\vbox{
+    \textbf{Potential Applications:}
+    \begin{itemize}
+        \item Heat seaking missiles, \( f =\) temperature
+        \item Charged particle, \( f =\) electric potential
+        \item Bear at scout jamboree, \( f =\) peanut butter scent intensity
+    \end{itemize}
+}
+
 
 \textbf{Theory:}
 Let \( g(x,y)=g(p) \) be an \textbf{orthogonal trajectory curve} (in xy-plane).
@@ -118,13 +121,15 @@ Most general LODE of order n is:
 \[ y^{(n)}+a_{1}(x)y^{(n-1)}+\dots+a_{n}(x)y=F(x) \]
 where \( F(x) \) is the driving term.
 
-An \textbf{initial value problem (IVP)} is an equation, \( (*) \) together with initial conditions, \( (* *) \):
+\vbox{
+    An \textbf{initial value problem (IVP)} is an equation, \( (*) \) together with initial conditions, \( (* *) \):
+    \begin{gather*}
+        y(x_{0})=y_{0} \\
+        y^{(1)}(x_{0})=y_{1} \\
+        y^{(n-1)}(x_{0})=y_{n-1}
+    \end{gather*}
+}
 
-\begin{gather*}
-    y(x_{0})=y_{0} \\
-    y^{(1)}(x_{0})=y_{1} \\
-    y^{(n-1)}(x_{0})=y_{n-1}
-\end{gather*}
 
 \begin{example}[]
     Solve the IVP \( y''+\omega^2y=0, \space y(0)=1,\space y'(0)=0 \)
@@ -168,16 +173,18 @@ The form of a \textbf{first order differential equation} is: \( y' = f(x,y) \). 
     
     Therefore the theorem is useless.
 
-    There are solutions for the IVP where y(0) = 0. Check it out:
-    \begin{itemize}[mode=unboxed]
-        \item \( y=0 \) is a solution. \( y(0) = 0 \)
-        \item \( y=\frac{1}{16}x^4 \) is also a solution.
-            \begin{gather*}
-                y(0) = 0 \\
-                y'=\frac{1}{4}x^3=xy^{\frac{1}{2}} \checkmark
-            \end{gather*}
-    \end{itemize}
-    Thus the solutions are not unique as expected from the theorem.
+    \vbox{
+        There are solutions for the IVP where y(0) = 0. Check it out:
+        \begin{itemize}[mode=unboxed]
+            \item \( y=0 \) is a solution. \( y(0) = 0 \)
+            \item \( y=\frac{1}{16}x^4 \) is also a solution.
+                \begin{gather*}
+                    y(0) = 0 \\
+                    y'=\frac{1}{4}x^3=xy^{\frac{1}{2}} \checkmark
+                \end{gather*}
+        \end{itemize}
+        Thus the solutions are not unique as expected from the theorem.
+    }
 \end{example}
 
 \begin{note}
@@ -218,9 +225,7 @@ On slope field diagrams, they are where a horizontal line fits as a solution.
         \end{note}
 \end{enumerate}
 
-\begin{definition}[Autonomous ODE]
-    An \textbf{autonoumous ODE} is one with no independent variable. It is usually seperable.
-\end{definition}
+An \textbf{autonoumous ODE} is one with no independent variable. It is usually seperable.
 
 \begin{example}[]
     Find the general solution for \( y'+ ( \tan x ) y=\cos^{2}x \)  on \( -\pi/2,\, \pi/2 \).
@@ -228,8 +233,8 @@ On slope field diagrams, they are where a horizontal line fits as a solution.
     \textit{Sol'n.} Recognize this is the form for the integrating factor with \( p(x)=\tan x \) and \( q(x) = \cos^{2}x \).
     \begin{align*}
         I(x)= e^{\int \tan x \,dx} = e^{\ln(\sec x)} = \sec x \\
-        \therefore (\sec x) y = \int \cos (x) \,dx = \sin x + C \\
-        \therefore y = \sin x \cdot \cos x + C \cdot \cos x
+        (\sec x) y = \int \cos (x) \,dx = \sin x + C \\
+        y = \sin x \cdot \cos x + C \cdot \cos x
     \end{align*}
 \end{example}
 
@@ -248,28 +253,28 @@ In its LODE form, \( dT = -k(T-T_m)dt \). (Now, \( T_m \) could be time-dependen
         \item Determine the asymptotic behavior of the solution.
         \item Find the maximum temperature.
     \end{enumerate}
-    a) Write it out as an ODE: \[ T'=-\frac{1}{40}(T-80e^{-\frac{t}{20}}) \]
-    Not seperable, 1st order ODE. This is an integrating factor problem.
-    In standard form:
-    \begin{gather*}
-        T' + \underbrace{\frac{1}{40}}_{p(t)} T = \underbrace{2e^{-\frac{t}{20}}}_{q(t)} \\
-        \implies p(t) = \frac{1}{40} \text{ and } q(t) = 2e^{-\frac{t}{20}} \\
-        \\
-        I(t) = e^{\int p(t) \,dt} \\
-        I(t) = e^{\int \frac{1}{40} \,dx} = e^{t/40} \\
-        \\
-        \text{Multiplying the original LODE by } I(t) \text{:}\\
-        \underbrace{I(t)T' + I(t)\frac{1}{40}T}_{(IT)'} = \underbrace{I(t)2e^{-\frac{t}{20}}}_{2e^{-\frac{t}{40}}} \\
-        IT=\int 2e^{-\frac{t}{40}} \,dt = -80e^{-\frac{t}{40}}+C \\
-        \therefore T = e^{-t/40} \left[-80e^{-\frac{t}{40}}+C \right] \\
-        \\
-        \text{Using IV: } T(0)=0 \implies 1[-80+C]=0 \\
-        C=80 \\
-        \therefore T = e^{-t/40} \left[ -80e^{-\frac{t}{40}}+80 \right] \\
-        \boxed{T=80\left(-e^{-\frac{t}{20}}+e^{-\frac{t}{40}}\right)}
-    \end{gather*}
 
-    \begin{enumerate}[mode=unboxed,label=\alph*),start=2]
+    \begin{enumerate}[mode=unboxed,label=\alph*)]
+        \item Write it out as an ODE: \[ T'=-\frac{1}{40}(T-80e^{-\frac{t}{20}}) \]
+        Not seperable, 1st order ODE. This is an integrating factor problem.
+        In standard form:
+        \begin{gather*}
+            T' + \underbrace{\frac{1}{40}}_{p(t)} T = \underbrace{2e^{-\frac{t}{20}}}_{q(t)} \\
+            \implies p(t) = \frac{1}{40} \text{ and } q(t) = 2e^{-\frac{t}{20}} \\
+            \\
+            I(t) = e^{\int p(t) \,dt} \\
+            I(t) = e^{\int \frac{1}{40} \,dx} = e^{t/40} \\
+            \\
+            \text{Multiplying the original LODE by } I(t) \text{:}\\
+            \underbrace{I(t)T' + I(t)\frac{1}{40}T}_{(IT)'} = \underbrace{I(t)2e^{-\frac{t}{20}}}_{2e^{-\frac{t}{40}}} \\
+            IT=\int 2e^{-\frac{t}{40}} \,dt = -80e^{-\frac{t}{40}}+C \\
+            \therefore T = e^{-t/40} \left[-80e^{-\frac{t}{40}}+C \right] \\
+            \\
+            \text{Using IV: } T(0)=0 \implies 1[-80+C]=0 \\
+            C=80 \\
+            \therefore T = e^{-t/40} \left[ -80e^{-\frac{t}{40}}+80 \right] \\
+            \boxed{T=80\left(-e^{-\frac{t}{20}}+e^{-\frac{t}{40}}\right)}
+        \end{gather*}
         \item \( \boxed{ \lim_{t\to\infty}T(t)= 0 } \)
         \item Maximum temperature? Occurs when \( \frac{dT}{dt} =0\) or \( T(t)=T_{m}(t) \)
             \begin{align*}
