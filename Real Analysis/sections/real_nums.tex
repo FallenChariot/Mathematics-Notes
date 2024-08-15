@@ -75,15 +75,15 @@ A lower bound can be defined similarly with ``greater than or equal to."
 
 \begin{example}[]
     \( \alpha = \left\{ x \in \mathbb{Q} \mid x < 0 \right\} \) is a cut.
-    \begin{proof}[Proof.]
-        \textit{Step 1:} \( \alpha \neq 0, \mathbb{Q} \) \checkmark \\
-        \textit{Step 2:} Let \( p \in \alpha \), \( q \in \mathbb{Q} \). Assume \( q < p \).
-        By the transitivity property of order, \( q < 0 \).
-        Thus, \( p \in \alpha \). \checkmark \\
-        \textit{Step 3:} Let \( p \in \alpha \) and \( r \in \alpha \) such that \( r = \displaystyle \frac{q}{2} \).
-        Since \( q < 0 \), \( q < \displaystyle \frac{q}{2} \). Thus \( q < r \). \checkmark
-    \end{proof}
 \end{example}
+\begin{enumerate}
+    \item \( \alpha \neq 0, \mathbb{Q} \) \checkmark
+    \item Let \( p \in \alpha \), \( q \in \mathbb{Q} \). Assume \( q < p \).
+    By the transitivity property of order, \( q < 0 \).
+    Thus, \( p \in \alpha \). \checkmark
+    \item Let \( p \in \alpha \) and \( r \in \alpha \) such that \( r = \displaystyle \frac{q}{2} \).
+    Since \( q < 0 \), \( q < \displaystyle \frac{q}{2} \). Thus \( q < r \). \checkmark
+\end{enumerate}
 
 \begin{example}[]
     \( \gamma = \left\{ r \mid r \leq 2 \right\} \) is not a cut.
@@ -101,93 +101,141 @@ We also define the following:
     \item \( \alpha \cdot \beta \)
     \begin{enumerate}
         \item For positive cuts \( \left\{ \alpha \mid \alpha > 0^* \right\} = \mathbb{R}_+ \): \\
-            If \( \alpha, \beta \in \mathbb{R}_+ \), let \( \alpha \cdot \beta = \left\{ p \mid p < rs \, \text{for some} r \in \alpha, s \in \beta, \, r,s>0\right\} \).
+            If \( \alpha, \beta \in \mathbb{R}_+ \), let \( \alpha \cdot \beta = \left\{ p \mid p < rs \, \text{for some } r \in \alpha, s \in \beta, \, and  r,s>0\right\} \).
         \item For cases with negative cuts, \( \alpha \cdot \beta =
         \begin{cases}
             (-\alpha)(-\beta) & \text{if } \alpha < 0^*, \, \beta < 0^* \\
             -[(-\alpha)\beta] & \text{if } \alpha < 0^*, \, \beta > 0^* \\
             -[\alpha(-\beta)] & \text{if } \alpha > 0^*, \, \beta < 0^*
         \end{cases} \) \\
-        where the products are the same as defined for postive cuts.
+        where the products are the same as defined for postive cuts and \( -\alpha, \, -\beta \) are the additive inverses of \( \alpha, \, \beta \) respectively.
+        (The additive inverses are defined below.)
     \end{enumerate}
 \end{itemize}
 
 \begin{theorem}[]
+    \label{thm_R}
     \( \mathbb{R} \) is an ordered field with the least upper bound property.
     \( \mathbb{R} \) contains \( \mathbb{Q} \) as a subfield.
 \end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Proofs of the Properties of \( \mathbb{R} \)}
+\subsubsection{Proofs Showing \( \mathbb{R} \) is an Ordered Field}
 
-\begin{proof}[Proof]
-    (Show there is order on \( \mathbb{R} \).)
-    Let \( \alpha,\beta,\gamma \) be cuts.
+The following section proves Theorem \ref{thm_R}.
 
-    \emph{Step 1:} (Trichotomy) \\
+\textit{Proof.}
+
+\emph{Step 1:} We must show there is order on \( \mathbb{R} \). \\
+Let \( \alpha,\beta,\gamma \in \mathbb{R} \).
+We must show that they demonstrate both trichotomy and transitivity.
+\begin{enumerate}
+    \item Trichotomy: \\
     It is clear that at most one of the following can be true: \( \alpha < \beta, \, \alpha = \beta , \, \beta < \alpha \).
     For example, if \( \alpha < \beta \), then \( \alpha \subsetneqq \beta \)
-    and by the definition of a proper subset, \( \alpha \neq \beta \) and \( \beta \) is not a proper subset of \( \alpha \). \\
-    Suppose the first two statements are false. Then \( \alpha \) is not a subset of \( \beta \).
-    By definition of a (proper) subset, there exists \( a \in \alpha \) such that \( a \notin \beta \).
-    If \( q \in \beta \), then \( q < p \) since \( p \notin \beta \).
-    Since cuts are closed downward, \( q \in \alpha \) so \( \beta \subsetneqq \alpha \). Thus \( \beta < \alpha \).
+    and by the definition of a proper subset, \( \alpha \neq \beta \) and \( \beta \) is not a proper subset of \( \alpha \).
+    
+    To show at least one of them must be true, suppose the first two statements are false.
+    Then \( \alpha \) is not a subset of \( \beta \).
+    By definition of a proper subset, there exists some \( a \in \alpha \) such that \( a \notin \beta \).
+    Consider some \( b \in \beta \). Since \( \beta \) is closed downward, \( b < a \).
+    This also means \( b \in \alpha \) since \( \alpha \) is also closed downward.
+    This shows that \( \beta \subsetneqq \alpha \). Thus \( \beta < \alpha \).
+    We conclude that at least one of these statements must be true.
 
-    \emph{Step 2:} (Transitivity) \\
-    Assume \( \alpha < \beta \) and \( \beta < \gamma \).
+    \item Transitivity: \\
+    We assume that \( \alpha < \beta \) and \( \beta < \gamma \).
     By definition of \( < \), \( \alpha \subsetneqq \beta \) and \( \beta \subsetneqq \gamma \).
-    By definition of a proper subset, \( \alpha \subsetneq \gamma \) and we conclude \( \alpha < \gamma \). \checkmark
+    By definition of a proper subset, \( \alpha \subsetneq \gamma \) and we conclude that \( \alpha < \gamma \).
+\end{enumerate}
+We have shown the cuts demonstrate order.
 
-    We have shown the cuts demonstrate order.
-\end{proof}
-
-\begin{proof}[Proof]
-    (\textbf{A1:} Show addition is closed)
-    Let \( \alpha, \beta \) be cuts and \( \gamma = \alpha + \beta \).
-
-    \emph{Step 1:} (Show that \( \gamma \neq \emptyset, \mathbb{Q} \).) \\
+\emph{Step 2:} Next, we must show that addition is closed (\textbf{A1}). \\
+Let \( \alpha, \beta \in \mathbb{R} \) and \( \gamma = \{r+s \, | \, r \in \alpha \text{ and } b \in \beta \} \).
+To show addition is closed, we must show that \( \gamma \) is a cut.
+\begin{enumerate}
+    \item First, we must show that \( \gamma \neq \emptyset, \, \mathbb{Q} \). \\
     It should be clear that \( \gamma \) cannot be the empty set.
-    Since \( \alpha, \beta \neq \mathbb{Q} \), there exists \( a' \notin \alpha, b' \notin \beta \).
-    Consider \( a \in \alpha \) and \( b \in \beta \). Now \( a < a' \) and \( b < b' \). Thus \( a + b < a' + b' \).
-    Therefore \( a' + b' \notin \gamma \). We conclude \( \gamma \neq \emptyset, \mathbb{Q} \). \checkmark
+    Since \( \alpha, \beta \neq \mathbb{Q} \), there exists \( a' \notin \alpha, \, b' \notin \beta \).
+    Now \( a < a' \) and \( b < b' \) for all \( a \in \alpha, \, b \in \beta \). Thus \( a + b < a' + b' \).
+    Therefore \( a' + b' \notin \gamma \). We conclude that \( \gamma \neq \emptyset, \mathbb{Q} \).
 
-    \emph{Step 2:} (Show \( \gamma \) is closed downward.) \\
+    \item Second, we must show that \( \gamma \) is closed downward. \\
     Let \( p \in \gamma, q \in \mathbb{Q} \). Assume \( q < p \).
     Since \( p \in  \gamma \), there exists \( r \in \alpha \) and \( s \in \beta \) such that \( p = r+s \) so \( q < r+s \).
     This means \( q-s < r \). Since \( \alpha \) is closed downward, \( q-s \in \alpha \).
-    Then \( q = q-s +s \) where \( q-s \in \alpha \) and \( s \in \beta \) as desired.
+    Then \( q = q-s +s \) where \( q-s \in \alpha \) and \( s \in \beta \). We have shown that \( \gamma \) is closed downward.
 
-    \emph{Step 3:} (Show \( \gamma \) has no largest number.) \\
+    \item Third, we must show that \( \gamma \) has no largest number. \\
     Let \( t \in \gamma \). Then there exists \( u \in \alpha \) and \( v \in \beta \) such that \( t = u + v \).
     Since both cuts \( \alpha, \beta \) have no largest number, there exists \( x \in \alpha \) where \( u < x \) and \( y \in \beta \) where \( v < y \).
-    Thus \( x + y \in \gamma \) and \( t < x + y \). \checkmark
+    Thus \( x + y \in \gamma \) and \( t < x + y \). We have shown that \( \gamma \) has no largest member.
+\end{enumerate}
+We have shown that \( \gamma \) meets the definition of a cut.
 
-    We have shown \( \gamma \) meets the definition of a cut.
-\end{proof}
-
-\textbf{A2} and \textbf{A3} follows since addition in \( \mathbb{Q} \) is commutative and associative.
+\emph{Step 3:} \textbf{A2} and \textbf{A3} follows since addition in \( \mathbb{Q} \) is commutative and associative.
     
-\begin{proof}[Proof]
-    (\textbf{A4:} Show \( 0^* =\left\{ q \in \mathbb{Q} \mid q < 0 \right\}\) is the additive identity for \( \mathbb{R} \). 
-    In other words, show \( \alpha + 0^* = \alpha \).) 
-
-    \emph{Step 1:} (Show \( \alpha + 0^* \subset \alpha \).) \\
+\emph{Step 4:} We must show that \( 0^* =\left\{ q \in \mathbb{Q} \mid q < 0 \right\}\) is the additive identity for \( \mathbb{R} \) (\textbf{A4}). \\
+In other words, we must show that \( \alpha + 0^* = \alpha \).
+Let \( \alpha \in \mathbb{R} \) and \( 0^* = \left\{ q \in \mathbb{Q} \mid q < 0 \right\} \).
+\begin{enumerate}
+    \item First, we must show that \( \alpha + 0^* \subset \alpha \). \\
     Let \( a \in \alpha \) and \( b \in 0^* \).
     Since \( b < 0 \), \( a + b < a \).
     Thus \( a + b \in \alpha \) (since \( \alpha \) is closed downward).
-    We conclude \( \alpha + 0^* \subset \alpha \).
+    We conclude that \( \alpha + 0^* \subset \alpha \).
 
-    \emph{Step 2:} (Show \( \alpha \subset \alpha + 0^* \).) \\
-    Let \( x,y \in \alpha \) and \( z \in 0^* \). We can pick \( x,y \) such that \( y > x \). Then \( x - y \in 0^* \)
-    and similar to before \( x = y + (x - y) \in \alpha + 0^* \).
-    We conclude \( \alpha \subset \alpha + 0^* \). \checkmark
+    \item Second, we must show that \( \alpha \subset \alpha + 0^* \). \\
+    Let \( x,y \in \alpha \) and \( z \in 0^* \). Since \( \alpha \) has no largest member, we can pick \( x,y \) such that \( y > x \).
+    Then \( x - y \in 0^* \) and similar to before \( x = y + (x - y) \in \alpha + 0^* \).
+    We conclude that \( \alpha \subset \alpha + 0^* \).
+\end{enumerate}
+Thus we conclude that \( \alpha + 0^* = \alpha \).
 
-    We conclude \( \alpha + 0^* = \alpha \).
-\end{proof}
+\emph{Step 5:} Next, we must show that the additive inverse for \( \alpha \in \mathbb{R} \) is
+\( \beta = \{ p \in \mathbb{Q} \, | \text{ there exists } \\ r > 0 \text{ s.t. } -p-r \notin \alpha \} \) (\textbf{A5}). \\
+Let \( \alpha \in \mathbb{R} \) and \( \beta = \{ p \in \mathbb{Q} \, | \text{ there exists } r > 0 \text{ s.t. } -p-r \notin \alpha \} \).
+\begin{enumerate}
+    \item First, we must show that \( \beta \) is a cut.
+    \begin{enumerate}[label=\roman*.]
+        \item We must show that \( \beta \) is non-trivial. \\
+        Since \( \alpha \neq \emptyset \), there exists some \( a \in \alpha \).
+        Since \( \alpha \) is closed downward, \( a-b \in \alpha \) for all \( b > 0 \).
+        Thus \( -a \notin \beta \) so \( \beta \neq \mathbb{Q} \).
 
-\begin{proof}[Proof]
-    (\textbf{A5:} Show )
-\end{proof}
+        Since \( \alpha \in \mathbb{Q}\), there exists some \( c \notin \alpha \).
+        Consider \( d = -c-1 \). Then \( -d-1 \notin \alpha \) (since \( c = -d -1 \)).
+        Thus \( d \in \beta \) so \( \beta \neq \emptyset \).
+
+        \item We must show that \( \beta \) is closed downward. \\
+        Let \( f \in \beta, \, g \in \mathbb{Q} \). We assume that \( g < f \).
+        There exists some \( h > 0 \) s.t. \( -f-h \notin \alpha \).
+        Since \( g < f \), \( -g-h > -f-h \). Thus since \( \alpha \) is closed downward, \( -g-h \notin \alpha \).
+        We conclude that \( \beta \) is closed downward.
+
+        \item We must show that \( \beta \) has no largest member. \\
+        Consider \( j = f + (h/2) \). Then \( j > f \), and \( -j - (h/2) = -f - h \notin \alpha \). Then \( j \in \beta \).
+        Thus we find \( \beta \) also has no largest member.
+    \end{enumerate}
+    We conclude that \( \beta \) satisfies the definition of a cut.
+
+    \item Second, we must show that \( \alpha + \beta = 0^* \).
+    \begin{enumerate}[label=\roman*.]
+        \item We need to show that \( \alpha + \beta \subset 0^* \). \\
+        Let \( s \in \alpha \) and \( t \in \beta \). By definition of \( \beta \), there exists \( u > 0 \) s.t. \( -t-u \notin \alpha \).
+        Then \( -t-u > s \) and it follows that \( s + t < -u < 0 \). Therefore \( s+t \in 0^* \).
+        \item We also need to show that \( 0^* \subset \alpha + \beta \). \\
+        Let \( v \in 0^* \) and \( w = -v/2 \). Then \( w > 0 \).
+        By the Archimedean property of \( \mathbb{Q} \), there exists \( n \in \mathbb{Z} \) s.t. \( nw \in \alpha \) and \( (n+1)w \notin \alpha \).
+        Consider \( x = -(n+2)w \). Now \( -x = nw+2w \implies -x-w = nw+w = (n+1)w \notin \alpha \). By definition of \( \beta \), \( x \in \beta \).
+        We find \( v = -2w = -(n+2)w + nw = p + x \) and conclude that \( v \in \alpha + \beta \).
+    \end{enumerate}
+    This shows that \( \alpha + \beta = 0^* \).
+\end{enumerate}
+We have proved that \( \beta \) is the additive inverse for \( \alpha \) and that \( \mathbb{R} \) satisfies all the addition axioms.
+Next we will show that \( \mathbb{R} \) satisfies the multiplication axioms.
+
+\emph{Step 6:} We must show that \( \mathbb{R} \) is closed under multiplication.
 
 \end{document}
