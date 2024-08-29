@@ -101,7 +101,7 @@ We also define the following:
     \item \( \alpha \cdot \beta \)
     \begin{enumerate}
         \item For positive cuts \( \left\{ \alpha \mid \alpha > 0^* \right\} = \mathbb{R}_+ \): \\
-            If \( \alpha, \beta \in \mathbb{R}_+ \), let \( \alpha \cdot \beta = \left\{ p \mid p < rs \, \text{for some } r \in \alpha, s \in \beta, \, and  r,s>0\right\} \).
+            If \( \alpha, \beta \in \mathbb{R}_+ \), let \( \alpha \cdot \beta = \left\{ p \mid p \leq rs \, \text{for some } r \in \alpha, s \in \beta, \, and  r,s>0\right\} \).
         \item For cases with negative cuts, \( \alpha \cdot \beta =
         \begin{cases}
             (-\alpha)(-\beta) & \text{if } \alpha < 0^*, \, \beta < 0^* \\
@@ -152,14 +152,14 @@ We must show that they demonstrate both trichotomy and transitivity.
 We have shown the cuts demonstrate order.
 
 \emph{Step 2:} Next, we must show that addition is closed (\textbf{A1}). \\
-Let \( \alpha, \beta \in \mathbb{R} \) and \( \gamma = \{r+s \, | \, r \in \alpha \text{ and } b \in \beta \} \).
+Let \( \alpha, \beta \in \mathbb{R} \) and \( \gamma = \{r+s \, \mid \, r \in \alpha \text{ and } b \in \beta \} \).
 To show addition is closed, we must show that \( \gamma \) is a cut.
 \begin{enumerate}
     \item First, we must show that \( \gamma \neq \emptyset, \, \mathbb{Q} \). \\
     It should be clear that \( \gamma \) cannot be the empty set.
-    Since \( \alpha, \beta \neq \mathbb{Q} \), there exists \( a' \notin \alpha, \, b' \notin \beta \).
-    Now \( a < a' \) and \( b < b' \) for all \( a \in \alpha, \, b \in \beta \). Thus \( a + b < a' + b' \).
-    Therefore \( a' + b' \notin \gamma \). We conclude that \( \gamma \neq \emptyset, \mathbb{Q} \).
+    Since \( \alpha, \beta \neq \mathbb{Q} \), there exists \( c \notin \alpha, \, d \notin \beta \).
+    Now \( a < c \) and \( b < d \) for all \( a \in \alpha, \, b \in \beta \). Thus \( a + b < c + d \).
+    Therefore \( c + d \notin \gamma \). We conclude that \( \gamma \neq \emptyset, \mathbb{Q} \).
 
     \item Second, we must show that \( \gamma \) is closed downward. \\
     Let \( p \in \gamma, q \in \mathbb{Q} \). Assume \( q < p \).
@@ -168,9 +168,9 @@ To show addition is closed, we must show that \( \gamma \) is a cut.
     Then \( q = q-s +s \) where \( q-s \in \alpha \) and \( s \in \beta \). We have shown that \( \gamma \) is closed downward.
 
     \item Third, we must show that \( \gamma \) has no largest number. \\
-    Let \( t \in \gamma \). Then there exists \( u \in \alpha \) and \( v \in \beta \) such that \( t = u + v \).
-    Since both cuts \( \alpha, \beta \) have no largest number, there exists \( x \in \alpha \) where \( u < x \) and \( y \in \beta \) where \( v < y \).
-    Thus \( x + y \in \gamma \) and \( t < x + y \). We have shown that \( \gamma \) has no largest member.
+    Let \( p \in \gamma \). Then there exists some \( a \in \alpha \) and \( b \in \beta \) such that \( p = a + b \).
+    Since both cuts \( \alpha, \beta \) have no largest number, there exists \( c \in \alpha \) and \( d \in \beta \) where \( a < c \) and \( b < d \).
+    Thus \( c + d \in \gamma \) and \( p < c + d \). We have shown that \( \gamma \) has no largest member.
 \end{enumerate}
 We have shown that \( \gamma \) meets the definition of a cut.
 
@@ -178,7 +178,7 @@ We have shown that \( \gamma \) meets the definition of a cut.
     
 \emph{Step 4:} We must show that \( 0^* =\left\{ q \in \mathbb{Q} \mid q < 0 \right\}\) is the additive identity for \( \mathbb{R} \) (\textbf{A4}). \\
 In other words, we must show that \( \alpha + 0^* = \alpha \).
-Let \( \alpha \in \mathbb{R} \) and \( 0^* = \left\{ q \in \mathbb{Q} \mid q < 0 \right\} \).
+Let \( \alpha \in \mathbb{R} \).
 \begin{enumerate}
     \item First, we must show that \( \alpha + 0^* \subset \alpha \). \\
     Let \( a \in \alpha \) and \( b \in 0^* \).
@@ -187,15 +187,15 @@ Let \( \alpha \in \mathbb{R} \) and \( 0^* = \left\{ q \in \mathbb{Q} \mid q < 0
     We conclude that \( \alpha + 0^* \subset \alpha \).
 
     \item Second, we must show that \( \alpha \subset \alpha + 0^* \). \\
-    Let \( x,y \in \alpha \) and \( z \in 0^* \). Since \( \alpha \) has no largest member, we can pick \( x,y \) such that \( y > x \).
-    Then \( x - y \in 0^* \) and similar to before \( x = y + (x - y) \in \alpha + 0^* \).
+    Let \( a,b \in \alpha \). Since \( \alpha \) has no largest member, we can pick \( a,b \) such that \( b > a \).
+    Then \( a - b \in 0^* \) and similar to before \( a = b + (a - b) \in \alpha + 0^* \).
     We conclude that \( \alpha \subset \alpha + 0^* \).
 \end{enumerate}
 Thus we conclude that \( \alpha + 0^* = \alpha \).
 
 \emph{Step 5:} Next, we must show that the additive inverse for \( \alpha \in \mathbb{R} \) is
-\( \beta = \{ p \in \mathbb{Q} \, | \text{ there exists } \\ r > 0 \text{ s.t. } -p-r \notin \alpha \} \) (\textbf{A5}). \\
-Let \( \alpha \in \mathbb{R} \) and \( \beta = \{ p \in \mathbb{Q} \, | \text{ there exists } r > 0 \text{ s.t. } -p-r \notin \alpha \} \).
+\( \beta = \{ p \in \mathbb{Q} \, \mid \text{ there exists } \\ r > 0 \text{ s.t. } -p-r \notin \alpha \} \) (\textbf{A5}). \\
+Let \( \alpha \in \mathbb{R} \).
 \begin{enumerate}
     \item First, we must show that \( \beta \) is a cut.
     \begin{enumerate}[label=\roman*.]
@@ -209,9 +209,9 @@ Let \( \alpha \in \mathbb{R} \) and \( \beta = \{ p \in \mathbb{Q} \, | \text{ t
         Thus \( d \in \beta \) so \( \beta \neq \emptyset \).
 
         \item We must show that \( \beta \) is closed downward. \\
-        Let \( f \in \beta, \, g \in \mathbb{Q} \). We assume that \( g < f \).
-        There exists some \( h > 0 \) s.t. \( -f-h \notin \alpha \).
-        Since \( g < f \), \( -g-h > -f-h \). Thus since \( \alpha \) is closed downward, \( -g-h \notin \alpha \).
+        Let \( p \in \beta, \, q \in \mathbb{Q} \). We assume that \( q < p \).
+        There exists some \( r > 0 \) s.t. \( -p-r \notin \alpha \).
+        Since \( q < p \), \( -q-r > -p-r \). Thus \( -q-r \notin \alpha \) (since \( \alpha \) is closed downward), so \( q \in \beta \).
         We conclude that \( \beta \) is closed downward.
 
         \item We must show that \( \beta \) has no largest member. \\
@@ -225,6 +225,7 @@ Let \( \alpha \in \mathbb{R} \) and \( \beta = \{ p \in \mathbb{Q} \, | \text{ t
         \item We need to show that \( \alpha + \beta \subset 0^* \). \\
         Let \( s \in \alpha \) and \( t \in \beta \). By definition of \( \beta \), there exists \( u > 0 \) s.t. \( -t-u \notin \alpha \).
         Then \( -t-u > s \) and it follows that \( s + t < -u < 0 \). Therefore \( s+t \in 0^* \).
+
         \item We also need to show that \( 0^* \subset \alpha + \beta \). \\
         Let \( v \in 0^* \) and \( w = -v/2 \). Then \( w > 0 \).
         By the Archimedean property of \( \mathbb{Q} \), there exists \( n \in \mathbb{Z} \) s.t. \( nw \in \alpha \) and \( (n+1)w \notin \alpha \).
@@ -236,6 +237,61 @@ Let \( \alpha \in \mathbb{R} \) and \( \beta = \{ p \in \mathbb{Q} \, | \text{ t
 We have proved that \( \beta \) is the additive inverse for \( \alpha \) and that \( \mathbb{R} \) satisfies all the addition axioms.
 Next we will show that \( \mathbb{R} \) satisfies the multiplication axioms.
 
-\emph{Step 6:} We must show that \( \mathbb{R} \) is closed under multiplication.
+\emph{Step 6:} We must show that \( \mathbb{R} \) is closed under multiplication (\textbf{M1}).
+We will only consider the positve case for multiplication (because I am lazy and the whole thing is tedious. Most books only do the addition axioms.)\\
+Let \( \alpha, \beta \in \mathbb{R}_+ \) and \( \alpha\beta = \{ p \, \mid \, p \leq ab, a \in \alpha, b \in \beta, \text{ and } a,b > 0 \} \).
+We must prove \( \alpha\beta \in \mathbb{R} \) as before.
+\begin{enumerate}[label=\roman*.]
+    \item Since \( \alpha, \beta \) are non-trivial, there exists some \( a \in \alpha, b \in \beta \) s.t. \( a, b > 0 \).
+    Now \( ab \leq ab \). Thus \( ab \in \alpha\beta \) so \( \alpha\beta \neq \emptyset \).
+
+    There also exists some \( c \notin \alpha, d \notin \beta \) s.t. \( c>a \) and \( d>b \) for all \( a \in \alpha \) and \( b \in \beta \).
+    Now \( cd > ab \) for all \( a \in \alpha, b \in \beta \). Thus \( cd \notin \alpha\beta \) so \( \alpha\beta \neq \mathbb{Q} \).
+
+    \item Let \( p \in \alpha\beta \), \( q \in \mathbb{Q} \), and \( q < p \). Now \( p < ab \) for some \( a \in \alpha, \, b \in \beta \).
+    By order of \( \mathbb{Q} \), \( q < p < ab \) so \( q \in \alpha\beta \).
+
+    \item Since \( \alpha,\beta \) have no largest member, we can pick some \( c > a \) and \( d > b \)
+    s.t. \( c \in \alpha \) and \( d \in \beta \). Thus \( p \leq ab < cd \), so \( ab \in \alpha\beta \).
+\end{enumerate}
+We have shown that \( \alpha\beta \) satisfy all three properties of a cut.
+
+\emph{Step 6:} We must show that multiplication in \( \mathbb{R} \) is commutative (\textbf{M2}) and associative (\textbf{M3}). \\
+Let \( p \in \alpha\beta \). Now \( p \leq ab \) for some \( a \in \alpha, \, b \in \beta, \, a,b>0 \).
+Since multiplication in \( \mathbb{Q} \) is commutative, \( p \leq ba \). Thus, \( p \in \beta\alpha \).
+Clearly \( \alpha\beta \subset \beta\alpha \) and \( \beta\alpha \subset \alpha\beta \).
+We conclude that \( \alpha\beta = \beta\alpha \) and multiplication in \( \mathbb{R} \) is commutative.
+
+The proof that multiplication in \( \mathbb{R} \) is associative is similar relying on multiplication in \( \mathbb{Q} \) is associative.
+
+\emph{Step 7:} We must show that there is a multiplicative identity in \( \mathbb{R} \) (\textbf{M4}). \\
+We will define it to be \( 1^* = {p \in \mathbb{Q} \, \mid \, p < 1 } \).
+Let \( \alpha \in \mathbb{R} \).
+We must demonstrate that \( \alpha \cdot 1^* = \alpha \).
+\begin{enumerate}
+    \item We must show \( \alpha \cdot 1^* \subset \alpha \). \\
+    Let \( p \in \alpha \cdot 1^* \). Now \( p \leq a \cdot b \) for some \( a \in \alpha, \, b \in 1^* \).
+    Since \( b < 1 \), \( p \leq ab < a \) so \( p \in \alpha \).
+
+    \item We also must show \( \alpha \subset \alpha \cdot 1^* \). \\
+    We can choose some \( c \in \alpha \) s.t. \( c > a \).
+    This implies \( \displaystyle \frac{a}{c} < 1 \) so \( \displaystyle \frac{a}{c} \in 1^* \).
+    Thus \( \displaystyle a = c \cdot \frac{a}{c} \in \alpha \cdot 1^* \).
+\end{enumerate}
+We conclude that \( \alpha \cdot 1^* = \alpha \).
+
+\emph{Step 8:} We must show that there is a multiplicative inverse in \( \mathbb{R} \) (\textbf{M5}). \\
+We will define the multiplicative inverse for \( \alpha \in \mathbb{R}_+ \) as: \\
+\( \beta = 0^* \cup \{0\} \cup \{ p \in \mathbb{Q} \, \mid \, \text{there is an } r \in \mathbb{Q} \text{ with } r>1 \text{ and } \frac{1}{rp} \notin \alpha \} \).
+Let \( \alpha \in \mathbb{R} \).
+\begin{enumerate}
+    \item We must show \( \beta \in \mathbb{R} \).
+    \begin{enumerate}[label=\roman*.]
+        \item Clearly \( \beta \neq \emptyset \). Since \( \alpha \neq \mathbb{Q} \) and \( \alpha \in \mathbb{R}_+ \), there exists some \( a \in \alpha \) where \( a > 0 \).
+        Then \( 1/a \notin \beta \) since there is no
+    \end{enumerate}
+\end{enumerate}
+
+The cases for multiplication with negative cuts are also similar using the identity: \( \gamma = -(-\gamma) \).
 
 \end{document}

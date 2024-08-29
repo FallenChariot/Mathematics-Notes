@@ -21,7 +21,7 @@ Each row of an \( m \times n \) matrix is a \textbf{row vector}.
         \delta_{ij} =
         \begin{cases}
             1,& i = j \\
-            2,& i \neq j
+            0,& i \neq j
         \end{cases}
     \]
 
@@ -152,8 +152,50 @@ We call this the cofactor expansion along the \( i \)th row.
     Use row 3.
     \[ \text{det}A = \sum_{j=1}^{3} a_{3j} C_{3j} = a_{31}C_{31} + a_{32}C_{32} + a_{33}C_{33} \]
 
-    
+    \[ \left.\kern-\nulldelimiterspace
+        \begin{aligned}
+            C_{31} &= (-1)^{3+1} \begin{vmatrix} 3 & 12 \\ 5 & 8 \end{vmatrix} = -36 \\
+            C_{32} &= (-1)^{3+2} \begin{vmatrix} 7 & 12 \\ 2 & 8 \end{vmatrix} = -32 \\
+            C_{33} &= (-1)^{3+3} \begin{vmatrix} 7 & 3 \\ 2 & 5 \end{vmatrix} = 29
+        \end{aligned} \; \right\} \;
+        \text{det}A = 1(-36)+5(-32)+2(29) = \boxed{-138}
+    \]
 \end{example}
+
+\underline{Properties of Determinants}
+\begin{enumerate}
+    \item \( \text{det} A = \text{det} A^t \)
+    
+    (Therefore, we can also use the cofactor expansion along any column as well.)
+    \item \( \text{det} A \neq 0 \iff A \text{ is invertible} \)
+    \item \( \text{det} AB = \text{det} A \, \text{det} B \)
+    \item \( \text{det} \begin{bmatrix}
+        \vec{r_1} \\
+        \vec{r_i}+\vec{r_i}' \\
+        \vec{r_n}
+    \end{bmatrix}
+    = \text{det} \begin{bmatrix}
+        \vec{r_1} \\
+        \vec{r_i} \\
+        \vec{r_n}
+    \end{bmatrix}
+    + \text{det} \begin{bmatrix}
+        \vec{r_1} \\
+        \vec{r_i}' \\
+        \vec{r_n}
+    \end{bmatrix} \)
+\end{enumerate}
+
+Moreover, suppose \( A \overrightarrow{1.} B \) is an ERO. Then,
+\begin{enumerate}[resume*]
+    \item If \( 1. P_{ij} \), then \( \text{det}B = -\text{det}A \).
+    \item If \( 1. M_i(k) \), then \( \text{det}B = k\cdot\text{A} \).
+    \item If \( 1. A_{ij}(k) \), then \( \text{det}B = \text{det}A \).
+\end{enumerate}
+
+\begin{note}
+    By (3), \( \text{det}(A^{-1}) = (\text{det}A)^{-1} \)
+\end{note}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -314,6 +356,67 @@ Then \[ A^-1 = \frac{1}{ad-bc}
         \item \( \text{det}(A) \neq 0 \)
     \end{enumerate}
 \end{theorem}
+
+\underline{Computing Inverses}
+
+Recall if \( A = a_{ij} \) is a \( 2 \times 2 \) matrix, then
+if A is invertible,
+\[ A^{-1} = \frac{1}{a_{11}a_{22}-a_{12}a_{21}} \begin{bmatrix}
+    d & -b \\
+    -c & a
+\end{bmatrix} = \frac{1}{\text{det}A} \begin{bmatrix}
+    d & -b \\
+    -c & a
+\end{bmatrix} \]
+
+\begin{theorem}
+    If A is invertible then
+    \[ A^{-1} = \displaystyle \frac{1}{\text{det}A}(b_{ij})\]
+    where \( b_{ij} = \text{the ji-th cofactor of } A = (-1)^{i+j}\text{det}A_{ij}\).
+\end{theorem}
+
+\begin{example}
+    Is \( A \) invertible? If so, find \( A^{-1} \).
+    \[ A = \begin{bmatrix}
+        1 & 2 & -1 \\
+        2 & 5 & -1 \\
+        1 & 2 & 0
+    \end{bmatrix} \]
+
+    \[ \text{det}A = \begin{vmatrix}
+        5 & -1 \\
+        2 & 0
+    \end{vmatrix}
+    -2 \begin{vmatrix}
+        2 & -1 \\
+        1 & 0
+    \end{vmatrix}
+    - \begin{vmatrix}
+        2 & 5 \\
+        1 & 2
+    \end{vmatrix}
+    = 2-1+1 \]
+    Therefore, A is invertible.
+
+    Then \( \left. \displaystyle \frac{1}{\text{det}A}
+    \begin{bmatrix}
+        C_{11} & C_{21} & C_{31} \\
+        C_{12} & C_{22} & C_{32} \\
+        C_{13} & C_{23} & C_{33}
+    \end{bmatrix} \right\} (C_{ij})^t \)
+
+    \( \begin{aligned}
+        C_{11} &= (-1)^2 \cdot 2 = 2 & C_{21} &= -1 & C_{31} &= 0 \\
+        C_{12} &= (-1)^3 \cdot 2 = -2 & C_{22} &= 1 & C_{32} &= -1 \\
+        C_{13} &= 3 & C_{23} &= 1 & C_{33} &= 1
+    \end{aligned} \)
+
+    Then \( A^{-1} = \begin{bmatrix}
+        2 & -2 & 3 \\
+        -1 & 1 & -1 \\
+        -1 & 0 & 1
+    \end{bmatrix} \)
+\end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

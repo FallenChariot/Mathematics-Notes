@@ -1,0 +1,303 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\section{Defining Vector Spaces and Subspaces}
+
+We've seen the sets \( \mathbb{R}^2 \) and \( \mathbb{R}^3 \)
+where the elements are vectors as translations in plane and 3-space.
+These sets have an algebraic structure.
+
+\begin{definition}[Vector Space]
+    Any set following axioms A1-A10 is called a \textbf{vector space}.
+
+    Given a vector space \( A \), vectors \( u,v,w \in A \) and scalars \( r,s \):
+    \begin{enumerate}[label=A\arabic*.]
+        \item We can define addition (and the space is closed under addition).
+        \item We can define scalar multiplication (and the space is closed under scalar multiplication).
+        \item \( u+v = v+u \)
+        \item \( (u+v)+w = u+(v+w) \)
+        \item There exists an additive identity in \( A \).
+        \item There exists an additive inverse for any \( u \in A \).
+        \item There exists a multiplicative identity in \( A \).
+        \item \( (rs)v = r(sv) \)
+        \item \( r(u+v) = ru + rv \)
+        \item \( (r+s)v = rv + sv \)
+    \end{enumerate}
+\end{definition}
+
+By studying vector spaces, we can develop algebraic machinery to apply to all kinds of other objects.
+For example, this idea will be explored for Fourier series.
+
+\begin{example}[]
+    \( Q = \left\{ a_0 + a_1 x + a_2 x^2 \mid a_i \in \mathbb{R} \right\} \)
+    (Polynomials of degree 2 or less)
+    
+    This is a vector space!
+    \begin{enumerate}[label=A\arabic*.]
+        \item Adding doesn't increase the degree. \checkmark
+        \item Scalar multiplication similarly doesn't increase the degree. \checkmark
+        \item Addition in \( \mathbb{R} \) is commutative. \checkmark
+        \item By the associative property of \( \mathbb{R} \),
+        \begin{align*}
+            \Bigl( (a_0 + a_1 x + a_2 x^2) + (b_0 + b_1 x + b_2 x^2) \Bigr) + (c_0 + c_1 x + c_2 x^2) \\
+            = \Bigl( (a_0 + b_0) + c_0 \Bigr) + \Bigl( (a_1 + b_1) + c_1 \Bigr)x + \Bigl( (a_2 + b_2) + c_2 \Bigr)x^2 \\
+            = \Bigl( a_0 + (b_0 + c_0) \Bigr) + \Bigl( a_1 + (b_1 + c_1) \Bigr)x + \Bigl( a_2 + (b_2 + c_2) \Bigr)x^2 \\
+            = a_0 + a_1 x + a_2 x^2 + (b_0 + c_0) + (b_1 + c_1)x + (b_2 + c_2)x^2 \checkmark
+        \end{align*}
+        \item 0 polynomial \checkmark
+        \item \( -(a_0 + a_1 x + a_2 x^2) = -a_0 - a_1x - a_2x^2 \) \checkmark
+        \item \( 1\cdot(a_0 + a_1 x + a_2 x^2) = a_0 + a_1 x + a_2 x^2 \) \checkmark
+        \item \checkmark
+        \item \checkmark
+        \item \checkmark
+    \end{enumerate}
+\end{example}
+
+\begin{example}
+    \( V = \mathbb{R}^2 \) \\
+    \( S = \left\{ (x,y) \mid x^2-y^2 = 0 \right\} \) \\
+    Is \( S \) a vector space?
+
+    No, since addition is not closed.
+\end{example}
+
+\begin{example}
+    \( V = M_{3 \times 2}(\mathbb{R}) =\left\{ \begin{bmatrix} a & d \\ b & e \\ c & f \end{bmatrix} \Bigg\vert \; a,b,c,d,e,f \in \mathbb{R} \right\} \) \\
+    \( S = \left\{ A \in V \mid \text{columns each sum to 0} \right\} \) \\
+    Is \( S \) a vector space?
+    
+    For example, \( \begin{bmatrix} 1 & 0 \\ 0 & 2 \\ -1 & -2 \end{bmatrix} \in S \).
+    Now, \( \vec{0} = \begin{bmatrix} 0 & 0 \\ 0 & 0 \\ 0 & 0 \end{bmatrix} \).
+
+    Closed under scalar mult? \checkmark \\
+    Consider \( \begin{bmatrix} a & d \\ b & e \\ c & f \end{bmatrix} \text{ s.t. } a+b+c = 0 \text{ and } d+e+f=0 \). \\
+    Then \( m\begin{bmatrix} a & d \\ b & e \\ c & f \end{bmatrix} = \begin{bmatrix} ma & md \\ mb & me \\ mc & mf \end{bmatrix} \). \\
+    So \( ma+mb+mc = m(a+b+c) = m(0) \) and \( md+me+mf = m(d+e+f) = m(0) \). \checkmark
+
+    Closed under addition? \checkmark \\
+    Consider \( \begin{bmatrix} a & d \\ b & e \\ c & f \end{bmatrix}, \; \begin{bmatrix} a' & d' \\ b' & e' \\ c' & f' \end{bmatrix} \in S\). \\
+    Now \( \begin{bmatrix} a & d \\ b & e \\ c & f \end{bmatrix} + \begin{bmatrix} a' & d' \\ b' & e' \\ c' & f' \end{bmatrix} =
+    \begin{bmatrix} a+a' & d+d' \\ b+b' & e+e' \\ c+c' & f+f' \end{bmatrix} \) \\
+    Check \( (a+a') + (b+b') + (c+c') = (a+b+c) + (a'+b'+c') = 0 \).
+\end{example}
+
+\begin{note}
+    Since the above examples of \( S \) are subsets of known vector spaces, we just have to check:
+    \begin{enumerate}
+        \item Closed under \( +,- \)
+        \item Closed under scalar multiplication
+    \end{enumerate}
+
+    These are called \textbf{subspaces}.
+\end{note}
+
+Vectors spaces do not just include \( \mathbb{R}^n \text{ and } \mathbb{C}^n \).
+We have:
+\begin{itemize}
+    \item \( C^k(I) \): function on an internal \( I \) with \( k \) continuous derivatives
+    \item \( P_n(\mathbb{R}) \): polynomials with degree up to \( n \)
+    \item \( M_{m \times n}(\mathbb{R}) \)
+\end{itemize}
+
+\begin{example}[]
+    Consider \( y''+a_1(x)y' + a_2(x) = 0 \) on an interval \( I \). Let \( S \) be the set of solutions to this LODE.
+    Is \( S \) a vector space?
+    \begin{itemize}
+        \item Addition: If \( y_1,y_2 \in S \), is \( y_1+y_2 \in S \)?
+            \[ (y_1+y_2)''+a_1(x)(y_1+y_2)' + a_2(x)(y_1+y_2) \\
+            = y_1''+y_2'' + a_1(x)(y_1'+y_2') + a_2(x)(y_1+y_2) \\
+            = 0+0 \]
+            Therefore, \( S \) is closed under addition.
+        \item Scalar Multiplication: If \( y \in S \), is \( cy \in S \)?
+            Yes since \( (cy)'' = cy'' \) and \( (cy)' = cy' \).
+    \end{itemize}
+    Therefore \( S \) is a vector space, a subspace of \( C^2(I) \).
+\end{example}
+
+\begin{example}[]
+    Let \( V = \mathbb{R}^3 \) and \( S \) be the solutions to the linear system:
+    \begin{align*}
+        2x + 3y + z = 0 \\
+        x + 2y + 3z = 0
+    \end{align*}
+    Then \( S \subset V \) is a subspace.
+    All vectors in the subspace lie on a line through the origin contained on both planes.
+\end{example}
+
+Using this concept of subspaces, we can find solutions to certain differential equations or systems of linear equations.
+
+\begin{definition}[Null Space]
+    The solutions of a homogeneous linear system \( A \vec{x} = 0 \) is called the \textbf{null space} of \( A \), any \( A_{m \times n} \).
+    It is a subspace of \( \mathbb{R}^n \) and is also known as the \textbf{kernel} of \( A \).
+\end{definition}
+
+For \( \mathbb{R}^3 \), subspaces consist of either a point {\( \vec{0} \)}, a line through \( \vec{0} \), or a plane through \( \vec{0} \).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Spanning Sets}
+
+\begin{definition}[Span]
+    A linear combination of vectors \( \vec{v_1}, \vec{v_2}, \dots, \vec{v_n} \in V \) is a vector
+    \( \vec{v} = c_1\vec{v_1}+c_2\vec{v_2}+\dots+n\vec{v_n} \) in \( V \).
+
+    The \textbf{span} of \( \left\{ \vec{v_1}, \vec{v_2}, \dots, \vec{v_n} \right\} \) is the set of all linear combinations.
+    The span is a subspace of the vector space \( V \).
+\end{definition}
+
+\begin{example}[]
+    Compute the span of \( \left\{ (-4, 1, 3), \; (5,1,6), \; (6,0,2) \right\} \) in \( \mathbb{R}^3 \).
+
+    We want the set \( \left\{ (a,b,c) \right\} \) that are linear combinations of the three vectors.
+    In other words, the solutions of the linear system:
+    \[ \begin{bmatrix}
+        -4 & 5 & 6 & a \\
+        1 & 1 & 0 & b \\
+        3 & 6 & 2 & c
+    \end{bmatrix} \]
+
+    \begin{gather*}
+        \xrightarrow[]{1. \; 2. \; 3.}
+        \begin{bmatrix}
+            1 & 1 & 0 & b \\
+            0 & 9 & 6 & a+4b \\
+            0 & 3 & 2 & c-3b
+        \end{bmatrix}
+        \xrightarrow[]{4. \; 5.}
+        \begin{bmatrix}
+            1 & 1 & 0 & b \\
+            0 & 3 & 2 & c-3b \\
+            0 & 0 & 0 & a+13b-3c
+        \end{bmatrix}
+    \end{gather*}
+    \begin{enumerate}
+        \item \( P_{12} \)
+        \item \( A_{12}(4) \)
+        \item \( A_{13}(-3) \)
+        \item \( P_{23} \)
+        \item \( A_{23}(-3) \)
+    \end{enumerate}
+    There is a solution if and only if \( \text{rk}A = \text{rk}A^\# \).
+    So \( a+13b-3c = 0 \). We conclude the span is on a plane \( \boxed{x+13y-3z=0} \).
+\end{example}
+
+\begin{note}
+    One of the three vectors is redundant.
+\end{note}
+
+\begin{example}[]
+    Write \( (-4,1,3) \) as a linear combination of \( (5,1,6) \text{ and } (6,0,2) \).
+
+    We want constants \( c_1,c_2 \) such that:
+    \[ c_1 \begin{bmatrix} 5 \\ 1 \\ 6 \end{bmatrix} + c_2 \begin{bmatrix} 6 \\ 0 \\ 2 \end{bmatrix}
+    = \begin{bmatrix} -4 \\ 1 \\ 3 \end{bmatrix} \]
+    We need to solve \( \begin{bmatrix}
+        5 & 6 & -4 \\
+        1 & 0 & 1 \\
+        6 & 2 & 3
+    \end{bmatrix} \)
+    \begin{gather*}
+        \xrightarrow[2. \; 3.]{1.}
+        \begin{bmatrix}
+            1 & 0 & 1 \\
+            0 & 6 & -9 \\
+            0 & 2 & -3
+        \end{bmatrix}
+        \xrightarrow[]{4. \; 5.}
+        \begin{bmatrix}
+            1 & 0 & 1 \\
+            0 & 2 & -3 \\
+            0 & 0 & 0
+        \end{bmatrix}
+        \xrightarrow[]{6.}
+        \begin{bmatrix}
+            1 & 0 & 1 \\
+            0 & 1 & \frac{-3}{2} \\
+            0 & 0 & 0
+        \end{bmatrix}
+    \end{gather*}
+
+    Thus \( \begin{bmatrix} 5 \\ 1 \\ 6 \end{bmatrix} -\displaystyle \frac{3}{2} \begin{bmatrix} 6 \\ 0 \\ 2 \end{bmatrix}
+    = \begin{bmatrix} -4 \\ 1 \\ 3 \end{bmatrix} \).
+\end{example}
+
+The moral of this example is that sometimes a spanning set has redundant vectors.
+We would like a spanning set to have no redundant vectors or a "minimally spanning set."
+
+\begin{definition}[Linear Dependence]
+    A set \( \left\{ \vec{v_1}, \vec{v_2}, \dots, \vec{v_n} \right\} \) in a vector space \( V \) is \textbf{linearly dependent}
+    if there exists some \( c_1, c_2, \dots, c_n \) not all zero such that:
+    \( c_1\vec{v_1} + c_2\vec{v_2} + \dots + c_n\vec{v_n} = \vec{0} \).
+    (This is called the dependence relation, and we would say one of the vectors is redundant.)
+
+    Otherwise, the set is \textbf{linearly independent} and the relation \( c_1\vec{v_1} + c_2\vec{v_2} + \dots + c_n\vec{v_n} = \vec{0} \)
+    implies \( c_1 = c_2 = \dots = c_n = 0\).
+\end{definition}
+
+\begin{example}[]
+    The vectors \(\vec{v_1} = \begin{bmatrix} 2 \\ -1 \\ 1 \end{bmatrix},
+    \; \vec{v_2} = \begin{bmatrix} -1 \\ 2 \\ -1 \end{bmatrix},
+    \; \vec{v_3} = \begin{bmatrix} -1 \\ -1 \\ 2 \end{bmatrix} \) are linearly dependent. \\
+    Find the dependence relation.
+
+    We need to solve \( A\vec{x} = \vec{0} \) and \( \text{rk}A \leq 2 \) for there to be nontrivial solutions.
+    \begin{gather*}
+        \begin{bmatrix}
+            2 & -1 & -1 & 0 \\
+            -1 & 2 & -1 & 0 \\
+            -1 & -1 & 2 & 0
+        \end{bmatrix}
+        \rightarrow
+        \begin{bmatrix}
+            1 & 1 & -2 & 0 \\
+            0 & 3 & -3 & 0 \\
+            0 & -3 & 3 & 0
+        \end{bmatrix}
+        \rightarrow
+        \begin{bmatrix}
+            1 & 1 & -2 & 0 \\
+            0 & 1 & -1 & 0 \\
+            0 & 0 & 0 & 0
+        \end{bmatrix}
+    \end{gather*}
+    Parameterizing, we find that \( c_3 = t, \; c_2 = t, \; c_1 = 2t-t = t \).
+
+    Therefore \( \boxed{\vec{v_1}+\vec{v_2}+\vec{v_3} = \vec{0}} \).
+\end{example}
+
+\subsection{Method for Testing Spans}
+
+Given \( \left\{ \vec{v_1}, \, \dots \, , \vec{v_n} \right\} \),
+to determine if they are linearly dependent, form a matrix \( A = \begin{bmatrix}
+    \vec{v_1} \; \vec{v_2} \; \dots \; \vec{v_n}
+\end{bmatrix} \).
+Then the set is linearly dependent if and only if \( A \vec{c} = \vec{0} \) has nontrivial solutions.
+In other words, there exists some non-zero scalars \( c_1, \, \dots \, , c_k\) such that
+\( c_1 \vec{v_1} + \dots + c_k \vec{v_k} = \vec{0} \) if and only if \( \text{rk}A<k \).
+
+The technique is to commit ERO's and find \( \text{rref}(A) \).
+
+For example, suppose we have a span and \( \text{rref}(A^\#) \) is:
+\[
+\begin{bNiceMatrix}[last-row]
+    1 & 2 & 0 & 3 & 0 & 0 \\
+    0 & 0 & 1 & 4 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 \\
+    & \uparrow & & \uparrow & & 
+\end{bNiceMatrix}
+\]
+
+We have two free variables.
+
+\underline{Claim:} Each free variable gives a nontrivial dependence with bound variables.
+
+So for this example, there are two dependence relations where \( \vec{v_2} \text{ and } \vec{v_4} \) are redundant
+and \( \vec{v_1}, \; \vec{v_3}, \; \vec{v_5} \) form a linearly independent span.
+
+
+In general, we can conclude that \( v_1, \, \dots \, , \vec{v_k} \) are linearly independent
+if and only if there are no free variables in \( \text{rref}(A^\#) \) or equivalently \( \text{rk}A = k \).
+
+\end{document}
