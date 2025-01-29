@@ -1,0 +1,228 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\section{Sequences}
+
+The concepts of sequences arise naturally and recur throughout mathematics (e.g. analysis).
+
+\begin{definition}[Sequences]
+    A \textbf{sequence} of numbers is a (possibly infinite) list with ordered elements:
+    \[ \displaystyle \{a_n\}^{\infty}_{n=1} = \{a_1, a_2, a_3, \dots \}\]
+    (We could start the sequence at \( x=0 \) if we prefer.)
+\end{definition}
+
+Some examples include:
+\begin{enumerate}
+    \item \( \{1, 2, 3, 4, \dots \} \quad a_n = n \) \\
+        This reproduces the natural numbers.
+        We can also define this sequence recursively with: \( a_{n+1} = a_n +1 \; (a_1 = 1) \).
+    \item \( \{1, 3, 6, 10, \dots \} \quad a_n = a_n + (n+1), \; a_1 =1  \) \\
+        These are the triangular numbers. A closed formula for them is \( a_n = \frac{1}{2}n(n+1) \).
+    \item \( \{2, 4, 7, 11, 16, \dots \} \quad a_{n+1} = a_n +(n+1), \; a_1 = 2 \)
+    \item \( \{1,1,2,3,5,8,13,21, \dots \} \) \\
+        This is the famous Fibonacci sequence.
+\end{enumerate}
+
+\textit{Aside:} The Fibonacci sequence is arguably the most famous sequence appearing in \href{https://www.fq.math.ca/}{a variety of contexts}.
+Its closed formula is: \[ a_n = \frac{\phi^n - \psi^n}{\phi-\psi} \]
+
+where \( \displaystyle \phi = \frac{1+\sqrt(5)}{2} \text{ and } \psi = \frac{1-\sqrt{5}}{2} \).
+
+Numerically, \( \phi \text{ and } \psi \) are roots of the polynomial \( x^2 - x - 1 \).
+Geometrically, they are related to the ratios of a regular pentagon:
+
+% add picture of ratios
+
+In this chapter, we will build upon this definition into tools we can use to solve other problems.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Sequence Convergence}
+
+\begin{definition}[Convergence]
+    An infinite sequence \( {a_n} \) \textbf{converges} to a number \( L \) if 
+    \( \lim_{n \to \infty} a_n \) exists and equals \( L \).
+\end{definition}
+
+Meaning, for any \( \varepsilon > 0 \), there exists a number \( N \) such that \( | a_n - L | < \varepsilon \)
+whenever \( n > N \). (This goes back to the definition of limits.)
+
+% Add picture of epsilon corridor
+
+We say \( a_n \) diverges to \( +\infty \) if \( \lim_{n \to \infty} a_n = \infty \)
+and \( a_n \) diverges to \( -\infty \) if \( \lim_{n \to \infty} a_n = -\infty \).
+The sequence \( a_n \) 'really diverges' otherwise.
+
+\begin{example}[]
+    Prove using the definition that \( \frac{1}{n} \) converges to 0.
+
+    Given any \( \varepsilon > 0  \), choose \( N = \lceil{ \frac{1}{\varepsilon} \rceil} \).
+    Then, \( n > N = \lceil{ \frac{1}{\varepsilon} \rceil} \implies | \frac{1}{n} - 0 | < \varepsilon \)
+    Therefore, by the definition, \( \frac{1}{n} \rightarrow 0 \).
+\end{example}
+
+From this definition, we can prove several properties of sequences identical to the Limit Laws.
+If \( {a_n} \text{ and } {b_n} \) are convergent sequences and \( c \) is a constant, then:
+\[ \lim_{n \to \infty} (a_n \pm b_n) = \lim_{n \to \infty} a_n \pm \lim_{n \to \infty} b_n \]
+\[ \lim_{n \to \infty} ca_n = c \lim_{n \to \infty} a_n \]
+\[ \lim_{n \to \infty} c = c \]
+\[ \lim_{n \to \infty} (a_n b_n) = \lim_{n \to \infty} a_n \cdot \lim_{n \to \infty} b_n \]
+\[ \lim_{n \to \infty} \frac{a_n}{b_n} = \frac{\lim_{n \to \infty} a_n}{\lim_{n \to \infty} b_n}
+    \text{ if } \lim_{n \to \infty} b_n \neq 0 \]
+\[ \lim_{n \to \infty} =  \left[\lim_{n \to \infty} a_n \right]^p \text{ if } p>0 \text{ and } a_n>0\]
+
+\begin{example}[]
+    Evaluate \( \{ \frac{3+5n^2}{n+n^2} \} \).
+
+    Dividing the numerator and denominator by \( \frac{1}{n^2} \), we can use the Limit Laws.
+    \begin{align*}
+        \lim_{n \to \infty} \frac{3+5n^2}{n+n^2} &= \lim_{n \to \infty} \frac{3+5n^2}{n+n^2} \cdot \frac{\frac{1}{n^2}}{\frac{1}{n^2}} \\
+        &= \lim_{n \to \infty} \frac{\frac{3}{n^2}+5}{\frac{1}{n}+1} \\
+        &= \frac{\lim_{n \to \infty} \frac{3}{n^2} + \lim_{n \to \infty} 5 }{\lim_{n \to \infty} \frac{1}{n} + \lim_{n \to \infty} 1} \\
+        &= \frac{0+5}{0+1} = 5
+    \end{align*}
+\end{example}
+
+Note: To show a sequence \( \{ a_j \} \) diverges, given any \( R>0 \)
+find \( N \) such that \( n > N  \) implies \( a_n > R \).
+
+\begin{example}[]
+    Show \( \{\ln n\} \to \infty \).
+
+    For a general \( R \), choose \( N = e^R \).
+    Then \( n > e^R \implies \ln n > \ln e^R = R \).
+    Therefore \( \{ \ln n \} \to \infty \).
+\end{example}
+
+When a sequence has an interdeterminant form, it is useful to rewrite the expression in another way to determine its convergence or divergence.
+As shown before, we can rewrite polynomial expressions. Another tool we can use is the following theorems (taken from Stewart).
+The first theorem allows us to compare sequences with discrete variables to functions of continuous variables when limits approach infinity. 
+\begin{theorem}
+    \label{stewart3}
+    If \( \lim_{x \to \infty} f(x) = L  \) and \( f(n) = a_n \) when \( n \in \mathbb{Z} \), then \( \lim_{n \to \infty} f(n) = L \).
+\end{theorem}
+The second theorem says that if we apply a continuous function to terms of a convergent sequence, the result is also convergent.
+\begin{theorem}
+    \label{stewart7}
+    If \( \lim_{n \to \infty} = L \) and the function \( f \) is continuous at \( L \), then \( \lim_{n \to \infty} f(a_n) = L \).
+\end{theorem}
+
+\begin{example}[]
+    Find \( \lim_{n \to \infty} (1+\frac{1}{n})^n \).
+
+    We can apply Thm~\ref{stewart3} and Thm~\ref{stewart7} using \( f(x) = e^x \).
+    Then, \( \lim_{n \to \infty} (1+\frac{1}{n})^n = \lim_{x \to \infty} (1+\frac{1}{x})^x \). Now,
+    \[ \left( 1+\frac{1}{x} \right)^x = e^{\ln \left( 1+\frac{1}{x} \right)^x } = e^{x \ln \left( 1+\frac{1}{x} \right)} \]
+    So, \[ \lim_{x \to \infty} \left(1+\frac{1}{x}\right)^x = e^{ \lim_{x \to \infty} x \ln \left( 1+\frac{1}{x} \right)} \]
+    However, \[ \lim_{x \to \infty} x \ln \left( 1+\frac{1}{x} \right) = \lim_{x \to \infty} \frac{\ln \left( 1+\frac{1}{x} \right)}{\frac{1}{x}} \to \frac{0}{0} \]
+    Since this is an interdeterminant form, applying L'Hopital's Rule,
+    \[ \lim_{x \to \infty} \frac{ \ln\left(1+ \frac{1}{x}\right) }{ \frac{1}{x} } = \lim_{x \to \infty} \frac{\frac{1}{1+\frac{1}{x}}\frac{-1}{x^2}}{\frac{-1}{x^2}}
+        = \lim_{x \to \infty} \frac{1}{1+\frac{1}{x}} = 1\]
+    Thus, we conclude \( \lim_{n \to \infty} \left( 1 + \frac{1}{n}\right)^n = e^1 = e \).
+\end{example}
+
+\subsection{Little-O Notation}
+
+It is useful to describe how quickly a sequence converges compared to some other sequence. The relative "speed" can be compared with Little-Oh notation.
+
+\begin{definition}[Little-Oh Notation]
+    Let \( {a_n} \text{ and } {b_n} \) be sequences. We say \( a_n \) is \textbf{little-oh} of \( b_n \) and write \( a_n = o(b_n) \text{ if } \lim_{n \to \infty} \frac{a_n}{b_n} = 0 \).
+
+    We also say \( b_n \) is much faster than \( a_n \) and write \( a_n << b_n \text{ for } n >> 0 \).
+\end{definition}
+
+In computer programming, we want algorithms that require less space and time to process inputs. We can compare algorithmns with similar notation.
+
+\begin{example}[]
+    Compare \( {n} \text{ and } {\frac{1}{2}n} \).
+
+    Clearly \( \frac{1}{2}n < n \), so \( \frac{1}{2}n < n \). However,
+    \[ \lim_{n \to \infty } \frac{\frac{1}{2}n}{n} = \frac{1}{2} \neq 0 \]
+    It is not slow enough.
+\end{example}
+
+\begin{example}[]
+    Show \( \ln(\ln n) = o(\ln n) \).
+
+    \[ \lim_{n \to \infty}\frac{\ln(\ln n)}{\ln n} \to \frac{\infty}{\infty}\]
+    An indeterminant form.
+
+    By Thm~\ref{stewart3}, \[ \lim_{n \to \infty}\frac{\ln(\ln n)}{\ln n} = \lim_{x \to \infty} \frac{\ln(\ln x)}{\ln x} \].
+
+    Using L'Hopital's Rule, \[ \lim_{x \to \infty} \frac{\ln(\ln x)}{\ln x} = \lim_{x \to \infty} \frac{\frac{1}{x\ln x}}{\frac{1}{x}}
+        = \lim_{x \to \infty} \frac{1}{\ln x} = 0 \]
+    
+        We conclude \( ln(\ln n) = o(\ln n) \).
+\end{example}
+
+\begin{example}[]
+    Compare \( {n!} \text{ and } {e^n} \).
+
+    Claim: \( \lim_{n \to \infty} \frac{e^n}{n!} = 0 \)
+
+    Now, consider the first several terms:
+    \[ \frac{e^n}{n!} = \frac{e \cdot e \cdot \ldots \cdot e}{1 \cdot 2 \cdot 3 \cdot \ldots \cdot n} \rightarrow \]
+    \begin{align*}
+        \frac{e}{1}, \; \frac{e \cdot e}{1 \cdot 2}, \; & \frac{e \cdot e \cdot e}{1 \cdot 2 \cdot 3}, \; \frac{e \cdot e \cdot e \cdot e}{1 \cdot 2 \cdot 3 \cdot 4}, \; \dots \\
+        > & \frac{e}{3}\cdot\frac{e^2}{2} > \frac{e^2}{12} \cdot \frac{e^2}{2}
+    \end{align*}
+    We see starting with the third term, they look similar to a geometric series since \( e < 3 \). (Note \( \frac{e}{3} < 1 \text{ and } \frac{e}{4}<1 \).)
+    Then,
+    \[ 0 < \frac{e^n}{n!} < \frac{e^2}{2}\cdot\frac{e}{n} = \frac{e^3}{2}\left(\frac{1}{n}\right) \]
+    By the Squeeze Theorem, \( \frac{e^n}{n!} \to 0 \).
+\end{example}
+
+\subsection{Monotonic Bounded Sequence Theorem}
+
+When dealing with recursive sequences, the Monotonic Bounded Sequence Thm (MST) is very helpful in determining convergence.
+
+\begin{theorem}[Monotonic Bounded Sequence Theorem]
+    \label{mst}
+    Every monotonic, bounded sequence is convergent.
+\end{theorem}
+
+We would simply need to show the sequence is bounded and monotonic. If it converges, then the limit is a fixed point where \( a_{n+1} = a_n \).
+
+% insert diagram
+
+\begin{example}[]
+    Consider \( a_1 = \sqrt{2}, \, a_n = \sqrt{2+a_n} \).
+
+    \emph{Step 1:} Find the fixed point. (Finding it first makes showing it bounded easier.)
+    \begin{align*}
+        \sqrt{2+a_n} & = a_n \\
+        2 + a_n & = a_n^2 \\
+        a_n^2 - a_n -2 & = 0 \\
+        (a_n-2)(a_n+1) & = 0
+    \end{align*}
+    \[ \therefore a_n = 2, -1 \]
+    If \( \{a_n\} \) converges, \( \lim_{n \to \infty} a_n = 2 \) (since \( a_1 > 0 \text{ and } a_n \) is increasing).
+
+    \emph{Step 2:} Show it is bounded. Use a fixed point if possible. \\
+    Lower bound: -1 (all terms are greater than 0) \\
+    Upper bound: 2 \dots \\
+    Now, \( a_1 = \sqrt{2} < 2 \)
+    If \( a_n < 2 \), then \( a_{n+1} = \sqrt{2+a_n} < \sqrt{2+2} = 2 \), so \( a_n<2 \implies a_{n+1}<2 \).
+    Therefore, by the principal of induction, \( a_n<2 \) for all n, and we have shown \( a_n \) is bounded. \checkmark
+
+    \emph{Step 3:} Show it is increasing i.e. \( a_{n+1} > a_n \) for all n.
+    Now, this is equivalent to \( a_{n+1}^2 > a_n^2 \). Rearranging and applying \( a_{n+1} = \sqrt{2+a_n} \), we see that \( 2+a_n-a_n^2 > 0 \).
+    This expression holds since \( -1 < a_n < 2 \) for all \( n \), so \( \{a_n\} \) is increasing.
+
+    Therefore, by MST, \( \{a_n\} \) converges, so \( \lim_{n \to \infty} a_n = 2 \).
+\end{example}
+
+Now, consider this example of a continued fraction:
+\[ \displaystyle 1 + \cfrac{1}{1+\cfrac{1}{1+\cfrac{1}{1+\dots}}} \]
+
+This generates the following sequence:
+\[ \left\{ 1+1, \, 1+ \frac{1}{1+1}, \, 1+\frac{1}{1+\frac{1}{1+1}}, \, \dots \right\} \]
+or equivalently:
+\[ \left\{ 2, \, \frac{3}{2}, \, \frac{5}{3}, \, \frac{8}{5}, \, \frac{13}{8}, \, \dots \right\} \]
+
+The sequence is certainly bounded between 1 and 2, but it is not monotonic. However, we can still use Thm~\ref{mst}.
+
+Both \( \{a_{2n}\} \text{ and } \{a_{2n+1}\} \) are monotonic and approach the same limit (which is the Golden Mean \( \phi \)).
+
+\end{document}

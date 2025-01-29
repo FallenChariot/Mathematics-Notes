@@ -13,6 +13,8 @@
     hyperref,
     subfiles
 }
+\usepackage[english]{babel}
+\usepackage[autostyle]{csquotes}
 
 \hypersetup{
     colorlinks,
@@ -42,6 +44,9 @@
 \newcommand{\msout}[1]{	ext{\sout{\ensuremath{#1}}}}
 
 % Other Settings
+
+\DeclareMathOperator{\ima}{Im}
+\DeclareMathOperator{\rref}{rref}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{Linear Algebra\thanks{Partially based on courses taught by Dr. Eric Brussel and Dr. Morgan Sherman at California Polytechnic State University San Luis Obispo}}
@@ -73,7 +78,7 @@ This way of thinking is more useful and I found thinking of all vector spaces to
 \chapter{Matricies}
 \subfile{sections/matricies.tex}
 
-\chapter{Interlude: Systems of Linear Equations}
+\chapter{Application: Systems of Linear Equations}
 \subfile{sections/linear_eqn.tex}
 
 \chapter{Vectors and Vector Spaces}

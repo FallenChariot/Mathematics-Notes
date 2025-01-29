@@ -21,14 +21,14 @@
     citecolor=black,
     filecolor=black,
     linkcolor=black,
-    urlcolor=black
+    urlcolor=blue
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newtheorem{theorem}{Theorem}
 
-\newtheoremstyle{mydefinitionstyle}{\topsep}{\topsep}{}{}{\itshape}{:}{\newline}{}
+\newtheoremstyle{mydefinitionstyle}{\topsep}{\topsep}{\itshape}{}{\itshape}{:}{\newline}{}
 \theoremstyle{mydefinitionstyle}
 \newtheorem*{definition}{Definition}
 
@@ -43,19 +43,10 @@
 \renewcommand\qedsymbol{$\square$}
 \newcommand{\msout}[1]{	ext{\sout{\ensuremath{#1}}}}
 
-\providecommand{\varitem}{} % to keep LaTeX quiet
-\makeatletter
-\newenvironment{axioms}[1]
- {\renewcommand\varitem[1]{\item[\textbf{#1\arabic{enumi}\rlap{$##1$}.}]%
-    \edef\@currentlabel{#1\arabic{enumi}{$##1$}}}%
-  \enumerate[label=\textbf{#1\arabic*.}, ref=#1\arabic*]}
- {\endenumerate}
-\makeatother
-
 % Other Settings
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Real Analysis}
+\title{Calculus}
 \author{Christopher K. Walsh}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -64,17 +55,10 @@
 \maketitle
 \tableofcontents
 
-\vspace{10mm}
-\begin{center}
-    \textit{"God made the integers; all else is the work of man."}
-    \textit{- Leopold Kronecker}
-\end{center}
+\newpage
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\chapter{Rational and Real Numbers}
-\subfile{sections/foundations.tex}
-\subfile{sections/rational_nums.tex}
-\subfile{sections/real_nums.tex}
+\chapter{Sequences and Series}
+\subfile{sections/sequences_and_series.tex}
+\subfile{sections/series.tex}
 
 \end{document}

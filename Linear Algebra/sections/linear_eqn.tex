@@ -124,6 +124,15 @@ Adding equations together is the same as the row sum operation etc.
 Using EROs, the process to solve these systems is to write the augmented matrix of the system,
 perform EROs to get a reduced matrix and obtain the simpler linear system.
 
+\label{prop_of_det_2} Moreover, suppose \( A \xrightarrow{1.} B \) is an ERO. Then,
+\begin{enumerate}
+    \item If \( 1. P_{ij} \), then \( \det B = -\det A \).
+    \item If \( 1. M_i(k) \), then \( \det B = k\cdot\text{A} \).
+    \item If \( 1. A_{ij}(k) \), then \( \det B = \det A \).
+\end{enumerate}
+
+(Other properties of the determinant are addressed in \ref{prop_of_det_1}.)
+
 \begin{example}[]
     Solve if possible.
     \begin{align*}
@@ -250,7 +259,7 @@ To put a matrix into its ref or rref form:
     The number of leading 1's in ref(\( A \)) is the rank of \( A \), usually written as "rk(\( A \))."
 \end{definition}
 
-\begin{theorem}[]
+\begin{theorem}[Theorem of Rank]
     Let \( A, \; A^\# \) be the coefficient and augmented matrix for a system of linear equations
     with \( m \) equations and \( n \) unknowns.
 
