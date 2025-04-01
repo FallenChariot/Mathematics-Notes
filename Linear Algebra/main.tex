@@ -39,6 +39,7 @@
 \theoremstyle{remark}
 \newtheorem*{note}{Note}
 \newtheorem*{aside}{Aside}
+\newtheorem{corollary}{Corollary}[theorem]
 
 \renewcommand\qedsymbol{$\square$}
 \newcommand{\msout}[1]{	ext{\sout{\ensuremath{#1}}}}
@@ -61,15 +62,15 @@
 \newpage
 \chapter*{Preface}
 \addcontentsline{toc}{section}{Preface}
-This document compiles all my notes on linear algebra including any self-study (e.g. advanced applications in modern physics).
+This document compiles all my notes on linear algebra including any self-study.
 This also serves as a foundation for the other analysis topics covered in my notes series.
 
-For most engineers, linear algebra is simply the study of matrices and vectors in \( \mathbb{R}^n \).
-For a mathematician, linear algebra is the study of vector spaces and linear transformations.
-This definition means linear algebra is more abstract than vectors describing physical quantities or systems of linear equations.
-They can be functions for example, and thinking of functions in a vector space is surprisingly useful for advanced differential equations.
-In modern or quantum physics, all the behaviors of particles can be modeled using complex vector spaces (see sections on Hilbert spaces and complex vector spaces).
-This way of thinking is more useful and I found thinking of all vector spaces to be fascinating.
+This topic is what really propelled me to study more advanced math. Linear algebra is a lot more than the study of
+vectors and systems of equations. It is a methodology for vector spaces including standard Euclidean vectors and functions.
+For the first time in my life, I started dealing with math beyond calculations and computations. I had to prove things
+about these systems and I found that incredibly interesting and rewarding.
+
+Hope that these notes make you feel the same way.
 
 - Christopher
 
@@ -83,5 +84,11 @@ This way of thinking is more useful and I found thinking of all vector spaces to
 
 \chapter{Vectors and Vector Spaces}
 \subfile{sections/vector_spaces.tex}
+
+\chapter{Linear Transformations}
+\subfile{sections/linear_transform.tex}
+
+\chapter{Eigenvalue Problems}
+\subfile{sections/eigenvalue_problems.tex}
 
 \end{document}

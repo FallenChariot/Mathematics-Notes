@@ -1,0 +1,75 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\section{Introduction to Linear Transformations}
+
+Let \( A \) be an \( m \times n \) matrix. We can interpret it as a function or transformation between vector spaces,
+where \( A: \mathbb{R}^n \rightarrow \mathbb{R}^m \).
+
+Note that \( A \) is a linear transformation since \( A(\vec{v}+\vec{w}) = A\vec{v} + A\vec{w} \)
+and \( A(c\vec{v}) = cA\vec{v} \).
+
+\begin{example}[]
+    \[ A = \begin{bmatrix}
+        \frac{1}{\sqrt{2}} & \frac{-1}{\sqrt{2}} \\
+        \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+    \end{bmatrix} \]
+
+    What does it do?
+
+    Let \[ \vec{e_1} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \vec{e_2} = \begin{bmatrix} 1 \\ 0 \end{bmatrix} \].
+    % insert diagram
+\end{example}
+
+\begin{example}
+    Find a matrix for \( \frac{\Pi}{2} \) rotation.
+    \[ A =\begin{bmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{bmatrix} \]
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Eigenvalues and Eigenvectors}
+
+Most linear transformations can be understood with eigenvalues and eigenvectors.
+
+\begin{definition}[]
+    Let \( A \) be \( n \times n \).
+
+    An \textbf{eigenvalue} of \( A \) is a scalar \( \lambda \) such that \( A\vec{v}=\lambda\vec{v} \)
+    has a nonzero solution \(\vec{v}\).
+
+    An \textbf{eigenvector} \( \vec{v} \) for \( \lambda \) is a nonzero \(\vec{v}\): \( A\vec{v}=\lambda\vec{v} \).
+
+    An \textbf{eigenspace} for \( \lambda \) is the set of all \( \vec{v} \): \( A\vec{v}=\lambda\vec{v} \).
+
+    An \textbf{eigenbasis} for \( \lambda \) is a basis \( \lambda \)'s eigenspace.
+
+\end{definition}
+
+We will look at a simple matrix to give concrete examples for all of these definitions.
+
+\begin{example}[]
+    Given \( A \; n \times n \), find its eigenvalues, eigenvectors, eigenspace, and eigenbasis.
+
+    There are two eigenvalues, \( \lambda = 2, 1 \).
+
+    For \( \lambda =2 \), \( \vec{e_1} \) is one possible eigenvector. Another possible eigenvector
+    is \( 3\vec{e_1} \). The eigenspace for \( \lambda=2 \) is the x-axis. The eigenbasis is simply
+    \( \{\vec{e_1}\} \).
+
+    For \( \lambda=1 \), the eigenbasis is simply \( \{\vec{e_2}\} \).
+
+    We can determine this intutitively by considering some vectors and applying the linear transformation \( A \).
+
+    % insert figure
+
+\end{example}
+
+To determine the eigenvalues and eigenvectors analytically, note that \( A\vec{v}=\lambda\vec{v} \) for nonzero \( \vec{v} \)
+is the same as \( (A-\lambda I)\vec{v}=\vec{0} \). Thus all \( \lambda \) satisfy \( \det(A-\lambda I) =0 \).
+
+\end{document}

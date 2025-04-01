@@ -27,7 +27,6 @@ These sets have an algebraic structure.
 \end{definition}
 
 By studying vector spaces, we can develop algebraic machinery to apply to all kinds of other objects.
-For example, this idea will be explored for Fourier series.
 
 \begin{example}[]
     \( Q = \left\{ a_0 + a_1 x + a_2 x^2 \mid a_i \in \mathbb{R} \right\} \)
@@ -405,6 +404,11 @@ Therefore if \( W[f_1, f_2, \, \dots \, , f_n](x) \neq 0 \), then \( c_1f_1 + c_
 
 \section{Bases and Dimensions}
 
+Given any number of vectors \( \vec{v_1}, \, \vec{v_2}, \, \dots, \, \vec{v_k} \) in a vector space \( V \),
+we can define a subspace of \( V \) as \( W = \text{span} \{ \vec{v_1}, \, \vec{v_2}, \, \dots, \, \vec{v_k} \} \)
+and write \( W \subset V \).
+Equivalently we can write \( W \) as \( W = \{\sum a_i \vec{i}: a_i \in \mathbb{R} \} \).
+
 \begin{definition}[Basis]
     A \textbf{basis} for a vector space \( V \) is a set of vectors that:
     \begin{enumerate}
@@ -517,23 +521,57 @@ Recall that the solution space is equivalent to \( \text{ker}(A) = \text{null}(A
     
     Applying the secret trick \dots
 
-    A basis for \( \ima A \) is
-    \( \left\{
+    A basis for \( \ima A \) is:
+    \[ \left\{
         \begin{bmatrix} 1 \\ 3 \\ 1 \\ 2 \end{bmatrix}, \,
         \begin{bmatrix} 3 \\ 9 \\ 4 \\ 9 \end{bmatrix}, \,
-        \begin{bmatrix} 1 \\ 3 \\ 2 \\ 2 \end{bmatrix}
-    \right\} \).
+        \begin{bmatrix} 3 \\ 2 \\ 2 \\ 2 \end{bmatrix}
+    \right\} \]
+    
+    Recall \( \ima A = \left\{ c_1 \vec{v_1}+ c_2 \vec{v_2} + \dots + c_5 \vec{v_5} : c_i \in \mathbb{R} \right\} \).
 
-    \[ \begin{bNiceMatrix}
-        1 & 2 & 0 & 5 & 0 \\
-        0 & 0 & 1 & -1 & 0 \\
-        0 & 0 & 0 & 0 & 1 \\
-        0 & 0 & 0 & 0 & 0
-    \end{bNiceMatrix} \]
+    \[ \begin{matrix}
+        \begin{bNiceMatrix}
+            1 & 2 & 0 & 5 & 0 \\
+            0 & 0 & 1 & -1 & 0 \\
+            0 & 0 & 0 & 0 & 1 \\
+            0 & 0 & 0 & 0 & 0
+        \end{bNiceMatrix} \\
+        \begin{matrix}
+            -2 & 1 & 0 & 0 & 0 \\
+            -5 & 0 & 1 & 1 & 0
+        \end{matrix}
+    \end{matrix}
+    \]
 
-    A basis for \( \ker A \) is
-    \( 
-     \)
+    A basis for \( \ker A \) is:
+    \[
+        \left\{
+            \begin{bmatrix} -2 \\ 1 \\ 0 \\ 0 \\ 0 \end{bmatrix}, \,
+            \begin{bmatrix} -5 \\ 0 \\ 1 \\ 1 \\ 0 \end{bmatrix}
+        \right\}
+     \]
+    
+    Recall \( \ker A =\left\{ \vec{c} \in \mathbb{R}^5 : A\vec{c} =0 \right\} \).
 \end{example}
+
+An important result regarding the kernel and image of a matrix is the rank-nullity theorem.
+
+\begin{theorem}[Rank-Nullity Theorem]
+    Let \( A \) be an \( m \times n \) matrix. Then \[ \dim(\ker A) + \dim(\ima A) = n \].
+\end{theorem}
+
+Another important result regards the dimension of a basis.
+
+\begin{theorem}[]
+    Let \( V \) be a vector space. If \( V \) has a finite basis, then any basis for \( V \) has the same number of vectors.
+\end{theorem}
+
+\begin{corollary}
+    If \( \dim V = n \), then any set of \( n \) linearly independent vectors in \( V \) is a basis.
+\end{corollary}
+
+The secret trick gives us a method to find a basis and the dimension of the space. Then, any other vector can be expressed
+using this basis.
 
 \end{document}
