@@ -70,6 +70,61 @@ We will look at a simple matrix to give concrete examples for all of these defin
 \end{example}
 
 To determine the eigenvalues and eigenvectors analytically, note that \( A\vec{v}=\lambda\vec{v} \) for nonzero \( \vec{v} \)
-is the same as \( (A-\lambda I)\vec{v}=\vec{0} \). Thus all \( \lambda \) satisfy \( \det(A-\lambda I) =0 \).
+is the same as \( (A-\lambda I)\vec{v}=\vec{0} \). Thus all \( \lambda \) satisfy \( \det(A-\lambda I) =0 \). This is a polynomial
+in \( \lambda \) with degree \( n \).
+
+The eigenvalues are the roots of \( P_A(x) \) and the eigenvectors are \( \ker A - \lambda I = \{\vec{v} \neq 0 : (A- \lambda I)\vec{v} =\vec{0} \}\)
+
+\begin{definition}
+    The \textbf{algebraic multiplicity} of \( \lambda \) is the multiplicity of the factor \(  (x-\lambda)^m \) in \( P_A(x) \).
+\end{definition}
+
+\begin{example}
+    For the matrix \( A \), find its eigenvalues and a basis for the corresponding eigenspaces.
+    \[ A = \begin{bmatrix}
+        2 & 3 & 0 \\
+        -1 & 0 & 1 \\
+        -2 & -1 & 4
+    \end{bmatrix} \]
+
+    \textit{Sol'n.}
+    \begin{enumerate}
+        \item 1. \[ A - \lambda I = \begin{bmatrix}
+            2 - \lambda & 3 & 0 \\
+            -1 & 0 - \lambda & 1 \\
+            -2 & -1 & 4 - \lambda
+        \end{bmatrix} \]
+        \( \det A - \lambda I = -(\lambda-2)^3  \)
+        \( \lambda = 2 \) is an eigenvalue.
+
+        \item Want basis for \[ \ker \begin{bmatrix}
+            0 & 3 & 0 \\
+            -1 & -2 & 1 \\
+            -2 & -1 & 2
+        \end{bmatrix} \]
+        \[ \rref A - \lambda I = \begin{bNiceMatrix}[first-row, last-row]
+            1 & 0 & 1 \\
+            1 & 0 & -1 \\
+            0 & 1 & 0 \\
+            0 & 0 & 0 \\
+            & & \uparrow
+        \end{bNiceMatrix} \]
+        Then, a basis for  \( \ker A - \lambda I \) is
+        \[ \left\{ \begin{bmatrix}
+            1 \\ 0 \\ 1
+        \end{bmatrix} \right\} \]
+
+        The eigenspace (dimension 1) is then:
+        \[ \left\{ c \begin{bmatrix}
+            1 \\ 0 \\ 1
+        \end{bmatrix} : c \in \mathbb{R} \right\} \]
+    \end{enumerate}
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Diagonalization}
+
+
 
 \end{document}

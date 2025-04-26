@@ -1,0 +1,26 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Defining Partial Derivatives}
+
+\begin{definition}[Partial Derivative]
+    The \textbf{partial derivative of \( f(x,y) \) with respect to x} is the usual x-derivative, but with \( y \) held
+    constant, written as \( \frac{\partial f}{\partial x} \) or \( f_x \).
+    
+    Similarly, \( \frac{\partial f}{\partial y} \) or \( f_y \) is the usual y-derivative, but with \( x \) held constant.
+\end{definition}
+
+We can interpret \( \frac{\partial f}{\partial x}(p_0) \) as the rate of change (r.o.c.) of \( f \) at \( p_0 \) in the
++x-direction and \( \frac{\partial f}{\partial y}(p_0) \) as the r.o.c. of \( f \) at \( p_0 \) in the +y-direction.
+
+The limit definition of the partial derivative is a more rigorous statement of the first defintion. However, this can help
+extend the partial derivative to functions of more variables in an obvious way.
+\[ f_x(a,b) = \lim_{h->0} \frac{f(a+h,b)-f(a,b)}{h} \]
+\[ f_y(a,b) = \lim_{h->0} \frac{f(a,b+h)-f(a,b)}{h} \]
+
+
+
+\end{document}
