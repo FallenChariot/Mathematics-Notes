@@ -121,6 +121,35 @@ The eigenvalues are the roots of \( P_A(x) \) and the eigenvectors are \( \ker A
     \end{enumerate}
 \end{example}
 
+\begin{example}[]
+    Let \( A = \begin{bmatrix}
+        1 & 2 \\
+        2 & 4
+    \end{bmatrix}
+    : \mathbb{R}^2 \rightarrow \mathbb{R}^2 \)
+
+    \( <x,y> \rightarrow <x+2y, 2x+4y> \)
+
+    Look \( A \) takes all input vectors to the line \( y=2x \).
+
+    Insert diagram
+
+    Computing the characteristic polynomial,
+    \begin{align*}
+        p_A (x) & = \det(A-xI) = \begin{vmatrix}
+            1-x & 2 \\
+            2 & 4-x
+        \end{vmatrix} \\
+        & = x^2-5x+0 \\
+        & = x(x-5)
+    \end{align*}
+    Thus, \( A \) has two eigenvalues: \( \lambda = 0, \, 5 \) with algebraic multiplicity of \( m =1 \) for both.
+\end{example}
+
+\begin{definition}[]
+    \( A \) is \textbf{nondefective} if its algebraic and geometric multiplicities are equal.
+\end{definition}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Diagonalization}

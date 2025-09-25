@@ -1,0 +1,46 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+    
+\section{Theory of Curves}
+
+Our main tool to understand curves will be vector methods.
+When we consider \( \mathbb{R}^3 \), we cannot use equations to describe curves since we obtain surfaces.
+
+\underline{How to Describe Curves:}
+\begin{itemize}
+    \item Solutions to \( (x,y) \) to eqn \( f(x,y)=0 \).
+            \[ x^2+y^2-1 =0 \]
+    \item Image of vector valued function, a parameterization.
+            \begin{align*}
+                \gamma: \; & I \rightarrow \mathbb{R}^2 \; (\text{or } \mathbb{R}^n) \\
+                & t \mapsto ( x(t),y(t) ) \\
+                \\
+                e.g. \; & \gamma(t) = (\cos t, \sin t), \; 0 \leq t \leq 2\pi \\
+                & \gamma: \; [0,2\pi] \rightarrow \mathbb{R}^2
+            \end{align*}            
+\end{itemize}
+
+\begin{example}[Parameterization]
+    \underline{Line:} Euclid said there exists a unique line between any two points \( p,q \in \mathbb{R}^n \; (p \neq q) \).
+    Parameterize by \( \lambda(t) \): \( p + t(q-p), \; t \in \mathbb{R} \)
+
+    \underline{Helix:} \( \gamma(t) = (\cos t, \sin t, -t) \)
+\end{example}
+
+\underline{Basic Fact:} Every parameterized curve, \( \gamma(t): \; I \rightarrow \mathbb{R}^n \) has a \textbf{velocity}, \( \gamma'(t) \).
+\( \gamma'(t) \) is the vector tangent to (the trace of) \( \gamma(t) \) pointing in the traveling direction.
+
+In \( \mathbb{R}^3 \), \( \gamma'(t) = ( x'(t), y'(t), z'(t) ) \).
+
+\( |\gamma'(t)| \) is the speed.
+
+The distance along \( \gamma(t) \) is computed using:
+\[ s = \int_{t_1}^{t_2} |\gamma'(t)| \,dt \]
+
+Another basic fact is that we can apply derivatives to the different (vector) products.
+We begin by examining how we can use the dot product.
+
+\[ (\gamma(t) \cdot \gamma(t))' = \gamma'(t) \cdot \gamma(t) + \gamma(t) \cdot \gamma'(t) = 2\gamma'(t) \cdot \gamma(t) \]
+
+\end{document}

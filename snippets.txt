@@ -1,0 +1,456 @@
+{
+	"Preamble Template": {
+        "prefix": ["template", "\\template"], 
+        "body": [
+            "%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Document Class %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%", 
+            "\\documentclass{article}", 
+            "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%", 
+            "", 
+            "%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%", 
+            "\\usepackage{graphicx}",
+            "\\usepackage{parskip}",
+            "\\usepackage{amsmath}",
+            "\\usepackage{amssymb}",
+            "\\usepackage{amsthm}",
+            "\\usepackage{enumitem}",
+            "\\usepackage{ulem}",
+            "\\usepackage{hyperref}",
+            "\\usepackage{subfiles}",
+            "",
+            "\\hypersetup{",
+            "\tcolorlinks,",
+            "\tcitecolor=black,",
+            "\tfilecolor=black,",
+            "\tlinkcolor=black,",
+            "\turlcolor=black",
+            "}",
+            "",
+            "\\graphicspath{{images/}}",
+            "",
+            "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%", 
+            "",
+            "\\newtheorem{theorem}{Theorem}",
+            "",
+            "\\newtheoremstyle{mydefinitionstyle}{\\topsep}{\\topsep}{\\itshape}{}{\\itshape}{:}{\\newline}{}",
+            "\\theoremstyle{mydefinitionstyle}",
+            "\\newtheorem*{definition}{Definition}",
+            "",
+            "\\newtheoremstyle{myexamplestyle}{\\topsep}{\\topsep}{}{}{\\itshape}{:}{\\newline}{}",
+            "\\theoremstyle{myexamplestyle}",
+            "\\newtheorem*{example}{Example}",
+            "",
+            "\\theoremstyle{remark}",
+            "\\newtheorem*{note}{Note}",
+            "\\newtheorem*{aside}{Aside}",
+            "",
+            "\\renewcommand\\qedsymbol{$\\square$}",
+            "\\newcommand{\\msout}[1]{\text{\\sout{\\ensuremath{#1}}}}",
+            "",
+            "${3:% Other Settings}",
+            "",
+            "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%", 
+            "\\title{${1:Title}}", 
+            "\\author{${2:Christopher K. Walsh}}", 
+            "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%", 
+            "",
+            "${0}"
+        ],
+        "description": "Makes the preamble."
+    },
+    "Subfiles Template":{
+        "prefix": "subdoc",
+        "body": [
+            "\\documentclass[$1]{subfiles}",
+            "",
+            "\\begin{document}",
+            "\t${0}",
+            "\\end{document}"
+        ]
+    },
+
+	//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Math Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	"Inline Math": {
+        "prefix": ["mk"],
+        "body": [
+            "\\( $1 \\)$0"
+        ],
+        "description": "Insert Inline Math Environment."
+    },
+    "Display Math": {
+        "prefix": ["dm"],
+        "body": [
+            "\\[ $0 \\]"
+        ],
+        "description": "Insert Display Math Environment."
+    },
+    "Theorem": {
+        "prefix": ["theorem", "\\theorem"],
+        "body": [
+            "\\begin{theorem}[${1:name of the theorem}]",
+            "\t$0",
+            "\\end{theorem}"
+        ],
+        "description": "Insert a theorem."
+    },
+    "Example": {
+        "prefix": ["Example", "\\example"],
+        "body": [
+            "\\begin{example}[${1:name}]",
+            "\t$0",
+            "\\end{example}"
+        ],
+        "description": "Insert a example."
+    },
+    "Definition": {
+        "prefix": ["definition", "\\definition"],
+        "body": [
+            "\\begin{definition}[${1:name of the definition}]",
+            "\t$0",
+            "\\end{definition}"
+        ],
+        "description": "Insert a definition. The serial number is automatically generated according to the section."
+    },
+    "Proof": {
+        "prefix": ["proof", "\\proof"],
+        "body": [
+            "\\begin{proof}[Proof ${1:Other Information}]",
+            "\t$0",
+            "\\end{proof}"
+        ],
+        "description": "Insert a proof. The serial number is automatically generated according to the section."
+    },
+    "Insert Problem Solving Index": {
+        "prefix": ["problemindex", "\\problemindex"], 
+        "body": ["\\noindent\\textbf{$1} $0"],
+        "description": "Insert problem solving index format."
+    },
+    "Insert Solution Notation": {
+        "prefix": ["solution", "\\solution", "soln"],
+        "body": ["\\textit{Sol'n.}"],
+        "description": "Insert italic 'Sol.'"
+    },
+
+	//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LaTex Formatting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	"Section": {
+        "prefix": ["section", "\\section"],
+        "body": [
+            "\\section{$1}$0"
+        ],
+        "description": "Insert a new section."
+    },
+    "Subsection": {
+        "prefix": ["subsection", "\\subsection"],
+        "body": [
+            "\\subsection{$1}$0"
+        ],
+        "description": "Insert a new subsection."
+    },
+    "Header": {
+        "prefix": ["header", "\\header", "##"],
+        "body": "\\section*{$1}$0",
+        "description": "Insert a section without index."
+    },
+    "Header Small": {
+        "prefix": ["headersmall", "\\headersmall", "###"],
+        "body": "\\subsection*{$1}$0",
+        "description": "Insert a subsection without index."
+    },
+    "Italic Text": {
+        "prefix": ["italic", "\\italic", "**"], 
+        "body": "\\textit{$1}$0",
+        "description": "Insert italic text."
+    },
+    "Bold Text": {
+        "prefix": ["bold", "\\bold", "***"],
+        "body": "\\textbf{$1}$0",
+        "description": "Insert bold text."
+    },
+    "Bold Italic Text": {
+        "prefix": ["bolditalic", "\\bolditalic", "****"],
+        "body": "\\textbf{\\textit{$1}}$0",
+        "description": "Insert bold italic text."
+    },
+	"Underline": {
+        "prefix": ["underline", "\\underline", "__"],
+        "body": "\\underline{$1}$0",
+        "description": "Insert bold italic text."
+    },
+    "Itemize": {
+        "prefix": ["- ", "\\itemize", "itemize"],
+        "body": [
+            "\\begin{itemize}",
+            "\t\\item $1",
+            "\\end{itemize}$0"
+        ]
+    },
+    "Linebreak Comment":{
+        "prefix": ["linebreak"],
+        "body": "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+    },
+
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Math Formatting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	"Integral":{
+        "prefix": "integral",
+        "body": [
+            "\\int_{$1}^{$2} $3 \\,d$4$0"
+        ],
+        "description": "Inserts an integral."
+    },
+    "Summation":{
+        "prefix": "summation",
+        "body": [
+            "\\sum_{$1=$2}^{$3} $4$0"
+        ],
+        "description": "Inserts a summation."
+    },
+    "to infinity":{
+        "prefix": ["to inf"],
+        "body": [
+            "\\to \\infty"
+        ],
+        "description": "Inserts the symbols for approaching infinity."
+    },
+	"Limits": {
+		"prefix": "limits",
+		"body": ["\\limits_{$1}^{$2} $0"]
+	},
+	"Lim": {
+		"prefix": "lim",
+		"body": ["\\lim \\limits_{${1:x} \\to ${2:\\infty}} $0"]
+	},
+	"Derivative": {
+		"prefix": "deriv",
+		"body": ["\\frac{d${1:f}}{d${2:x}} $0"]
+	},
+	"Partial derivative": {
+		"prefix": "pderiv",
+		"body": ["\\frac{\\partial ${1:f}}{\\partial ${2:x}} $0"]
+	},
+
+	//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Math Symbols %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	"Degree": {
+		"prefix": "degr",
+		"body": ["^{\\circ} "]
+	},
+	"Mathbf": {
+		"prefix": "bf",
+		"body": ["\\mathbf{$1}$0"]
+	},
+	"Mathbb": {
+		"prefix": "bb",
+		"body": ["\\mathbb{$1}$0"]
+	},
+	"Real Number": {
+		"prefix": "bbR",
+		"body": ["\\mathbb{R} "]
+	},
+	"Integers": {
+		"prefix": "bbZ",
+		"body": ["\\mathbb{Z} "]
+	},
+	"Rational Numbers": {
+		"prefix": "bbQ",
+		"body": ["\\mathbb{Q} "]
+	},
+	"Natural Numbers": {
+		"prefix": "bbN",
+		"body": ["\\mathbb{N} "]
+	},
+	"Complex Numbers": {
+		"prefix": "bbC",
+		"body": ["\\mathbb{C} "]
+	},
+
+	//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Alphabet Symbols %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	"LaTeX - alpha": {
+		"prefix": "alpha",
+		"body": ["\\alpha "]
+	},
+	"LaTeX - beta": {
+		"prefix": "beta",
+		"body": ["\\beta "]
+	},
+	"LaTeX - gamma": {
+		"prefix": "gamma",
+		"body": ["\\gamma "]
+	},
+	"LaTeX - Gamma": {
+		"prefix": "Gamma",
+		"body": ["\\Gamma "]
+	},
+	"LaTeX - vargamma": {
+		"prefix": "vargamma",
+		"body": ["\\vargamma "]
+	},
+	"LaTeX - delta": {
+		"prefix": "delta",
+		"body": ["\\delta "]
+	},
+	"LaTeX - Delta": {
+		"prefix": "Delta",
+		"body": ["\\Delta "]
+	},
+	"LaTeX - epsilon": {
+		"prefix": "epsilon",
+		"body": ["\\epsilon "]
+	},
+	"LaTeX - varepsilon": {
+		"prefix": "varepsilon",
+		"body": ["\\varepsilon "]
+	},
+	"LaTeX - zeta": {
+		"prefix": "zeta",
+		"body": ["\\zeta "]
+	},
+	"LaTeX - eta": {
+		"prefix": "eta",
+		"body": ["\\eta "]
+	},
+	"LaTeX - theta": {
+		"prefix": "theta",
+		"body": ["\\theta "]
+	},
+	"LaTeX - Theta": {
+		"prefix": "Theta",
+		"body": ["\\Theta "]
+	},
+	"LaTeX - vartheta": {
+		"prefix": "vartheta",
+		"body": ["\\vartheta "]
+	},
+	"LaTeX - iota": {
+		"prefix": "iota",
+		"body": ["\\iota "]
+	},
+	"LaTeX - kappa": {
+		"prefix": "kappa",
+		"body": ["\\kappa "]
+	},
+	"LaTeX - lambda": {
+		"prefix": "lambda",
+		"body": ["\\lambda "]
+	},
+	"LaTeX - Lambda": {
+		"prefix": "Lambda",
+		"body": ["\\Lambda "]
+	},
+	"LaTeX - mu": {
+		"prefix": "mu",
+		"body": ["\\mu "]
+	},
+	"LaTeX - nu": {
+		"prefix": "nu",
+		"body": ["\\nu "]
+	},
+	"LaTeX - xi": {
+		"prefix": "xi",
+		"body": ["\\xi "]
+	},
+	"LaTeX - Xi": {
+		"prefix": "Xi",
+		"body": ["\\Xi "]
+	},
+	"LaTeX - pi": {
+		"prefix": "pi",
+		"body": ["\\pi "]
+	},
+	"LaTeX - Pi": {
+		"prefix": "Pi",
+		"body": ["\\Pi "]
+	},
+	"LaTeX - varpi": {
+		"prefix": "varpi",
+		"body": ["\\varpi "]
+	},
+	"LaTeX - rho": {
+		"prefix": "rho",
+		"body": ["\\rho "]
+	},
+	"LaTeX - varrho": {
+		"prefix": "varrho",
+		"body": ["\\varrho "]
+	},
+	"LaTeX - sigma": {
+		"prefix": "sigma",
+		"body": ["\\sigma "]
+	},
+	"LaTeX - Sigma": {
+		"prefix": "Sigma",
+		"body": ["\\Sigma "]
+	},
+	"LaTeX - varsigma": {
+		"prefix": "varsigma",
+		"body": ["\\varsigma "]
+	},
+	"LaTeX - tau": {
+		"prefix": "tau",
+		"body": ["\\tau "]
+	},
+	"LaTeX - upsilon": {
+		"prefix": "upsilon",
+		"body": ["\\upsilon "]
+	},
+	"LaTeX - Upsilon": {
+		"prefix": "Upsilon",
+		"body": ["\\Upsilon "]
+	},
+	"LaTeX - phi": {
+		"prefix": "phi",
+		"body": ["\\phi "]
+	},
+	"LaTeX - Phi": {
+		"prefix": "Phi",
+		"body": ["\\Phi "]
+	},
+	"LaTeX - varphi": {
+		"prefix": "varphi",
+		"body": ["\\varphi "]
+	},
+	"LaTeX - chi": {
+		"prefix": "chi",
+		"body": ["\\chi "]
+	},
+	"LaTeX - psi": {
+		"prefix": "psi",
+		"body": ["\\psi "]
+	},
+	"LaTeX - Psi": {
+		"prefix": "Psi",
+		"body": ["\\Psi "]
+	},
+	"LaTeX - omega": {
+		"prefix": "omega",
+		"body": ["\\omega "]
+	},
+	"LaTeX - Omega": {
+		"prefix": "Omega",
+		"body": ["\\Omega "]
+	},
+	"LaTeX - digamma": {
+		"prefix": "digamma",
+		"body": ["\\digamma "]
+	},
+	"LaTeX - Digamma": {
+		"prefix": "Digamma",
+		"body": ["\\Digamma "]
+	},
+	
+
+
+	"LaTeX - aleph": {
+		"prefix": "aleph",
+		"body": ["\\aleph "]
+	},
+	"LaTeX - beth": {
+		"prefix": "beth",
+		"body": ["\\beth "]
+	},
+	"LaTeX - gimel": {
+		"prefix": "gimel",
+		"body": ["\\gimel "]
+	},
+	"LaTeX - daleth": {
+		"prefix": "daleth",
+		"body": ["\\daleth "]
+	}
+}
